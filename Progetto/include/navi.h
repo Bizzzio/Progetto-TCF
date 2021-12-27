@@ -19,7 +19,7 @@ private:
 	vector<bool> Hit;
 	int X;
 	int Y;
-	virtual bool Ok() = 0 const;
+	virtual bool Ok() const = 0;
 };
 
 #endif
