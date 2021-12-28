@@ -1,7 +1,5 @@
 #include <iostream>
 #include "Navi.h"
-using std::cout;
-using std::endl;
 using namespace std;
 
 void Navi::SetX(int x)
