@@ -2,6 +2,7 @@
 #include "Navi.h"
 using std::cout;
 using std::endl;
+using namespace std;
 
 void Navi::SetX(int x)
 {
@@ -33,7 +34,7 @@ bool Navi::IsHorizontal() const
   return Horizontal;
 }
 
-vector<bool> GetVector() const
+vector<bool> Navi::GetVector() const
 {
   return Hit;
 }
