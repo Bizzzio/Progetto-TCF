@@ -10,7 +10,7 @@ void Navi::SetX(int x)
 
 void Navi::SetY(int y)
 {
-  X = x;
+  X = y;
 }
 
 void SetHorizontal(bool horizontal)
