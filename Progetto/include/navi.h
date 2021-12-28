@@ -15,6 +15,7 @@ public:
 	vector<bool> GetVector() const;
 
 private:
+	const int lenght;
 	bool Horizontal;
 	vector<bool> Hit;
 	int X;
