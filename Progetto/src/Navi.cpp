@@ -13,7 +13,7 @@ void Navi::SetY(int y)
   Y = y;
 }
 
-void SetHorizontal(bool horizontal)
+void Navi::SetHorizontal(bool horizontal)
 {
   Horizontal = horizontal;
 }
@@ -28,7 +28,7 @@ int Navi::GetY() const
   return Y;
 }
 
-bool IsHorizontal() const
+bool Navi::IsHorizontal() const
 {
   return Horizontal;
 }
