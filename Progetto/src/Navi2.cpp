@@ -51,7 +51,7 @@ void Navi2::DrawEnemy(int x, int y) const{
 
 void Navi2::DrawAlly(int x, int y) const{
   //cout<<"ciao";
-  vector<bool> hit = GetVector();
+  //vector<bool> hit = GetVector();
   //cout<<Hit[0];
     if (IsHorizontal())
       {
