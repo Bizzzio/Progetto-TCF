@@ -1,8 +1,10 @@
 #ifndef GRIGLIA_H
 #define GRIGLIA_H
+#include "Navi.h"
+#include "Navi2.h"
 #include <vector>
 using std::vector;
-#include "Navi.h"
+
 
 class Griglia
 {

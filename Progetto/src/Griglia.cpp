@@ -12,8 +12,8 @@ Griglia::Griglia(int d)
 		for (int j = 0; j < d; j++)
 		{
 
-			griglia.push_back(temp); //aggiunge una riga
-			griglia[i].push_back(NULL);
+			grid.push_back(temp); //aggiunge una riga
+			grid[i].push_back(NULL);
 		}
 	}
 }
