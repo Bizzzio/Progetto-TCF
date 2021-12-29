@@ -13,7 +13,7 @@ public:
 
     void DrawEnemy() const;
     void DrawAlly() const;
-    vector < vector <  *Navi > > grid;
+    vector < vector <  Navi* > > grid;
 
 private:
     //vector<vector<*Navi> > grid;
