@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "Griglia.h"
 using namespace std;
@@ -43,4 +44,10 @@ void Griglia::DrawAlly() const
 			grid[i][j]->DrawAlly(i,j);
 		}
 	}
+}
+
+
+
+friend vector<Navi*> operator[] (Griglia g, int i){
+  return g[i];
 }
