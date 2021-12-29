@@ -1,4 +1,4 @@
-#include "navi.h"
+#include "Navi.h"
 #ifndef NAVI2_H
 #define NAVI2_H
 

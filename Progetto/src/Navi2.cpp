@@ -1,4 +1,5 @@
 #include "Navi2.h"
+#include <iostream>
 using std::cout;
 
 Navi2::Navi2 (bool horizontal, int x, int y) {
