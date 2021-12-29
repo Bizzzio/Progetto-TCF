@@ -20,7 +20,7 @@ public:
 	virtual void Strike(int, int)=0;
 
 private:
-	int length;
+	int Length;
 	bool Horizontal;
 	int X;
 	int Y;
