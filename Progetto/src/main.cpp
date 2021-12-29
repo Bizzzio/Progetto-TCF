@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Navi2.h"
+#include "Griglia.h"
 
 using std::cout;
 using std::endl;
