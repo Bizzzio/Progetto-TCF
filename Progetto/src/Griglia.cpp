@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Griglia.h"
 using namespace std;
@@ -50,6 +49,15 @@ void Griglia::DrawAlly() const
 void Griglia::SetGriglia(int i, int j, Navi* nave)
 {
 	this->grid[i][j]=nave;
+}
+
+
+void Griglia::Strike(int x, int y)
+{
+  if (!grid[x][y])
+    grid[x][y] = &Water;
+	else
+    grid[x][y]->Strike(x,y);
 }
 
 
