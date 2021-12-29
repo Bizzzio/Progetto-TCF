@@ -9,7 +9,7 @@ using std::vector;
 class Griglia
 {
   
-  friend vector<Navi*> operator[] (Griglia g, int i);
+  friend vector<Navi*> operator[] (Griglia, int);
   
 public:
     Griglia(int);
