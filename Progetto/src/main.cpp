@@ -7,27 +7,26 @@ using std::cout;
 using std::endl;
 using std::vector;
 
+
 int main()
 {
-	int main()
+	Griglia griglia(6);
+	Navi2 nave(true, 1, 1);
+	Navi *nvptr = &nave;
+	//griglia.(grid[1])[1] = nvptr;
+	cout<<"ciao";
+	//griglia.grid[1][2] = nvptr;
+
+	/*for (int i = 0; i < 6; i++)
 	{
-		Griglia grid(6);
-		Navi2 nave(true, 1, 1);
-		Navi *nvptr = &nave;
-		grid[1, 1] = nvptr;
-		grid[1, 2] = nvptr;
-
-		for (int i = 0; i < d; i++)
+		for (int j = 0; j < 6; j++)
 		{
-			for (int j = 0; j < d; j++)
-			{
-				if (grid[i][j])
+			if (griglia.grid[i][j])
 
-					grid[i][j]->DrawEnemy();
-				else
-					cout << ". ";
-			}
+				griglia.grid[i][j]->DrawEnemy(i,j);
+			else
+				cout << ". ";
 		}
-	}
-}
+	}*/
+	return 0;
 }
