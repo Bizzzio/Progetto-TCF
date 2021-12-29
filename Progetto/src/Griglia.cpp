@@ -18,7 +18,7 @@ Griglia::Griglia(int d)
 			grid[i].push_back(NULL);
 			//cout<<". "; 
 		}
-		cout<<endl;
+		//cout<<endl;
 	}
 }
 
