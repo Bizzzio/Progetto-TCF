@@ -3,7 +3,7 @@
 using std::cout;
 
 Navi5::Navi5 (bool horizontal, int x, int y) {
-  SetLength() = 5;
+  SetLength(5);
   SetHorizontal(horizontal);
   SetX(x);
   SetY(y);
