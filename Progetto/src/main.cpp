@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include "Navi2.h"
+
 using std::cout;
 using std::endl;
 using std::vector;
