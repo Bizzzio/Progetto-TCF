@@ -8,15 +8,18 @@ using std::vector;
 
 class Griglia
 {
+  
+  friend vector<Navi*> operator[] (Griglia g, int i);
+  
 public:
     Griglia(int);
 
     void DrawEnemy() const;
     void DrawAlly() const;
-    vector < vector <  Navi* > > grid;
+    //vector < vector <  Navi* > > grid;
 
 private:
-    //vector<vector<Navi*> > grid;
+    vector<vector<Navi*> > grid;
     int size;
 };
 #endif
