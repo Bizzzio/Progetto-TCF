@@ -2,7 +2,7 @@
 #define GRIGLIA_H
 #include <vector>
 using std::vector;
-#include 'Navi.h'
+#include "Navi.h"
 
 class Griglia
 {
@@ -12,6 +12,7 @@ public:
     void DrawEnemy() const;
     void DrawAlly() const;
     vector<vector<*Navi> > grid;
+
 private:
     // vector<vector<*Navi> > grid;
 };
