@@ -6,8 +6,6 @@
 #include <vector>
 using std::vector;
 
-class Navi;
-
 class Griglia
 {
 public:
