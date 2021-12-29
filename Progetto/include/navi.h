@@ -3,7 +3,7 @@
 #include <vector>
 using std::vector;
 
-class Navi()
+class Navi
 {
 public:
 	void SetX(int);
@@ -13,6 +13,9 @@ public:
 	int GetY() const;
 	bool IsHorizontal() const;
 	vector<bool> GetVector() const;
+	virtual void DrawEnemy(int, int) const = 0;
+	virtual void DrawAlly(int, int) const = 0;
+	virtual bool Sunk() const = 0;
 
 private:
 	const int length;
@@ -20,7 +23,6 @@ private:
 	vector<bool> Hit;
 	int X;
 	int Y;
-	virtual bool Ok() const = 0;
 };
 
 #endif
