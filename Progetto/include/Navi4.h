@@ -2,7 +2,7 @@
 #ifndef NAVI4_H
 #define NAVI4_H
 
-class Navi2 : public Navi
+class Navi4 : public Navi
 {
 
 public:
