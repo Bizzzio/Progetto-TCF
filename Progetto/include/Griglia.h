@@ -1,7 +1,8 @@
-#ifndef GRIGLIA_H
-#define GRIGLIA_H
 #include "Navi.h"
 #include "Navi2.h"
+#ifndef GRIGLIA_H
+#define GRIGLIA_H
+
 #include <vector>
 using std::vector;
 
