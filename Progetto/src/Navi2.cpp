@@ -74,3 +74,12 @@ vector<bool> Navi2::GetVector() const
 {
   return Hit;
 }
+
+void Navi2::Strike(int x, int y)
+{
+  if (IsHorizontal())
+        Hit[x-GetX()]=true;
+
+  else
+      Hit[y-GetY()]=true;
+}
