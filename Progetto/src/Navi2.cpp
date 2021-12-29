@@ -3,11 +3,11 @@
 using std::cout;
 
 Navi2::Navi2 (bool horizontal, int x, int y) {
-  length = 2;
+  SetLength() = 2;
   SetHorizontal(horizontal);
   SetX(x);
   SetY(y);
-  for (int i=0;i<length;i++)
+  for (int i=0;i<GetLength();i++)
   	Hit.push_back(false);
 }
 
@@ -27,7 +27,7 @@ bool Navi2::Sunk(vector<bool> hit) const {
 void Navi2::DrawEnemy(int x, int y) const{
   if (Sunk(GetVector()))  
   {
-    cout << length;
+    cout << GetLength();
   }
   else
   {
@@ -58,14 +58,14 @@ void Navi2::DrawAlly(int x, int y) const{
         if (GetVector()[x-GetX()])
           cout<<"X ";
         else 
-          cout<<length<<" ";
+          cout<<GetLength()<<" ";
       }
       else
       {
         if (GetVector()[y-GetY()])
           cout<<"X ";
         else 
-          cout<<length<< " ";
+          cout<<GetLength()<< " ";
       }
 }
 
