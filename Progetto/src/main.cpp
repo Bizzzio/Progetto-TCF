@@ -6,26 +6,25 @@ using std::vector;
 
 int main()
 {
-	std::cout << "Ciao! sono arianna" << std::endl;
-	vector<vector<int> > griglia;
-	for (int i = 0; i < 10; i++)
+	int main()
 	{
-		vector<int> temp;
-		temp.push_back(0);
-		for (int j = 0; j < 10; j++)
-		{
+		Griglia grid(6);
+		Navi2 nave(true, 1, 1);
+		Navi *nvptr = &nave;
+		grid[1, 1] = nvptr;
+		grid[1, 2] = nvptr;
 
-			griglia.push_back(temp); //aggiunge una riga
-			griglia[i].push_back(0);
+		for (int i = 0; i < d; i++)
+		{
+			for (int j = 0; j < d; j++)
+			{
+				if (grid[i][j])
+
+					grid[i][j]->DrawEnemy();
+				else
+					cout << ". ";
+			}
 		}
 	}
-
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 10; j++)
-		{
-			cout << griglia[i][j];
-		}
-		cout << endl;
-	}
+}
 }

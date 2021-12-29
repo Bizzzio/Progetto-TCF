@@ -1,10 +1,11 @@
-#include<iostream>
+#include <iostream>
 #include "Griglia.h"
 using namespace std;
 
-Griglia::Griglia(int d){
-	
-  	for (int i = 0; i < d; i++)
+Griglia::Griglia(int d)
+{
+
+	for (int i = 0; i < d; i++)
 	{
 		vector<*Navi> temp;
 		temp.push_back(NULL);
@@ -15,25 +16,28 @@ Griglia::Griglia(int d){
 			griglia[i].push_back(NULL);
 		}
 	}
-  
 }
 
-void Griglia::DrawEnemy() const {
+void Griglia::DrawEnemy() const
+{
 
-  for (int i=0;i<d;i++){
-    for (int j=0;j<d;j++){
-     	grid[i][j]->DrawEnemy();
-    }
-  }
-  
+	for (int i = 0; i < d; i++)
+	{
+		for (int j = 0; j < d; j++)
+		{
+			grid[i][j]->DrawEnemy();
+		}
+	}
 }
 
-void Griglia::DrawAlly() const {
+void Griglia::DrawAlly() const
+{
 
-  for (int i=0;i<d;i++){
-    for (int j=0;j<d;j++){
-     	grid[i][j]->DrawAlly();
-    }
-  }
-  
+	for (int i = 0; i < d; i++)
+	{
+		for (int j = 0; j < d; j++)
+		{
+			grid[i][j]->DrawAlly();
+		}
+	}
 }
