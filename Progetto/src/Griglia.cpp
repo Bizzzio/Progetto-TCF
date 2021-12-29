@@ -48,6 +48,6 @@ void Griglia::DrawAlly() const
 
 
 
-vector<Navi*> operator[] (Griglia g, int i){
+vector<Navi*> Griglia::operator[] (Griglia g, int i){
   return g[i];
 }
