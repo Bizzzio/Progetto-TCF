@@ -16,7 +16,7 @@ Griglia::Griglia(int d)
 
 			grid.push_back(temp); //aggiunge una riga
 			grid[i].push_back(NULL);
-			cout<<". ";
+			//cout<<". "; 
 		}
 		cout<<endl;
 	}

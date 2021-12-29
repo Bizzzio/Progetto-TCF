@@ -19,7 +19,7 @@ int main()
 	griglia.SetGriglia(1,2,nvptr);
 	griglia.SetGriglia(3,4,nvptr1);
 	griglia.SetGriglia(4,4,nvptr1);
-	cout<<"ciao"<<endl;
+	
 
 	for (int i = 0; i < 6; i++)
 	{
