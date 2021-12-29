@@ -15,6 +15,7 @@ public:
 	virtual void DrawEnemy(int, int) const = 0;
 	virtual void DrawAlly(int, int) const = 0;
 	virtual bool Sunk(vector<bool>) const = 0;
+	virtual void Strike(int, int)=0;
 
 private:
 	//int length;

@@ -11,7 +11,7 @@ public:
     virtual void DrawAlly(int, int) const;
     virtual bool Sunk(vector<bool>) const;
     vector<bool> GetVector() const;
-    void Strike(int, int);
+    virtual void Strike(int, int);
 private:
     int length;
     vector<bool> Hit;

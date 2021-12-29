@@ -19,6 +19,7 @@ int main()
 	griglia.SetGriglia(1,2,nvptr);
 	griglia.SetGriglia(3,4,nvptr1);
 	griglia.SetGriglia(4,4,nvptr1);
+	griglia[1][2]->Strike(1,2);
 	
 
 	for (int i = 0; i < 6; i++)
@@ -34,6 +35,6 @@ int main()
 		cout<<endl;
 	}
 
-	cout<<griglia[1][1]<<endl<<&nave;
+	//cout<<griglia[1][1]<<endl<<&nave;
 	return 0;
 }
