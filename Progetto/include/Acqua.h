@@ -1,6 +1,7 @@
 #ifndef ACQUA_H
 #define ACQUA_H
 #include "Navi.h"
+using std::cout;
 
 class Acqua : public Navi{
   
