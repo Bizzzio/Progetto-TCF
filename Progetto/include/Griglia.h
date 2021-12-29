@@ -9,11 +9,9 @@ using std::vector;
 class Griglia
 {
   
-  friend vector<Navi*> operator[] (Griglia, int);
-  
 public:
     Griglia(int);
-
+    vector<Navi*> operator[] (Griglia, int)
     void DrawEnemy() const;
     void DrawAlly() const;
     //vector < vector <  Navi* > > grid;
