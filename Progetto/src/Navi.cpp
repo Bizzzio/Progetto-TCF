@@ -17,6 +17,11 @@ void Navi::SetHorizontal(bool horizontal)
   Horizontal = horizontal;
 }
 
+void Navi::SetLength(int length)
+{
+  Length=length;
+}
+
 int Navi::GetX() const
 {
   return X;
@@ -27,8 +32,12 @@ int Navi::GetY() const
   return Y;
 }
 
+int Navi::GetLength() const
+{
+  return Length;
+}
+
 bool Navi::IsHorizontal() const
 {
   return Horizontal;
 }
-
