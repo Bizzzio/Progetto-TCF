@@ -13,7 +13,7 @@ public:
     vector<bool> GetVector() const;
     virtual void Strike(int, int);
 private:
-    int length;
+    //int length;
     vector<bool> Hit;
 };
 

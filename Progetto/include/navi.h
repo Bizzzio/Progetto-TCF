@@ -9,8 +9,10 @@ public:
 	void SetX(int);
 	void SetY(int);
 	void SetHorizontal(bool);
+	void SetLength(int);
 	int GetX() const;
 	int GetY() const;
+	int GetLength() const;
 	bool IsHorizontal() const;
 	virtual void DrawEnemy(int, int) const = 0;
 	virtual void DrawAlly(int, int) const = 0;
@@ -18,7 +20,7 @@ public:
 	virtual void Strike(int, int)=0;
 
 private:
-	//int length;
+	int length;
 	bool Horizontal;
 	int X;
 	int Y;
