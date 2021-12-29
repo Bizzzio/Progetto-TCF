@@ -10,8 +10,8 @@ public:
 
     void DrawEnemy() const;
     void DrawAlly() const;
-
-private:
     vector<vector<*Navi>> grid;
+private:
+    // vector<vector<*Navi>> grid;
 };
 #endif
