@@ -22,7 +22,7 @@ int main()
 	Navi4 nave4(false, 5, 0);
 	Navi *nvptr4 = &nave4;
 	griglia.SetGriglia(1,1,nvptr);
-	griglia.SetGriglia(1,2,nvptr);
+	griglia.SetGriglia(2,1,nvptr);
 	griglia.SetGriglia(3,4,nvptr1);
 	griglia.SetGriglia(4,4,nvptr1);
 	griglia.SetGriglia(0,5,nvptr2);
@@ -40,7 +40,8 @@ int main()
 
 
 
-	griglia.Strike(1,2);
+	griglia.Strike(2,1);
+	griglia.Strike(1,1);
 
 	
 
