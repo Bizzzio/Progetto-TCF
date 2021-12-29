@@ -32,7 +32,3 @@ bool Navi::IsHorizontal() const
   return Horizontal;
 }
 
-vector<bool> Navi::GetVector() const
-{
-  return Hit;
-}

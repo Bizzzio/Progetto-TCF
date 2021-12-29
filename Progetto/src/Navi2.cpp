@@ -8,7 +8,7 @@ Navi2::Navi2 (bool horizontal, int x, int y) {
   SetX(x);
   SetY(y);
   for (int i=0;i<length;i++)
-  	GetVector().push_back(false);
+  	Hit.push_back(false);
 }
 
 bool Navi2::Sunk(vector<bool> hit) const {
@@ -50,19 +50,27 @@ void Navi2::DrawEnemy(int x, int y) const{
 
 
 void Navi2::DrawAlly(int x, int y) const{
-
+  //cout<<"ciao";
+  vector<bool> hit = GetVector();
+  //cout<<Hit[0];
     if (IsHorizontal())
       {
         if (GetVector()[x-GetX()])
           cout<<"X ";
         else 
-          cout<<length;
+          cout<<length<<" ";
       }
       else
       {
         if (GetVector()[y-GetY()])
           cout<<"X ";
         else 
-          cout<<length;
+          cout<<length<< " ";
       }
+}
+
+
+vector<bool> Navi2::GetVector() const
+{
+  return Hit;
 }

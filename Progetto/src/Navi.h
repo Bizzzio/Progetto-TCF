@@ -12,7 +12,6 @@ public:
 	int GetX() const;
 	int GetY() const;
 	bool IsHorizontal() const;
-	vector<bool> GetVector() const;
 	virtual void DrawEnemy(int, int) const = 0;
 	virtual void DrawAlly(int, int) const = 0;
 	virtual bool Sunk(vector<bool>) const = 0;
@@ -20,7 +19,6 @@ public:
 private:
 	//int length;
 	bool Horizontal;
-	vector<bool> Hit;
 	int X;
 	int Y;
 };
