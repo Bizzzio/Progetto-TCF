@@ -11,9 +11,10 @@ class Griglia
   
 public:
     Griglia(int);
-    vector<Navi*> operator[] (Griglia, int)
+    vector<Navi*> operator[] (int);
     void DrawEnemy() const;
     void DrawAlly() const;
+    void SetGriglia(int, int, Navi*);
     //vector < vector <  Navi* > > grid;
 
 private:

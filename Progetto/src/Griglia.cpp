@@ -47,7 +47,12 @@ void Griglia::DrawAlly() const
 }
 
 
+void Griglia::SetGriglia(int i, int j, Navi* nave)
+{
+	this->grid[i][j]=nave;
+}
 
-vector<Navi*> Griglia::operator[] (Griglia g, int i){
-  return g[i];
+
+vector<Navi*> Griglia::operator[] (int i){
+  	return this->grid[i];
 }

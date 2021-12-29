@@ -15,11 +15,12 @@ int main()
 	Navi *nvptr = &nave;
 	Navi2 nave1(true, 3, 4);
 	Navi *nvptr1 = &nave1;
-	griglia[1] = nvptr;
+	griglia.SetGriglia(1,1,nvptr);
+	griglia.SetGriglia(1,2,nvptr);
+	griglia.SetGriglia(3,4,nvptr1);
+	griglia.SetGriglia(4,4,nvptr1);
 	cout<<"ciao"<<endl;
-	griglia[2][1] = nvptr;
-	griglia[3][4] = nvptr1;
-	griglia[3][5] = nvptr1;
+
 	for (int i = 0; i < 6; i++)
 	{
 		for (int j = 0; j < 6; j++)
@@ -32,5 +33,7 @@ int main()
 		}
 		cout<<endl;
 	}
+
+	cout<<griglia[1][1]<<endl<<&nave;
 	return 0;
 }
