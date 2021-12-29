@@ -27,7 +27,7 @@ bool Navi6::Sunk(vector<bool> hit) const {
 void Navi6::DrawEnemy(int x, int y) const{
   if (Sunk(GetVector()))  
   {
-    cout << GetLength();
+    cout << GetLength()<< " ";
   }
   else
   {
