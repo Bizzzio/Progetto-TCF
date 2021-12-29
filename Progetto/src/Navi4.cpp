@@ -3,7 +3,7 @@
 using std::cout;
 
 Navi4::Navi4 (bool horizontal, int x, int y) {
-  SetLength() = 4;
+  SetLength(5);
   SetHorizontal(horizontal);
   SetX(x);
   SetY(y);
