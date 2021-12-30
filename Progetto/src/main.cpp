@@ -11,6 +11,7 @@ using std::vector;
 int main()
 { 
 	cout<<"test";
+	cout << "NONAVI";
 	Griglia griglia(6);
 	Navi2 nave(true, 1, 1);
 	Navi *nvptr = &nave;
