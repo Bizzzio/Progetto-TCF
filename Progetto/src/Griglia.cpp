@@ -28,8 +28,13 @@ void Griglia::DrawEnemy() const
 	{
 		for (int j = 0; j < size; j++)
 		{
-			grid[i][j]->DrawEnemy(i,j);
+			if (grid[j][i])
+
+				grid[j][i]->DrawEnemy(j,i);
+			else
+				cout << ". ";
 		}
+		cout<<endl;
 	}
 }
 
@@ -40,9 +45,13 @@ void Griglia::DrawAlly() const
 	{
 		for (int j = 0; j < size; j++)
 		{
-			grid[i][j]->DrawAlly(i,j);
-		}
+		if (grid[j][i])
+
+				grid[j][i]->DrawAlly(j,i);
+			else
+				cout << ". ";
 	}
+}
 }
 
 
