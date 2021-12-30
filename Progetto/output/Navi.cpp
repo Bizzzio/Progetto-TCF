@@ -1,0 +1,138 @@
+#include <iostream>
+#include "Navi.h"
+using namespace std;
+
+Navi::Navi(bool horizontal, int x, int y, int l) {
+	SetLength(l);
+	SetHorizontal(horizontal);
+	SetX(x);
+	SetY(y);
+	for (int i = 0; i < GetLength(); i++)
+		Hit.push_back(false);
+}
+
+void Navi::SetX(int x)
+{
+	X = x;
+}
+
+void Navi::SetY(int y)
+{
+	Y = y;
+}
+
+void Navi::SetHorizontal(bool horizontal)
+{
+	Horizontal = horizontal;
+}
+
+void Navi::SetLength(int length)
+{
+	Length = length;
+}
+
+int Navi::GetX() const
+{
+	return X;
+}
+
+int Navi::GetY() const
+{
+	return Y;
+}
+
+int Navi::GetLength() const
+{
+	return Length;
+}
+
+bool Navi::IsHorizontal() const
+{
+	return Horizontal;
+}
+
+bool Navi::Sunk(vector<bool> hit) const {
+
+    vector<bool>::iterator k;
+
+    for (k = hit.begin(); k < hit.end(); k++) {
+        if (!(*k))
+            return false;
+    }
+
+    return true;
+
+}
+
+void Navi::DrawEnemy(int x, int y) const {
+    
+    if (GetLength() == -1)
+    {
+        cout << "~ ";
+    }
+  
+    else
+    {
+        if (Sunk(GetVector()))
+        {
+            cout << GetLength() << " ";
+        }
+        else {
+            if (IsHorizontal())
+            {
+                if (GetVector()[x - GetX()])
+                    cout << "X ";
+                else
+                    cout << ". ";
+            }
+            else 
+            {
+                if (GetVector()[y - GetY()])
+                    cout << "X ";
+                else
+                    cout << ". ";
+            }
+        }
+    }
+}
+
+
+void Navi::DrawAlly(int x, int y) const {
+
+    if (Length == -1)
+    {
+        cout << "~ ";
+    }
+
+    else
+    {
+        if (IsHorizontal())
+        {
+            if (GetVector()[x - GetX()])
+                cout << "X ";
+            else
+                cout << GetLength() << " ";
+        }
+        else
+        {
+            if (GetVector()[y - GetY()])
+                cout << "X ";
+            else
+                cout << GetLength() << " ";
+        }
+    }
+}
+
+void Navi::Strike(int x, int y)
+{
+    if (IsHorizontal())
+        Hit[x - GetX()] = true;
+
+    else
+        Hit[y - GetY()] = true;
+}
+
+vector<bool> Navi::GetVector() const
+{
+    return Hit;
+}
