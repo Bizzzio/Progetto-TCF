@@ -49,71 +49,16 @@ int main()
 	
 	// Stampo tutte le griglie non colpite
 
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (griglia[j][i])
-
-				griglia[j][i]->DrawEnemy(j, i);
-			else
-				cout << ". ";
-		}
-		cout << endl;
-	}
-
-	cout << endl;
-
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (griglia[j][i])
-
-				griglia[j][i]->DrawAlly(j, i);
-			else
-				cout << ". ";
-		}
-		cout << endl;
-	}
-
-	cout << endl;
-
+	griglia.DrawEnemy();
+	griglia.DrawAlly();
 	// Colpisco mezza griglia
 
 	for (int z = 0; z < 3; z++)
 		for (int j = 0; j < 6; j++)
 			griglia.Strike(z, j);
 
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (griglia[j][i])
-
-				griglia[j][i]->DrawEnemy(j, i);
-			else
-				cout << ". ";
-		}
-		cout << endl;
-	}
-
-	cout << endl;
-
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (griglia[j][i])
-
-				griglia[j][i]->DrawAlly(j, i);
-			else
-				cout << ". ";
-		}
-		cout << endl;
-	}
-
-	cout << endl;
+	griglia.DrawEnemy();
+	griglia.DrawAlly();
 
 	// Stampo le griglie colpite
 
@@ -121,33 +66,7 @@ int main()
 		for (int j = 0; j < 6; j++)
 			griglia.Strike(z, j);
 
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (griglia[j][i])
-
-				griglia[j][i]->DrawEnemy(j, i);
-			else
-				cout << ". ";
-		}
-		cout << endl;
-	}
-	
-	cout << endl;
-
-	for (int i = 0; i < 6; i++)
-	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (griglia[j][i])
-
-				griglia[j][i]->DrawAlly(j, i);
-			else
-				cout << ". ";
-		}
-		cout << endl;
-	}
-
+	griglia.DrawEnemy();
+	griglia.DrawAlly();
 	return 0;
 }

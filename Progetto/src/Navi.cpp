@@ -8,7 +8,7 @@ Navi::Navi(bool horizontal, int x, int y, int l) {
 	SetX(x);
 	SetY(y);
 	for (int i = 0; i < GetLength(); i++)
-		Hit.push_back(false);
+		Hit.push_back(false);               //costruisce il vettore Hit; siccome in costruzione nessuna casella è colpita, il vector di Hit è riempito di false
 }
 
 void Navi::SetX(int x)
@@ -66,21 +66,21 @@ bool Navi::Sunk(vector<bool> hit) const {
 
 void Navi::DrawEnemy(int x, int y) const {
     
-    if (GetLength() == -1)
+    if (GetLength() == -1)                              //se la nave è acqua si stampa una ~, perchè se viene chiamata la "nave acqua" allora vuol dire che è stata colpita
     {
         cout << "~ ";
     }
   
     else
     {
-        if (Sunk(GetVector()))
+        if (Sunk(GetVector()))                          //se la nave è affondata si stampa la lunghezza della nave anzichè una X
         {
             cout << GetLength() << " ";
         }
         else {
             if (IsHorizontal())
             {
-                if (GetVector()[x - GetX()])
+                if (GetVector()[x - GetX()])            //qua viene identificata la cella del vettore Hit corrispondente alla casella colpita
                     cout << "X ";
                 else
                     cout << ". ";
@@ -123,7 +123,7 @@ void Navi::DrawAlly(int x, int y) const {
     }
 }
 
-void Navi::Strike(int x, int y)
+void Navi::Strike(int x, int y)                 //questa funzione si occupa di cambiare la casella del vettore in true quando la cella corrispondente viene colpita
 {
     if (IsHorizontal())
         Hit[x - GetX()] = true;
