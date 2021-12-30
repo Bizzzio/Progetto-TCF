@@ -24,13 +24,16 @@ Griglia::Griglia(int d) : Water(false,-1,-1,-1)
 
 void Griglia::DrawEnemy() const
 {
-	cout<<"  ";
+	cout<<"    ";
 	for (int i = 0; i < size; i++)
 		cout<<i<<" ";
+	cout<<endl<<"   ";
+	for (int i = 0; i < size; i++)
+		cout<<"--";
 	cout<<endl;
 	for (int i = 0; i < size; i++)
 		{
-			cout<<i<<" ";
+			cout<<i<<" | ";
 			for (int j = 0; j < size; j++)
 			{
 				if (grid[j][i])
@@ -46,13 +49,16 @@ void Griglia::DrawEnemy() const
 
 void Griglia::DrawAlly() const
 {
-	cout<<"  ";
+	cout<<"    ";
 	for (int i = 0; i < size; i++)
 		cout<<i<<" ";
+	cout<<endl<<"   ";
+	for (int i = 0; i < size; i++)
+		cout<<"--";
 	cout<<endl;
 	for (int i = 0; i < size; i++)
 		{
-			cout<<i<<" ";
+			cout<<i<<" | ";
 			for (int j = 0; j < size; j++)
 			{
 				if (grid[j][i])
@@ -61,9 +67,17 @@ void Griglia::DrawAlly() const
 				else
 					cout << ". ";
 			}
-			cout << endl;
+			cout <<"| "<< i << endl;
 		}
+	cout<<"   ";
+	for (int i = 0; i < size; i++)
+		cout<<"--";
 	cout << endl;
+	cout<<"    ";
+	for (int i = 0; i < size; i++)
+	cout<<i<<" ";
+	cout<<endl<<endl;
+
 }
 
 
