@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "Griglia.h"
+#include "Factory.h"
 
 using std::cout;
 using std::endl;
