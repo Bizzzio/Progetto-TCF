@@ -6,10 +6,9 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-
 int main()
 {
-	Factory grid1(8,1,1,1,1,1);
+	Factory grid1(8, 1, 1, 1, 1, 1);
 	/*Griglia griglia(6);
 
 	Navi nave(true, 1, 1,2);

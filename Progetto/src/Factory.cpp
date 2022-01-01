@@ -24,7 +24,7 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6) {
 
       do {
           do{
-            cout << "\nVuoi la" << j+1<< "° nave, da " << z <<" caselle, orizzontale(=1) o verticale(=0)?" << endl;
+            cout << "\nVuoi la" << j+1<< "a nave, da " << z <<" caselle, orizzontale(=1) o verticale(=0)?" << endl;
             cin >> n;
         }while(n!=1 && n!=0);
         h=n;
