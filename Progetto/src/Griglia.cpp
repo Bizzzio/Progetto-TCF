@@ -81,21 +81,21 @@ void Griglia::DrawAlly() const
 }
 
 bool Griglia::CheckCell(bool t, int x, int y, int length) const {
-  int count;
   if (t){
     for (int i=0;i<length;i++){
-      if (grid[x+i][y]) count++;
-      	//else return false;
+      	if (grid[x+i][y])
+			return false;
     	}
-  	if(count == length && x+length-size <= 0 ) return true;
-  	else return false;
+  	if((x+length-size) <= 0 ) return true;
+  		else return false;
   }
   
   else {   
   for (int i=0;i<length;i++){
-      if (grid[x][y+i]) count++;
+      if (grid[x][y+i])
+	  	return false;
     }
-  	if(count == length && y+length-size <= 0 ) return true;
+  	if((y+length-size) <= 0 ) return true;
   	else return false;
   }
 }
