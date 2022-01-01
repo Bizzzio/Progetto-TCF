@@ -3,8 +3,8 @@
 #include <iostream>
 using namespace std;
 #include <vector>
-#include 'Navi.h'
-#include 'Griglia.h'
+#include "Navi.h"
+#include "Griglia.h"
 
 class Factory {
 
