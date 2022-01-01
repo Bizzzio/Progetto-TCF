@@ -1,7 +1,7 @@
 #include <iostream>
 #include<vector>
 using namespace std;
-#include 'Factory.h'
+#include "Factory.h"
 // abbiamo creato la griglia da 10
 // le regole sono che si possono usare 1 nave da 4, 1 da 5, 3 da 3, 3 da 2
  
