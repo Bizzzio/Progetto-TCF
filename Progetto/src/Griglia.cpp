@@ -42,9 +42,16 @@ void Griglia::DrawEnemy() const
 				else
 					cout << ". ";
 			}
-			cout << endl;
+			cout <<"| "<< i << endl;
 		}
+	cout<<"   ";
+	for (int i = 0; i < size; i++)
+		cout<<"--";
 	cout << endl;
+	cout<<"    ";
+	for (int i = 0; i < size; i++)
+	cout<<i<<" ";
+	cout<<endl<<endl;
 }
 
 void Griglia::DrawAlly() const
