@@ -21,11 +21,11 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6) {
       int x,y;
       bool h;
       do {
-          cout << "\nVuoi la" << j+1<< "° nave, da " << z <<'caselle, orizzontale(=1) o verticale(=0)?' << endl;
+          cout << "\nVuoi la" << j+1<< "° nave, da " << z <<"caselle, orizzontale(=1) o verticale(=0)?" << endl;
           cin >> h;
           cout << "\nDammi una x e una y per posizionare la nave sulla griglia" << endl;
           cin >> x >> y ;
-      } while(!CheckCell(h,x,y,z))
+      } while(!grid.CheckCell(h,x,y,z));
       fleet.push_back( new Navi(h,x,y,z));
       if (h)
       {
@@ -40,6 +40,7 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6) {
       //fleet.DrawAlly(x,y);
     }
     z++;
+}
 }
 
 

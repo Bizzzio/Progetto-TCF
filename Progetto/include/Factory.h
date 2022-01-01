@@ -10,7 +10,7 @@ class Factory {
 
 	public:
   Factory(int dim, int n2,int n3, int n4, int n5, int n6);
-	~ Factory();
+	~Factory();
   void SetFleet(int n2, int n3, int n4, int n5, int n6);
   vector<Navi*> GetFleet() const;
    
