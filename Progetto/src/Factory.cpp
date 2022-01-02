@@ -71,11 +71,11 @@ Factory::~Factory() {
 bool Factory::EndGame() const{
 	
   int count=0;
-  //vector<Navi*>::iterator i;
-  for(int i=0; i<fleet.size(); i++){
-  	if(fleet[i]->Sunk()) count++;
+  vector<Navi*>::const_iterator i;
+  for(i=fleet.begin(); i!=fleet.end(); i++){
+  	if((*i)->Sunk()) count++;
       else return false;
   }
   if (count == fleet.size()) return true;
-  else return false;
+    else return false;
 }
