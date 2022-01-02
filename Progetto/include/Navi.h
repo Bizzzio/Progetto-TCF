@@ -26,6 +26,7 @@ public:
 	virtual void DrawAlly(int, int) const;		 
 	virtual bool Sunk() const;		//restituisce true se la nave è affondata, false altrimenti
 	virtual void Strike(int, int);				//colpise la casella che riceve in input
+	virtual bool IsHit(int, int) const;
 
 private:
 	int Length;					//indica la lunghezza della nave; se la nave ha lunghezza -1 allora è una nave acqua

@@ -132,6 +132,15 @@ void Navi::Strike(int x, int y)                 //questa funzione si occupa di c
         Hit[y - GetY()] = true;
 }
 
+bool Navi::IsHit(int x, int y) const
+{
+    if (IsHorizontal())
+        return Hit[x - GetX()];
+
+    else
+        return Hit[y - GetY()];
+}
+
 vector<bool> Navi::GetVector() const
 {
     return Hit;
