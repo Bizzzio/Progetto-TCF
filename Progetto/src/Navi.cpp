@@ -53,7 +53,7 @@ bool Navi::IsHorizontal() const
 
 bool Navi::Sunk() const {
 
-    vector<bool>::iterator k;
+    vector<bool>::const_iterator k;
 
     for (k = Hit.begin(); k < Hit.end(); k++) {
         if (!(*k))
@@ -73,7 +73,7 @@ void Navi::DrawEnemy(int x, int y) const {
   
     else
     {
-        if (Sunk(GetVector()))                          //se la nave è affondata si stampa la lunghezza della nave anzichè una X
+        if (Sunk())                          //se la nave è affondata si stampa la lunghezza della nave anzichè una X
         {
             cout << GetLength() << " ";
         }
@@ -130,6 +130,15 @@ void Navi::Strike(int x, int y)                 //questa funzione si occupa di c
 
     else
         Hit[y - GetY()] = true;
+}
+
+bool Navi::IsHit(int x, int y) const
+{
+    if (IsHorizontal())
+        return Hit[x - GetX()];
+
+    else
+        return Hit[y - GetY()];
 }
 
 vector<bool> Navi::GetVector() const
