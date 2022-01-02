@@ -24,7 +24,7 @@ public:
 
 	virtual void DrawEnemy(int, int) const;		
 	virtual void DrawAlly(int, int) const;		 
-	virtual bool Sunk(vector<bool>) const;		//restituisce true se la nave è affondata, false altrimenti
+	virtual bool Sunk() const;		//restituisce true se la nave è affondata, false altrimenti
 	virtual void Strike(int, int);				//colpise la casella che riceve in input
 
 private:

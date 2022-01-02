@@ -51,11 +51,11 @@ bool Navi::IsHorizontal() const
 	return Horizontal;
 }
 
-bool Navi::Sunk(vector<bool> hit) const {
+bool Navi::Sunk() const {
 
     vector<bool>::iterator k;
 
-    for (k = hit.begin(); k < hit.end(); k++) {
+    for (k = Hit.begin(); k < Hit.end(); k++) {
         if (!(*k))
             return false;
     }
