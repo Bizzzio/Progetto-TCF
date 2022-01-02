@@ -13,7 +13,8 @@ class Factory {
   ~Factory();
   void SetFleet(int n2, int n3, int n4, int n5, int n6);
   vector<Navi*> GetFleet() const;
-  bool Factory::EndGame();
+  Griglia GetGrid() const;
+  bool EndGame() const;
 
   private:
   vector<Navi*> fleet;

@@ -47,11 +47,17 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6) {
     }
     z++;
 }
+    grid.DrawAlly();  
 }
 
 
 vector<Navi*> Factory::GetFleet() const {
   return fleet;
+}
+
+Griglia Factory::GetGrid() const
+{
+  return grid;
 }
 
 
@@ -63,14 +69,14 @@ Factory::~Factory() {
 }
 
 
-bool Factory::EndGame(){
+bool Factory::EndGame() const{
 	
   int count=0;
-  vector<Navi*>::iterator i;
+  vector<Navi*>::const_iterator i;
   for(i=fleet.begin(); i!=fleet.end(); i++){
-  	if(fleet[i]->Sunk()) count++;
-    else return false;
+  	if((*i)->Sunk()) count++;
+      else return false;
   }
   if (count == fleet.size()) return true;
-  else return false;
+    else return false;
 }
