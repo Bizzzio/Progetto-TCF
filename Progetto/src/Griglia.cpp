@@ -86,7 +86,7 @@ void Griglia::DrawAlly() const
 	cout<<endl<<endl;
 
 }
-
+//TODO: aggiungere messaggi di errore
 bool Griglia::CheckCell(bool t, int x, int y, int length) const {
   if (t){
     for (int i=0;i<length;i++){
