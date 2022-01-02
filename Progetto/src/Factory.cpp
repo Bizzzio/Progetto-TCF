@@ -54,6 +54,11 @@ vector<Navi*> Factory::GetFleet() const {
   return fleet;
 }
 
+Griglia Factory::GetGrid() const
+{
+  return grid;
+}
+
 
 Factory::~Factory() {
   vector<Navi*>::iterator i;
@@ -63,7 +68,7 @@ Factory::~Factory() {
 }
 
 
-bool Factory::EndGame(){
+bool Factory::EndGame() const{
 	
   int count=0;
   vector<Navi*>::iterator i;
