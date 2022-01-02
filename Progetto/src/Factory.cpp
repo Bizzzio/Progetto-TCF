@@ -11,6 +11,11 @@ Factory::Factory(int dim, int n2,int n3, int n4, int n5, int n6) : grid(dim) { 	
 
 }
 
+int Factory::GetSize() const
+{
+  return grid.GetSize();
+}
+
 
 void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6) {
   
@@ -47,7 +52,10 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6) {
     }
     z++;
 }
-    grid.DrawAlly();  
+    grid.DrawAlly(); 
+    //cin.ignore();
+    //system("cls");
+
 }
 
 
@@ -77,6 +85,7 @@ bool Factory::EndGame() const{
   	if((*i)->Sunk()) count++;
       else return false;
   }
+  cout<<count<<" "<<fleet.size()<<" ";
   if (count == fleet.size()) return true;
     else return false;
 }

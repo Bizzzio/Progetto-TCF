@@ -15,6 +15,7 @@ class Factory {
   vector<Navi*> GetFleet() const;
   Griglia GetGrid() const;
   bool EndGame() const;
+  int GetSize() const;
 
   private:
   vector<Navi*> fleet;

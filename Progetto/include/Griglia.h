@@ -18,6 +18,7 @@ public:
     void DrawEnemy() const;                     //le funzioni Draw si occupano di stampare la griglia chiamando le funzioni Draw delle navi se la casella è occupata da una nave 
     void DrawAlly() const;                      //(o acqua colpita), oppure stampare un punto quando la cella è occupata da un'acqua non colpita
     void SetGriglia(int, int, Navi*);           //fa puntare la casella in input ad una nave in input
+    int GetSize() const;
     void Strike(int, int);   
     bool CheckCell(bool, int, int, int) const;               //gestisce il colpire una certa casella, richiamando la funzione Strike delle navi.
     //vector < vector <  Navi* > > grid;

@@ -22,8 +22,15 @@ Griglia::Griglia(int d) : Water(false,-1,-1,-1)
 
 }
 
+int Griglia::GetSize() const
+{
+	return size;
+}
+
+
 void Griglia::DrawEnemy() const
 {
+	cout<<"La griglia avversaria"<<endl;
 	cout<<"    ";
 	for (int i = 0; i < size; i++)
 		cout<<i<<" ";
@@ -56,6 +63,7 @@ void Griglia::DrawEnemy() const
 
 void Griglia::DrawAlly() const
 {
+	cout<<"La tua Griglia"<<endl;
 	cout<<"    ";
 	for (int i = 0; i < size; i++)
 		cout<<i<<" ";
@@ -117,10 +125,10 @@ void Griglia::Strike(int x, int y)
 {
 	if (!grid[x][y]){
 		grid[x][y] = &Water;
-		cout << "\nNon hai colpito";}
+		cout << "\nNon hai colpito"<<endl;}
 	else { 
 		grid[x][y]->Strike(x, y);
-		 cout << "\nHai colpito una nave ";}
+		 cout << "\nHai colpito una nave "<<endl;}
 }
 
 
