@@ -115,10 +115,12 @@ void Griglia::SetGriglia(int i, int j, Navi* nave)
 
 void Griglia::Strike(int x, int y)
 {
-	if (!grid[x][y])
+	if (!grid[x][y]){
 		grid[x][y] = &Water;
-	else  
+		cout << "\nNon hai colpito";}
+	else { 
 		grid[x][y]->Strike(x, y);
+		 cout << "\nHai colpito una nave ";}
 }
 
 
