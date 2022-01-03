@@ -1,5 +1,8 @@
 #ifndef MENUOPTION_H
 #define MENUOPTION_H
+using std::vector;
+using std::cout;
+using std::endl;
 #include "Play.h"
 #include "Menu.h"
 
