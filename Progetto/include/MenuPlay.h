@@ -1,6 +1,7 @@
 #ifndef MENUPLAY_H
 #define MENUPLAY_H
 #include "Play.h"
+#include "Menu.h"
 
 class MenuPlay : public Menu
 {

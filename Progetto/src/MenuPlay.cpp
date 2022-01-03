@@ -27,9 +27,10 @@ void MenuPlay::Draw() const{
   {
     if (d==0)
     {
-       	SetConsoleTextAttribute(h, 151);
-    		cout<<voci[d]<<endl;
+       	SetConsoleTextAttribute(h, 10);
+    		cout<<"--> "<<voci[d];
       	 SetConsoleTextAttribute(h, 15);
+           cout<<endl;
     }
     else
       cout<<voci[d]<<endl;
@@ -39,20 +40,21 @@ void MenuPlay::Draw() const{
   c=getch();
   
 
-    while(c!=13)
-		{
-      
+     while(c!=13)
+		{   
+            
+             c=getch();
         if (c==0 || c==224)
         {
             switch(ex = getch())
             {
                 case KEY_UP     /* H */:
-                    cout << endl << "Up" << endl;//key up
+                    //cout << endl << "Up" << endl;//key up
                 		if(pos!=0)
                       	pos--;
                     break;
                 case KEY_DOWN   /* K */:
-                    cout << endl << "Down" << endl;   // key down
+                    //cout << endl << "Down" << endl;   // key down
                     if(pos<voci.size()-1)
                             pos++;
                     break;
@@ -60,17 +62,18 @@ void MenuPlay::Draw() const{
                 default:
                     break;
             }
-          
+          system("cls");
           for (int d=0; d<voci.size();d++){
         		if(d==pos){
-              SetConsoleTextAttribute(h, 151);
-              cout<<voci[d]<<endl;
+              SetConsoleTextAttribute(h, 10);
+              cout<<"--> "<<voci[d];
               SetConsoleTextAttribute(h, 15);
+              cout<<endl;
             }
-            cout<<voci[d]<<endl;
+            else
+                cout<<voci[d]<<endl;
           }
         }
-      
     }
   
 	/*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
@@ -91,13 +94,13 @@ void MenuPlay::Draw() const{
           //Factory* p2=new ComputerFactory;
           //Play* play=new Play (p1,p2);
           break;
-    case 1:
+    case 1:{
       
-          Factory* p1=new Factory;  			//dovrà essere new PlayerFactory
-          Factory* p2=new Factory;				//dovrà essere new PlayerFactory
+          Factory* p1=new Factory(8,2,0,0,0,0);  			//dovrà essere new PlayerFactory
+          Factory* p2=new Factory(8,2,0,0,0,0);				//dovrà essere new PlayerFactory
           Play* play=new Play (p1,p2);
                     break;
-      
+    }
       
                 default:
                     break;

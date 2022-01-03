@@ -2,7 +2,7 @@
 #include <vector>
 #include "Factory.h"
 #include "Play.h"
-#include "menu.h"
+#include "MenuPrincipale.h"
 
 using std::cout;
 using std::endl;
@@ -10,7 +10,7 @@ using std::vector;
 
 int main()
 {
-	Menu test;
+	MenuPrincipale test;
 	test.Draw();
 
 	#ifdef __unix__
