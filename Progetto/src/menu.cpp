@@ -1,11 +1,11 @@
 #include "menu.h"
 
+
 void Menu::Draw()
 {
-    vector<string> voci {"Play","Instructions"};
+    vector<string> voci {"Play","Instructions","Option","Credits"};
     vector<string>::iterator i;
-    /*for (i=voci.begin();i!=voci.end();i++)
-        cout<<(*i)<<endl;*/
+    
     for (int c=0; c<voci.size();c++)
         cout<<voci[c]<<endl;
 
@@ -20,43 +20,67 @@ void Menu::Draw()
 		cout<<ch;
 		getch();
 		//system("cls");*/
-		int c, ex;
+		int c, ex, pos=0;
+  cout << "Selezionare la configurazione usando le frecce" << endl;  
+  HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+  SetConsoleTextAttribute(h, 151);
+  SetConsoleTextAttribute(h, 15);
+  system("cls");
+  for (int d=0; d<voci.size();d++)
+  {
+    if (d==0)
+    {
+       	SetConsoleTextAttribute(h, 10);
+    		cout<<"--> "<<voci[d];
+      	 SetConsoleTextAttribute(h, 15);
+           cout<<endl;
+    }
+    else
+      cout<<voci[d]<<endl;
+  }
+      
+  
+ 
+  
 
-    //while(1)
-
-	
-    /*{
-        c = getch();
-
-        if (c && c != 224)
-        {
-            cout << endl << "Not arrow: " << (char) c << endl;
-        }
-        else
+    while(c!=13)
+		{   
+            
+             c=getch();
+        if (c==0 || c==224)
         {
             switch(ex = getch())
-            {*/
-                //case KEY_UP     /* H */:
-                //    cout << endl << "Up" << endl;//key up
-                //    break;
-                //case KEY_DOWN   /* K */:
-                //    cout << endl << "Down" << endl;   // key down
-                //    break;
-                //case KEY_LEFT   /* M */:
-                //    cout << endl << "Left" << endl;  // key left
-                //    break;
-                //case KEY_RIGHT: /* P */
-                //    cout << endl << "Right" << endl;  // key right
-                //    break;
-                //default:
-                //    cout << endl << (char) ex << endl;  // not arrow
-                //    break;
-            //}
-        //}
-    //}
+            {
+                case KEY_UP     /* H */:
+                    //cout << endl << "Up" << endl;//key up
+                		if(pos!=0)
+                      	pos--;
+                    break;
+                case KEY_DOWN   /* K */:
+                    //cout << endl << "Down" << endl;   // key down
+                    if(pos<voci.size()-1)
+                            pos++;
+                    break;
+  
+                default:
+                    break;
+            }
+          system("cls");
+          for (int d=0; d<voci.size();d++){
+        		if(d==pos){
+              SetConsoleTextAttribute(h, 10);
+              cout<<"--> "<<voci[d];
+              SetConsoleTextAttribute(h, 15);
+              cout<<endl;
+            }
+            else
+                cout<<voci[d]<<endl;
+          }
+        }
+    }
 
-	/*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
-	for(int k = 1; k < 255; k++)
+	//HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+	/*for(int k = 1; k < 255; k++)
   {
     // pick the colorattribute k you want
     SetConsoleTextAttribute(h, k);
