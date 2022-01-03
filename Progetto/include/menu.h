@@ -39,6 +39,10 @@ using std::string;
 class Menu
 {
     public:
-        void Draw();
+        virtual void Draw() const = 0;
+  		
+	private: 
+  		static int Config;
+  		
 };
 
