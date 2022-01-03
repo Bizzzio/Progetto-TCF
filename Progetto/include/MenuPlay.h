@@ -1,3 +1,5 @@
+#ifndef MENUPLAY_H
+#define MENUPLAY_H
 #include "Play.h"
 
 class MenuPlay : public Menu
@@ -8,3 +10,5 @@ class MenuPlay : public Menu
     	const vector<string> voci {"1 giocatore","2 giocatori"};
 		
 };
+
+#endif
