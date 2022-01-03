@@ -1,3 +1,6 @@
+#ifndef MENU_H
+#define MENU_H
+
 #ifdef _WIN32
 	#include <conio.h>
 	#include <windows.h>
@@ -48,4 +51,8 @@ class Menu
   		
 };
 
+<<<<<<< HEAD
 #endif
+=======
+#endif
+>>>>>>> f28ab04d8034400bad31874e37d56f07eb0d22f9
