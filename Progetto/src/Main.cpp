@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
-#include <conio.h>
+#ifdef _WIN32
+	#include <conio.h>
+#endif
+#ifdef __unix__
+	#include <curses.h>
+#endif
 #include "Factory.h"
 #include "Play.h"
 
@@ -19,7 +24,7 @@ int main()
 	#ifdef __unix__
 		cout<<"ciao";
 		getch();
-		system("cls");
+		system("clear");
 	#endif
 	Factory* grid1= new Factory(8, 2, 0, 0, 0, 0);
 	Factory* grid2= new Factory(8, 2, 0, 0, 0, 0);
