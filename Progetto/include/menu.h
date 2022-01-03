@@ -30,6 +30,8 @@
 }
 #endif
 
+#ifndef MENU_H
+#define MENU_H
 #include<iostream>
 #include <vector>
 #include <string>
@@ -49,4 +51,8 @@ class Menu
   		
 };
 
+<<<<<<< HEAD
 #endif
+=======
+#endif
+>>>>>>> f28ab04d8034400bad31874e37d56f07eb0d22f9
