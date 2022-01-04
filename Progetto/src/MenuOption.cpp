@@ -3,20 +3,21 @@
 
 MenuOption::MenuOption()
 {
+    
 	string valore;
-    ifstream file("Setup.txt");
+    ifstream file("src/Setup.txt");
     if(file.is_open())
     {
-        while getline(file, valore);
-      		voci.push_back(valore)
-        
+        while (getline(file, valore))
+      		voci.push_back(valore);
+            
         file.close();
     }
   else cout << "Unable to open file"; 
 }
 
 
-void MenuPlay::Draw() const{
+void MenuOption::Draw() const{
       vector<string>::iterator i;
     
     for (int c=0; c<voci.size();c++)
@@ -108,6 +109,6 @@ void MenuPlay::Draw() const{
     for (int i=0;i<5;i++)
     	Setup.push_back(stoi(voci[i*2].c_str()));
   for (int d=0; d<voci.size();d++)
-      cout<<setup[d]<<" ";
+      cout<<Setup[d]<<" ";
   
 }

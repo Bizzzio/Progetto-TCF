@@ -1,5 +1,8 @@
 #ifndef MENUOPTION_H
 #define MENUOPTION_H
+#include<iostream>
+#include<vector>
+#include <fstream>
 using std::vector;
 using std::cout;
 using std::endl;
@@ -12,7 +15,7 @@ class MenuOption : public Menu
     	MenuOption();
     	virtual void Draw() const;
     private:
-    	const vector<string> voci {"Torna al menu"};
+    	vector<string> voci {"Torna al menu"};
 		
 };
 

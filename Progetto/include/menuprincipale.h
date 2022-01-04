@@ -3,6 +3,7 @@
 
 #include "menu.h"
 #include "MenuPlay.h"
+#include "MenuOption.h"
 class MenuPrincipale : public Menu
 {
 	public:
@@ -10,6 +11,7 @@ class MenuPrincipale : public Menu
 	private:
 		const vector<string> voci {"Play","Instructions","Options","Credits"};
         MenuPlay menuplay;
+		MenuOption menuoption;
 };
 
 #endif

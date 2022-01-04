@@ -2,7 +2,7 @@
 
 void MenuPrincipale::Draw() const
 {
-    
+    cout<<"ciao";
     vector<string>::iterator i;
     
     for (int c=0; c<voci.size();c++)
@@ -92,12 +92,11 @@ void MenuPrincipale::Draw() const
     case 0:
           menuplay.Draw();
           break;
-    /*case 1:
-                    cout << endl << "Down" << endl;   // key down
-                    if(pos<voci.size()-1)
-                            pos++;
-                    break;
-    case 0:
+    case 2:
+                
+          menuoption.Draw();
+          break;
+    /*case 0:
                     cout << endl << "Up" << endl;//key up
                 		if(pos!=0)
                       	pos--;
