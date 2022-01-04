@@ -18,7 +18,7 @@ public:
     void PrintVoci(int) const;
 
 private:
-	const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"};
+	// const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"};
 	const vector<Menu*> Menus;
 };
 

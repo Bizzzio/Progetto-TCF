@@ -1,5 +1,5 @@
 #ifndef MENUINSTRUCTIONS_H
-#define MENUISTRUCTIONS_H
+#define MENUINSTRUCTIONS_H
 #include "Play.h"
 #include "Menu.h"
 

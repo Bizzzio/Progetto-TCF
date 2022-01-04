@@ -1,7 +1,9 @@
 #include "MenuInstructions.h"
 
 void MenuInstructions::DrawVoci() const{
-	cout << "Istruzioni" << endl;
+	vector<string>::const_iterator i;
+    for (i = Voci.begin(); i != Voci.end(); i++)
+        cout << Voci[i] << endl;
 }
 
 void MenuInstructions::Draw() const
