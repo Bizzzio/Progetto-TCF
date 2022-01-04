@@ -10,7 +10,7 @@ public:
 	virtual void Draw() const;
 
 private:
-	const vector<string> voci{"Istruzioni"};
+	const vector<string> Voci{"Istruzioni"};
 };
 
 #endif

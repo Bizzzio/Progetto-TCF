@@ -22,17 +22,17 @@ void MenuPrincipale::PrintVoci(int pos) const
 {
   HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
   cout << "Selezionare la configurazione usando le frecce" << endl;
-  for (int d = 0; d < voci.size(); d++)
+  for (int d = 0; d < Menus.size(); d++)
   {
     if (d == pos)
     {
       SetConsoleTextAttribute(h, 10);
-      cout << "--> " << Menus->DrawVoci();
+      cout << "--> " << Menus[d]->DrawVoci();
       SetConsoleTextAttribute(h, 15);
       cout << endl;
     }
     else
-      cout << Menus->DrawVoci() << endl;
+      cout << Menus[d]->DrawVoci() << endl;
   }
 }
 
