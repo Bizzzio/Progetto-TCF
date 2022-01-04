@@ -1,5 +1,5 @@
 #include "MenuOption.h"
-
+#include <conio.h>
 void MenuOption::DrawVoci() const
 {
     vector<string>::const_iterator i;
@@ -20,7 +20,18 @@ MenuOption::MenuOption()
         file.close();
     }
     else
-        cout << "Unable to open file";
+    {
+        file.open("Setup.txt");
+        if (file.is_open())
+        {
+            while (getline(file, valore))
+                Config.push_back(valore);
+
+            file.close();
+        }
+        else
+            cout << "Unable to open file";
+    }
 }
 
 void MenuOption::Draw() const
@@ -46,7 +57,8 @@ void MenuOption::PrintVoci(int pos) const
             cout << endl;
         }
         else
-            cout << Config[d] << endl;
+            cout << Config[d];
+        cout << endl;
     }
 }
 
