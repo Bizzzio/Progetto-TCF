@@ -2,81 +2,93 @@
 
 void MenuPrincipale::Draw() const
 {
-    cout<<"ciao";
-    vector<string>::iterator i;
-    
-    for (int c=0; c<voci.size();c++)
-        cout<<voci[c]<<endl;
+  vector<string>::iterator i;
 
-    #ifdef _WIN32
-	#define KEY_UP    72
-	#define KEY_LEFT  75
-	#define KEY_RIGHT 77
-	#define KEY_DOWN  80
-		/*cout<<"ciao";
+  for (int c = 0; c < voci.size(); c++)
+    cout << voci[c] << endl;
+
+#ifdef _WIN32
+#define KEY_UP 72
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_DOWN 80
+  /*cout<<"ciao";
 		int ch;
 		ch=getch();
 		cout<<ch;
 		getch();
 		//system("cls");*/
-		int c, ex, pos=0;
-  cout << "Selezionare la configurazione usando le frecce" << endl;  
-  HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+  int c, ex, pos = 0;
+  cout << "Selezionare la configurazione usando le frecce" << endl;
+  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-  
-  for (int d=0; d<voci.size();d++)
+  for (int d = 0; d < voci.size(); d++)
   {
-    if (d==0)
+    if (d == 0)
     {
-       	SetConsoleTextAttribute(h, 10);
-    		cout<<"--> "<<voci[d];
-      	 SetConsoleTextAttribute(h, 15);
-           cout<<endl;
+      SetConsoleTextAttribute(h, 10);
+      cout << "--> " << voci[d];
+      SetConsoleTextAttribute(h, 15);
+      cout << endl;
     }
     else
-      cout<<voci[d]<<endl;
+      cout << voci[d] << endl;
   }
-      
-  
-  c=getch();
-  
-
-     while(c!=13)
-		{   
-            
-             c=getch();
-        if (c==0 || c==224)
-        {
-            switch(ex = getch())
-            {
-                case KEY_UP     /* H */:
-                    //cout << endl << "Up" << endl;//key up
-                		if(pos!=0)
-                      	pos--;
-                    break;
-                case KEY_DOWN   /* K */:
-                    //cout << endl << "Down" << endl;   // key down
-                    if(pos<voci.size()-1)
-                            pos++;
-                    break;
-  
-                default:
-                    break;
-            }
-          system("cls");
-          for (int d=0; d<voci.size();d++){
-        		if(d==pos){
-              SetConsoleTextAttribute(h, 10);
-              cout<<"--> "<<voci[d];
-              SetConsoleTextAttribute(h, 15);
-              cout<<endl;
-            }
-            else
-                cout<<voci[d]<<endl;
-          }
-        }
+  system("cls");
+  do
+  {
+    for (int d = 0; d < voci.size(); d++)
+    {
+      if (d == pos)
+      {
+        SetConsoleTextAttribute(h, 10);
+        cout << "--> " << voci[d];
+        SetConsoleTextAttribute(h, 15);
+        cout << endl;
+      }
+      else
+        cout << voci[d] << endl;
     }
-	/*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+
+    c = getch();
+    while (c != 13)
+    {
+
+      c = getch();
+      if (c == 0 || c == 224)
+      {
+        switch (ex = getch())
+        {
+        case KEY_UP /* H */:
+          //cout << endl << "Up" << endl;//key up
+          if (pos != 0)
+            pos--;
+          break;
+        case KEY_DOWN /* K */:
+          //cout << endl << "Down" << endl;   // key down
+          if (pos < voci.size() - 1)
+            pos++;
+          break;
+
+        default:
+          break;
+        }
+        system("cls");
+        for (int d = 0; d < voci.size(); d++)
+        {
+          if (d == pos)
+          {
+            SetConsoleTextAttribute(h, 10);
+            cout << "--> " << voci[d];
+            SetConsoleTextAttribute(h, 15);
+            cout << endl;
+          }
+          else
+            cout << voci[d] << endl;
+        }
+      }
+    }
+    /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {
     // pick the colorattribute k you want
@@ -85,18 +97,18 @@ void MenuPrincipale::Draw() const
   }
   SetConsoleTextAttribute(h, 15);*/
 
-	#endif
-  
-  switch(pos)
-            {
+#endif
+
+    switch (pos)
+    {
     case 0:
-          menuplay.Draw();
-          break;
+      menuplay.Draw();
+      break;
     case 2:
-                
-          menuoption.Draw();
-          break;
-    /*case 0:
+
+      menuoption.Draw();
+      break;
+      /*case 0:
                     cout << endl << "Up" << endl;//key up
                 		if(pos!=0)
                       	pos--;
@@ -106,10 +118,9 @@ void MenuPrincipale::Draw() const
                 		if(pos!=0)
                       	pos--;
                     break;*/
-      
-      
-                default:
-                    break;
-            }
-  
+
+    default:
+      break;
+    }
+  } while (pos != 4);
 }

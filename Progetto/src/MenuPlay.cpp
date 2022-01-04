@@ -21,7 +21,7 @@ void MenuPlay::Draw() const
 	int c, ex, pos = 0;
 	cout << "Selezionare la configurazione usando le frecce" << endl;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-
+	system("cls");
 	for (int d = 0; d < voci.size(); d++)
 	{
 		if (d == 0)
@@ -99,6 +99,7 @@ void MenuPlay::Draw() const
 		Factory *p1 = new Factory(8, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
 		Factory *p2 = new Factory(8, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
 		Play *play = new Play(p1, p2);
+		play->PlayBattleship();
 		break;
 	}
 

@@ -52,47 +52,62 @@ void MenuOption::Draw() const
             cout << voci[d] << endl;
     }
 
-    c = getch();
-
-    while (c != 13)
+    do
     {
-
-        c = getch();
-        if (c == 0 || c == 224)
+        system("cls");
+        for (int d = 0; d < voci.size(); d++)
         {
-            switch (ex = getch())
+            if (d == pos)
             {
-            case KEY_UP /* H */:
-                //cout << endl << "Up" << endl;//key up
-                if (pos != 0)
-                    pos--;
-                break;
-            case KEY_DOWN /* K */:
-                //cout << endl << "Down" << endl;   // key down
-                if (pos < voci.size() - 1)
-                    pos++;
-                break;
-
-            default:
-                break;
+                SetConsoleTextAttribute(h, 10);
+                cout << "--> " << voci[d];
+                SetConsoleTextAttribute(h, 15);
+                cout << endl;
             }
-            system("cls");
-            for (int d = 0; d < voci.size(); d++)
+            else
+                cout << voci[d] << endl;
+        }
+        c = getch();
+
+        while (c != 13)
+        {
+
+            c = getch();
+            if (c == 0 || c == 224)
             {
-                if (d == pos)
+                switch (ex = getch())
                 {
-                    SetConsoleTextAttribute(h, 10);
-                    cout << "--> " << voci[d];
-                    SetConsoleTextAttribute(h, 15);
-                    cout << endl;
+                case KEY_UP /* H */:
+                    //cout << endl << "Up" << endl;//key up
+                    if (pos != 0)
+                        pos--;
+                    break;
+                case KEY_DOWN /* K */:
+                    //cout << endl << "Down" << endl;   // key down
+                    if (pos < voci.size() - 1)
+                        pos++;
+                    break;
+
+                default:
+                    break;
                 }
-                else
-                    cout << voci[d] << endl;
+                system("cls");
+                for (int d = 0; d < voci.size(); d++)
+                {
+                    if (d == pos)
+                    {
+                        SetConsoleTextAttribute(h, 10);
+                        cout << "--> " << voci[d];
+                        SetConsoleTextAttribute(h, 15);
+                        cout << endl;
+                    }
+                    else
+                        cout << voci[d] << endl;
+                }
             }
         }
-    }
 
-    /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+        /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {
     // pick the colorattribute k you want
@@ -103,11 +118,12 @@ void MenuOption::Draw() const
 
 #endif
 
-    //vector<int> Setup;
-    cout << endl;
-    if (pos)
-        for (int i = 0; i < 5; i++)
-        {
-            Menu::Add(voci[pos][2 * i] - '0');
-        }
+        //vector<int> Setup;
+        cout << endl;
+        if (pos)
+            for (int i = 0; i < 5; i++)
+            {
+                Menu::Add(voci[pos][2 * i] - '0');
+            }
+    } while (pos);
 }
