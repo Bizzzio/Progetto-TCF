@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "Menu.h"
 
 vector<int> Menu::Setup;
 

@@ -1,4 +1,4 @@
-#include "menuprincipale.h"
+#include "MenuPrincipale.h"
 
 MenuPrincipale::MenuPrincipale() {}
 
@@ -13,13 +13,14 @@ void MenuPrincipale::Draw() const
 {
 #ifdef _WIN32
   SelectWindows();
-#elif
+#else
   SelectOthers();
 #endif
 }
 
 void MenuPrincipale::PrintVoci(int pos) const
 {
+#ifdef _WIN32
   HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
   cout << "Selezionare la configurazione usando le frecce" << endl;
   for (int d = 0; d < Menus.size(); d++)
@@ -36,21 +37,17 @@ void MenuPrincipale::PrintVoci(int pos) const
       Menus[d]->DrawVoci();
     cout << endl;
   }
+#endif
 }
 
 void MenuPrincipale::SelectOthers() const
 {
 #ifdef __unix
 #include <iostream>
-#include <termios.h>
-#define STDIN_FILENO 0
-  using std::cin;
-  using std::cout;
 #define KEY_UP 65
-#define KEY_DOWN 66
-#define KEY_RIGHT 67
 #define KEY_LEFT 68
-
+#define KEY_RIGHT 67
+#define KEY_DOWN 66
   {
     // Black magic to prevent Linux from buffering keystrokes.
     struct termios t;
@@ -60,13 +57,13 @@ void MenuPrincipale::SelectOthers() const
 
     // Once the buffering is turned off, the rest is simple.
     cout << "Enter a character: ";
-    /*char c,d,e;
-  cin >> c;
-  cin >> d;
-  cin >> e;
-  cout << "\nYour character was ";*/
+    char c, d, e;
+    cin >> c;
+    cin >> d;
+    cin >> e;
+    cout << "\nYour character was ";
     cout << "Enter a character: ";
-    char c = cin.get();
+    //c = cin.get();
     cout << "Your character was " << c << endl;
     // Using 3 char type, Cause up down right left consist with 3 character
     if ((c == 27) && (d = 91))
@@ -88,7 +85,6 @@ void MenuPrincipale::SelectOthers() const
         cout << "LEFT";
       }
     }
-    return 0;
   }
 #endif
 }
@@ -146,7 +142,6 @@ void MenuPrincipale::SelectWindows() const
   }
   SetConsoleTextAttribute(h, 15);*/
 
-#endif
     if (pos != Menus.size() - 1)
       Menus[pos]->Draw();
 
@@ -173,4 +168,5 @@ void MenuPrincipale::SelectWindows() const
     default:
       break;*/
   } while (pos != Menus.size() - 1);
+#endif
 }

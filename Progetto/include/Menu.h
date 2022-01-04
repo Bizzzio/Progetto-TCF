@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <termios.h>
 
-char get()
+/*char get()
 {
 	char buf = 0;
 	struct termios old = {0};
@@ -28,7 +28,7 @@ char get()
 	if (tcsetattr(0, TCSADRAIN, &old) < 0)
 		perror("tcsetattr ~ICANON");
 	return (buf);
-}
+}*/
 #endif
 
 #include <iostream>
