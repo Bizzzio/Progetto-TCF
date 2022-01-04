@@ -11,15 +11,15 @@ class MenuPrincipale : public Menu
 {
 public:
 	MenuPrincipale();
-    ~MenuPrincipale();
+	~MenuPrincipale();
 	virtual void Draw() const;
-    void SelectWindows() const;
-    void SelectOthers() const;
-    void PrintVoci(int) const;
+	void SelectWindows() const;
+	void SelectOthers() const;
+	void PrintVoci(int) const;
 
 private:
 	const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"};
-	const vector<Menu*> Menus;
+	const vector<Menu *> Menus{new MenuPlay, new MenuOption, new MenuOption, new MenuOption};
 };
 
 #endif

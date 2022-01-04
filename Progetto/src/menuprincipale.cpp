@@ -1,18 +1,10 @@
 #include "menuprincipale.h"
 
-MenuPrincipale::MenuPrincipale()
-{
-
-  Menus.push_back(new MenuPlay());
-  Menus.push_back(new MenuInstructions());
-  Menus.push_back(new MenuOptions());
-  Menus.push_back(new MenuCredits());
-  Menus.push_back(new Menu());
-}
+MenuPrincipale::MenuPrincipale() {}
 
 MenuPrincipale::~MenuPrincipale()
 {
-  vector<Menu *>::iterator i;
+  vector<Menu *>::const_iterator i;
   for (i = Menus.begin(); i != Menus.end(); i++)
     delete (*i);
 }
@@ -28,6 +20,8 @@ void MenuPrincipale::Draw() const
 
 void MenuPrincipale::PrintVoci(int pos) const
 {
+  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+  cout << "Selezionare la configurazione usando le frecce" << endl;
   for (int d = 0; d < voci.size(); d++)
   {
     if (d == pos)
@@ -99,7 +93,7 @@ void MenuPrincipale::SelectOthers() const
 
 void MenuPrincipale::SelectWindows() const
 {
-
+#ifdef _WIN32
 #define KEY_UP 72
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
@@ -107,15 +101,14 @@ void MenuPrincipale::SelectWindows() const
 
   int c, ex, pos = 0;
   cout << "Selezionare la configurazione usando le frecce" << endl;
-  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
   PrintVoci(0);
   system("cls");
   do
   {
-    PrintVoci(pos)
+    PrintVoci(pos);
 
-        do
+    do
     {
 
       c = getch();
@@ -141,10 +134,8 @@ void MenuPrincipale::SelectWindows() const
         if (c != 13)
           PrintVoci(pos);
       }
-    }
-    while (c != 13)
-      ;
-      /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+    } while (c != 13);
+    /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {
     // pick the colorattribute k you want
@@ -155,10 +146,8 @@ void MenuPrincipale::SelectWindows() const
 
 #endif
 
-    do
-    {
+    if (pos != Menus.size())
       Menus[pos]->Draw();
-    } while (pos != Menus.size());
 
     /* switch (pos)
     {
@@ -181,8 +170,6 @@ void MenuPrincipale::SelectWindows() const
                     break;
 
     default:
-      break;
-    }
-  } while (pos != 4);
-	*/
-  }
+      break;*/
+  } while (pos != Menus.size());
+}
