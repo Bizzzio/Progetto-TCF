@@ -24,6 +24,7 @@ void Play::PlayBattleship()
   {
     cout << "Premi un tasto per mostrare la griglia";
     getch();
+    system("cls");
     cout << "Turno giocatore 1" << endl;
     grid2.DrawEnemy();
     do
@@ -38,8 +39,9 @@ void Play::PlayBattleship()
     cout << "Premi un tasto per oscurare" << endl;
     getch();
     system("cls");
-    cout << "Premi un tasto per mostrare la griglia";
+    cout << "Premi un tasto per mostrare la griglia" << endl;
     getch();
+    system("cls");
     cout << "Turno giocatore 2" << endl;
     grid1.DrawEnemy();
     do
