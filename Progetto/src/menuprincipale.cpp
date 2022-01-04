@@ -27,12 +27,14 @@ void MenuPrincipale::PrintVoci(int pos) const
     if (d == pos)
     {
       SetConsoleTextAttribute(h, 10);
-      cout << "--> " << Menus[d]->DrawVoci();
+      cout << "--> ";
+      Menus[d]->DrawVoci();
       SetConsoleTextAttribute(h, 15);
       cout << endl;
     }
     else
-      cout << Menus[d]->DrawVoci() << endl;
+      Menus[d]->DrawVoci();
+    cout << endl;
   }
 }
 
@@ -123,7 +125,7 @@ void MenuPrincipale::SelectWindows() const
           break;
         case KEY_DOWN /* K */:
           //cout << endl << "Down" << endl;   // key down
-          if (pos < voci.size() - 1)
+          if (pos < Menus.size() - 1)
             pos++;
           break;
 
@@ -145,8 +147,7 @@ void MenuPrincipale::SelectWindows() const
   SetConsoleTextAttribute(h, 15);*/
 
 #endif
-
-    if (pos != Menus.size())
+    if (pos != Menus.size() - 1)
       Menus[pos]->Draw();
 
     /* switch (pos)
@@ -171,5 +172,5 @@ void MenuPrincipale::SelectWindows() const
 
     default:
       break;*/
-  } while (pos != Menus.size());
+  } while (pos != Menus.size() - 1);
 }

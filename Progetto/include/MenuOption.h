@@ -17,9 +17,11 @@ public:
 	void SelectWindows() const;
 	//void SelectOthers() const;
 	void PrintVoci(int) const;
+	void DrawVoci() const;
 
 private:
-	vector<string> voci{"Torna al menu"};
+	vector<string> Voci{"Options"};
+	vector<string> Config{"Torna al menu"};
 };
 
 #endif

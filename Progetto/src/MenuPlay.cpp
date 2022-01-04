@@ -1,7 +1,8 @@
 #include "MenuPlay.h"
 
-void MenuPlay::DrawVoci() const{
-	cout << "Play" << endl;
+void MenuPlay::DrawVoci() const
+{
+	cout << "Play";
 }
 
 void MenuPlay::Draw() const

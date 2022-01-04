@@ -4,8 +4,9 @@
 #include "menu.h"
 #include "MenuPlay.h"
 #include "MenuOption.h"
-//#include "MenuInstructions.h"
-//#include "MenuCredits.h"
+#include "MenuInstructions.h"
+#include "MenuCredits.h"
+#include "MenuBack.h"
 
 class MenuPrincipale : public Menu
 {
@@ -19,7 +20,7 @@ public:
 
 private:
 	// const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"};
-	const vector<Menu *> Menus;
+	const vector<Menu *> Menus{new MenuPlay, new MenuInstructions, new MenuOption, new MenuCredits, new MenuBack};
 };
 
 #endif

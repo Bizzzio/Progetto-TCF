@@ -11,11 +11,11 @@ using std::vector;
 class MenuBack : public Menu
 {
 public:
-	MenuBack();
+	MenuBack() {}
 	virtual void Draw() const;
 	void SelectWindows() const;
 	//void SelectOthers() const;
-	void PrintVoci(int) const;
+	void DrawVoci() const;
 
 private:
 	vector<string> Voci{"Torna al menu"};

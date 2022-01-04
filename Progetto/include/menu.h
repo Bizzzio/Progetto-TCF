@@ -44,7 +44,7 @@ class Menu
 {
 
 public:
-	virtual void DrawVoci() const = 0;
+	virtual void DrawVoci() const {};
 	virtual void Draw() const = 0;
 	static void Add(int);
 
@@ -52,7 +52,6 @@ public:
 
 private:
 	static vector<int> Setup;
-
 };
 
 #endif

@@ -1,5 +1,12 @@
 #include "MenuOption.h"
 
+void MenuOption::DrawVoci() const
+{
+    vector<string>::const_iterator i;
+    for (i = Voci.begin(); i != Voci.end(); i++)
+        cout << (*i);
+}
+
 MenuOption::MenuOption()
 {
 
@@ -8,7 +15,7 @@ MenuOption::MenuOption()
     if (file.is_open())
     {
         while (getline(file, valore))
-            voci.push_back(valore);
+            Config.push_back(valore);
 
         file.close();
     }
@@ -29,17 +36,17 @@ void MenuOption::PrintVoci(int pos) const
 {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (int d = 0; d < voci.size(); d++)
+    for (int d = 0; d < Config.size(); d++)
     {
         if (d == pos)
         {
             SetConsoleTextAttribute(h, 10);
-            cout << "--> " << voci[d];
+            cout << "--> " << Config[d];
             SetConsoleTextAttribute(h, 15);
             cout << endl;
         }
         else
-            cout << voci[d] << endl;
+            cout << Config[d] << endl;
     }
 }
 
@@ -74,7 +81,7 @@ void MenuOption::SelectWindows() const
                     break;
                 case KEY_DOWN /* K */:
                     //cout << endl << "Down" << endl;   // key down
-                    if (pos < voci.size() - 1)
+                    if (pos < Config.size() - 1)
                         pos++;
                     break;
 
@@ -101,7 +108,7 @@ void MenuOption::SelectWindows() const
         if (pos)
             for (int i = 0; i < 5; i++)
             {
-                Menu::Add(voci[pos][2 * i] - '0');
+                Menu::Add(Config[pos][2 * i] - '0');
             }
     } while (pos);
 }
