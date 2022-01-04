@@ -89,8 +89,6 @@ void MenuPlay::Draw() const
   }
   SetConsoleTextAttribute(h, 15);*/
 
-#endif
-
 	switch (pos)
 	{
 	case 0:
@@ -111,4 +109,5 @@ void MenuPlay::Draw() const
 	default:
 		break;
 	}
+#endif
 }

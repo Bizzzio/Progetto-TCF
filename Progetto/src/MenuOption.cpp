@@ -37,13 +37,14 @@ void MenuOption::Draw() const
 {
 #ifdef _WIN32
     SelectWindows();
-#elif
+#else
     SelectOthers();
 #endif
 }
 
 void MenuOption::PrintVoci(int pos) const
 {
+#ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     cout << "Selezionare la configurazione usando le frecce" << endl;
     for (int d = 0; d < Config.size(); d++)
@@ -59,6 +60,7 @@ void MenuOption::PrintVoci(int pos) const
             cout << Config[d];
         cout << endl;
     }
+#endif
 }
 
 void MenuOption::SelectWindows() const
@@ -114,12 +116,15 @@ void MenuOption::SelectWindows() const
   }
   SetConsoleTextAttribute(h, 15);*/
 
-#endif
-
         if (pos)
             for (int i = 0; i < 5; i++)
             {
                 Menu::Add(Config[pos][2 * i] - '0');
             }
     } while (pos);
+#endif
+}
+
+void MenuOption::SelectOthers() const
+{
 }

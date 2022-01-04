@@ -15,7 +15,7 @@ public:
 	MenuOption();
 	virtual void Draw() const;
 	void SelectWindows() const;
-	//void SelectOthers() const;
+	void SelectOthers() const;
 	void PrintVoci(int) const;
 	void DrawVoci() const;
 
