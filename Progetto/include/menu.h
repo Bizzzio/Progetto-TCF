@@ -43,14 +43,16 @@ using std::vector;
 class Menu
 {
 
-private:
-	static vector<int> Setup;
-
 public:
+	virtual void DrawVoci() const = 0;
 	virtual void Draw() const = 0;
 	static void Add(int);
 
 	static vector<int> GetSetup();
+
+private:
+	static vector<int> Setup;
+
 };
 
 #endif
