@@ -1,5 +1,4 @@
 #include "MenuOption.h"
-#include <conio.h>
 void MenuOption::DrawVoci() const
 {
     vector<string>::const_iterator i;
