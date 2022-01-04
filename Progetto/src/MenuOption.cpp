@@ -47,13 +47,13 @@ void MenuOption::PrintVoci(int pos) const
         if (d == pos)
         {
             SetConsoleTextAttribute(h, 10);
-            cout << "--> ";
-            Config[d];
+            cout << "--> " << Config[d];
+
             SetConsoleTextAttribute(h, 15);
             cout << endl;
         }
         else
-            Config[d];
+            cout << Config[d];
         cout << endl;
     }
 #else
@@ -63,12 +63,12 @@ void MenuOption::PrintVoci(int pos) const
         if (d == pos)
         {
             cout << "\033[32m"
-                 << "--> ";
-            Config[d];
+                 << "--> " << Config[d];
+
             cout << "\033[0m" << endl;
         }
         else
-            Config[d];
+            cout << Config[d];
         cout << endl;
     }
 #endif
