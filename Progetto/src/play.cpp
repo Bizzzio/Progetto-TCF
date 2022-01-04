@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <conio.h>
 using std::cout;
 using std::endl;
 #include <vector>
@@ -21,35 +22,51 @@ void Play::PlayBattleship()
   int x, y;
   do
   {
+    cout << "Premi un tasto per mostrare la griglia";
+    getch();
     cout << "Turno giocatore 1" << endl;
     grid2.DrawEnemy();
     do
     {
       cout << "\nDimmi le coordinate che vuoi colpire " << endl;
       cin >> x >> y;
-    } while (!Check(x, y, grid1));
-    cout << "vero";
+    } while (!Check(x, y, grid2));
     grid2.Strike(x, y);
 
     grid1.DrawAlly();
     grid2.DrawEnemy();
-
-    //system ("cls");
+    cout << "Premi un tasto per oscurare" << endl;
+    getch();
+    system("cls");
+    cout << "Premi un tasto per mostrare la griglia";
+    getch();
     cout << "Turno giocatore 2" << endl;
     grid1.DrawEnemy();
     do
     {
       cout << "\nDimmi le coordinate che vuoi colpire " << endl;
       cin >> x >> y;
-    } while (!Check(x, y, grid2));
+    } while (!Check(x, y, grid1));
     grid1.Strike(x, y);
 
     grid2.DrawAlly();
     grid1.DrawEnemy();
+    cout << "Premi un tasto per oscurare" << endl;
+    getch();
+    system("cls");
 
     //system ("cls");
 
-  } while (!Player1->EndGame() || !Player2->EndGame());
+  } while (!Player1->EndGame() && !Player2->EndGame());
+  if (Player1->EndGame())
+  {
+    cout << "GIOCATORE 2 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+  }
+  if (Player2->EndGame())
+  {
+    cout << "GIOCATORE 1 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+  }
+  getch();
 }
 
 bool Play::Check(int x, int y, Griglia grid)

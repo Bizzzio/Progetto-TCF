@@ -85,14 +85,18 @@ bool Factory::EndGame() const
   vector<Navi *>::const_iterator i;
   for (i = fleet.begin(); i != fleet.end(); i++)
   {
+    //cout << "count:" << count << " size:" << fleet.size() << " ";
     if ((*i)->Sunk())
       count++;
     else
       return false;
   }
-  cout << count << " " << fleet.size() << " ";
+
   if (count == fleet.size())
+  {
+
     return true;
+  }
   else
     return false;
 }
