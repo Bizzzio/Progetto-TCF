@@ -37,6 +37,21 @@ void MenuPrincipale::PrintVoci(int pos) const
       Menus[d]->DrawVoci();
     cout << endl;
   }
+#else
+  cout << "Selezionare la configurazione usando le frecce" << endl;
+  for (int d = 0; d < Menus.size(); d++)
+  {
+    if (d == pos)
+    {
+      cout << "033[32m"
+           << "--> ";
+      Menus[d]->DrawVoci();
+      cout << "033[0m" cout << endl;
+    }
+    else
+      Menus[d]->DrawVoci();
+    cout << endl;
+  }
 #endif
 }
 
@@ -86,6 +101,80 @@ void MenuPrincipale::SelectOthers() const
       }
     }
   }
+
+  int c, ex, pos = 0;
+  cout << "Selezionare la configurazione usando le frecce" << endl;
+
+  PrintVoci(0);
+  system("clear");
+  do
+  {
+    PrintVoci(pos);
+
+    do
+    {
+      char c, d, e;
+      cin >> c;
+      if (c != ' ')
+      {
+        cin >> d;
+        cin >> e;
+        if ((c == 27) && (d = 91))
+        {
+        case KEY_UP /* H */:
+          //cout << endl << "Up" << endl;//key up
+          if (pos != 0)
+            pos--;
+          break;
+        case KEY_DOWN /* K */:
+          //cout << endl << "Down" << endl;   // key down
+          if (pos < Menus.size() - 1)
+            pos++;
+          break;
+
+        default:
+          break;
+        }
+        system("clear");
+        if (c != ' ')
+          PrintVoci(pos);
+      }
+    } while (c != ' ');
+    /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+	for(int k = 1; k < 255; k++)
+  {
+    // pick the colorattribute k you want
+    SetConsoleTextAttribute(h, k);
+    cout << k << " I want to be nice today!" << endl;
+  }
+  SetConsoleTextAttribute(h, 15);*/
+
+    if (pos != Menus.size() - 1)
+      Menus[pos]->Draw();
+
+    /* switch (pos)
+    {
+    case 0:
+      menuplay.Draw();
+      break;
+    case 2:
+
+      menuoption.Draw();
+      break;
+      /*case 0:
+                    cout << endl << "Up" << endl;//key up
+                		if(pos!=0)
+                      	pos--;
+                    break;
+    case 0:
+                    cout << endl << "Up" << endl;//key up
+                		if(pos!=0)
+                      	pos--;
+                    break;
+
+    default:
+      break;*/
+  } while (pos != Menus.size() - 1);
 #endif
 }
 
