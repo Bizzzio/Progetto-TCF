@@ -27,12 +27,12 @@ void MenuPrincipale::PrintVoci(int pos) const
     if (d == pos)
     {
       SetConsoleTextAttribute(h, 10);
-      cout << "--> " << voci[d];
+      cout << "--> " << Menus->DrawVoci();
       SetConsoleTextAttribute(h, 15);
       cout << endl;
     }
     else
-      cout << voci[d] << endl;
+      cout << Menus->DrawVoci() << endl;
   }
 }
 

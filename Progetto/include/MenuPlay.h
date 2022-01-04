@@ -6,6 +6,7 @@
 class MenuPlay : public Menu
 {
 public:
+	virtual void DrawVoci() const;
 	virtual void Draw() const;
 
 private:
