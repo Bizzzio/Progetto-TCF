@@ -43,10 +43,10 @@ void MenuPrincipale::PrintVoci(int pos) const
   {
     if (d == pos)
     {
-      cout << "033[32m"
+      cout << "\033[32m"
            << "--> ";
       Menus[d]->DrawVoci();
-      cout << "033[0m" cout << endl;
+      cout << "\033[0m" << endl;
     }
     else
       Menus[d]->DrawVoci();
@@ -63,46 +63,45 @@ void MenuPrincipale::SelectOthers() const
 #define KEY_LEFT 68
 #define KEY_RIGHT 67
 #define KEY_DOWN 66
-  {
-    // Black magic to prevent Linux from buffering keystrokes.
-    struct termios t;
-    tcgetattr(STDIN_FILENO, &t);
-    t.c_lflag &= ~ICANON;
-    tcsetattr(STDIN_FILENO, TCSANOW, &t);
 
-    // Once the buffering is turned off, the rest is simple.
-    cout << "Enter a character: ";
-    char c, d, e;
-    cin >> c;
-    cin >> d;
-    cin >> e;
-    cout << "\nYour character was ";
-    cout << "Enter a character: ";
-    //c = cin.get();
-    cout << "Your character was " << c << endl;
-    // Using 3 char type, Cause up down right left consist with 3 character
-    if ((c == 27) && (d = 91))
+  // Black magic to prevent Linux from buffering keystrokes.
+  struct termios t;
+  tcgetattr(STDIN_FILENO, &t);
+  t.c_lflag &= ~ICANON;
+  tcsetattr(STDIN_FILENO, TCSANOW, &t);
+
+  // Once the buffering is turned off, the rest is simple.
+  cout << "Enter a character: ";
+  char c, d, e;
+  cin >> c;
+  cin >> d;
+  cin >> e;
+  cout << "\nYour character was ";
+  cout << "Enter a character: ";
+  //c = cin.get();
+  cout << "Your character was " << c << endl;
+  // Using 3 char type, Cause up down right left consist with 3 character
+  if ((c == 27) && (d = 91))
+  {
+    if (e == KEY_UP)
     {
-      if (e == KEY_UP)
-      {
-        cout << "UP";
-      }
-      if (e == KEY_DOWN)
-      {
-        cout << "DOWN";
-      }
-      if (e == KEY_RIGHT)
-      {
-        cout << "RIGHT";
-      }
-      if (e == KEY_LEFT)
-      {
-        cout << "LEFT";
-      }
+      cout << "UP";
+    }
+    if (e == KEY_DOWN)
+    {
+      cout << "DOWN";
+    }
+    if (e == KEY_RIGHT)
+    {
+      cout << "RIGHT";
+    }
+    if (e == KEY_LEFT)
+    {
+      cout << "LEFT";
     }
   }
 
-  int c, ex, pos = 0;
+  int pos = 0;
   cout << "Selezionare la configurazione usando le frecce" << endl;
 
   PrintVoci(0);
@@ -113,33 +112,36 @@ void MenuPrincipale::SelectOthers() const
 
     do
     {
-      char c, d, e;
+      //char c, d, e;
       cin >> c;
-      if (c != ' ')
+      if (c != 'a')
       {
         cin >> d;
         cin >> e;
         if ((c == 27) && (d = 91))
         {
-        case KEY_UP /* H */:
-          //cout << endl << "Up" << endl;//key up
-          if (pos != 0)
-            pos--;
-          break;
-        case KEY_DOWN /* K */:
-          //cout << endl << "Down" << endl;   // key down
-          if (pos < Menus.size() - 1)
-            pos++;
-          break;
+          switch (e)
+          {
+          case KEY_UP /* H */:
+            //cout << endl << "Up" << endl;//key up
+            if (pos != 0)
+              pos--;
+            break;
+          case KEY_DOWN /* K */:
+            //cout << endl << "Down" << endl;   // key down
+            if (pos < Menus.size() - 1)
+              pos++;
+            break;
 
-        default:
-          break;
+          default:
+            break;
+          }
         }
         system("clear");
-        if (c != ' ')
+        if (c != 'a')
           PrintVoci(pos);
       }
-    } while (c != ' ');
+    } while (c != 'a');
     /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {

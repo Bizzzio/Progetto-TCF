@@ -35,13 +35,8 @@ MenuOption::MenuOption()
 
 void MenuOption::Draw() const
 {
-#ifdef _WIN32
     SelectWindows();
-#else
-    SelectOthers();
-#endif
 }
-
 void MenuOption::PrintVoci(int pos) const
 {
 #ifdef _WIN32
@@ -52,12 +47,28 @@ void MenuOption::PrintVoci(int pos) const
         if (d == pos)
         {
             SetConsoleTextAttribute(h, 10);
-            cout << "--> " << Config[d];
+            cout << "--> ";
+            Config[d];
             SetConsoleTextAttribute(h, 15);
             cout << endl;
         }
         else
-            cout << Config[d];
+            Config[d];
+        cout << endl;
+    }
+#else
+    cout << "Selezionare la configurazione usando le frecce" << endl;
+    for (int d = 0; d < Config.size(); d++)
+    {
+        if (d == pos)
+        {
+            cout << "\033[32m"
+                 << "--> ";
+            Config[d];
+            cout << "\033[0m" << endl;
+        }
+        else
+            Config[d];
         cout << endl;
     }
 #endif
@@ -116,6 +127,98 @@ void MenuOption::SelectWindows() const
   }
   SetConsoleTextAttribute(h, 15);*/
 
+        if (pos)
+            for (int i = 0; i < 5; i++)
+            {
+                Menu::Add(Config[pos][2 * i] - '0');
+            }
+    } while (pos);
+
+#else
+#include <iostream>
+#define KEY_UP 65
+#define KEY_LEFT 68
+#define KEY_RIGHT 67
+#define KEY_DOWN 66
+
+    // Black magic to prevent Linux from buffering keystrokes.
+    struct termios t;
+    tcgetattr(STDIN_FILENO, &t);
+    t.c_lflag &= ~ICANON;
+    tcsetattr(STDIN_FILENO, TCSANOW, &t);
+    int pos = 0;
+    char c, d, e;
+    cout << "Selezionare la configurazione usando le frecce" << endl;
+
+    PrintVoci(0);
+    system("clear");
+    do
+    {
+        PrintVoci(pos);
+
+        do
+        {
+            //char c, d, e;
+            cin >> c;
+            if (c != 'a')
+            {
+                cin >> d;
+                cin >> e;
+                if ((c == 27) && (d = 91))
+                {
+                    switch (e)
+                    {
+                    case KEY_UP /* H */:
+                        //cout << endl << "Up" << endl;//key up
+                        if (pos != 0)
+                            pos--;
+                        break;
+                    case KEY_DOWN /* K */:
+                        //cout << endl << "Down" << endl;   // key down
+                        if (pos < Config.size() - 1)
+                            pos++;
+                        break;
+
+                    default:
+                        break;
+                    }
+                }
+                system("clear");
+                if (c != 'a')
+                    PrintVoci(pos);
+            }
+        } while (c != 'a');
+        /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+	for(int k = 1; k < 255; k++)
+  {
+    // pick the colorattribute k you want
+    SetConsoleTextAttribute(h, k);
+    cout << k << " I want to be nice today!" << endl;
+  }
+  SetConsoleTextAttribute(h, 15);*/
+
+        /* switch (pos)
+    {
+    case 0:
+      menuplay.Draw();
+      break;
+    case 2:
+
+      menuoption.Draw();
+      break;
+      /*case 0:
+                    cout << endl << "Up" << endl;//key up
+                		if(pos!=0)
+                      	pos--;
+                    break;
+    case 0:
+                    cout << endl << "Up" << endl;//key up
+                		if(pos!=0)
+                      	pos--;
+                    break;
+
+    default:
+      break;*/
         if (pos)
             for (int i = 0; i < 5; i++)
             {
