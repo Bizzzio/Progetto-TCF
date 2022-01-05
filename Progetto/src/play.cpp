@@ -7,24 +7,6 @@ using std::endl;
 using std::system;
 using std::vector;
 #include "Play.h"
-#ifdef _WIN32
-#include <conio.h>
-#define CLEAR "CLEAR"
-#else
-#define CLEAR "clear"
-#include <unistd.h>
-#include <termios.h>
-void getch()
-{
-	char a;
-	struct termios t;
-	tcgetattr(STDIN_FILENO, &t);
-	t.c_lflag &= ~ICANON;
-	tcsetattr(STDIN_FILENO, TCSANOW, &t);
-
-	cin >> a;
-}
-#endif
 
 Play::Play(Factory *player1, Factory *player2) : grid1(player1->GetSize()), grid2(player2->GetSize())
 {
@@ -42,7 +24,7 @@ void Play::PlayBattleship()
 	{
 		cout << "Premi un tasto per mostrare la griglia";
 		getch();
-		system("CLEAR");
+		system(CLEAR);
 		cout << "Turno giocatore 1" << endl;
 		grid2.DrawEnemy();
 		do
@@ -56,10 +38,10 @@ void Play::PlayBattleship()
 		grid2.DrawEnemy();
 		cout << "Premi un tasto per oscurare" << endl;
 		getch();
-		system("CLEAR");
+		system(CLEAR);
 		cout << "Premi un tasto per mostrare la griglia" << endl;
 		getch();
-		system("CLEAR");
+		system(CLEAR);
 		cout << "Turno giocatore 2" << endl;
 		grid1.DrawEnemy();
 		do
@@ -73,9 +55,9 @@ void Play::PlayBattleship()
 		grid1.DrawEnemy();
 		cout << "Premi un tasto per oscurare" << endl;
 		getch();
-		system("CLEAR");
+		system(CLEAR);
 
-		//system ("CLEAR");
+		//system (CLEAR);
 
 	} while (!Player1->EndGame() && !Player2->EndGame());
 	if (Player1->EndGame())

@@ -151,7 +151,7 @@ void MenuOption::SelectWindows() const
     cout << "Selezionare la configurazione usando le frecce" << endl;
 
     PrintVoci(0);
-    system("clear");
+    system(CLEAR);
     do
     {
         PrintVoci(pos);
@@ -183,11 +183,12 @@ void MenuOption::SelectWindows() const
                         break;
                     }
                 }
-                system("clear");
+                system(CLEAR);
                 if (c != 'a')
                     PrintVoci(pos);
             }
         } while (c != 'a');
+        system(CLEAR);
         /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {

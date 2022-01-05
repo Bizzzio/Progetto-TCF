@@ -2,10 +2,11 @@
 #define MENU_H
 
 #ifdef _WIN32
+#DEFINE CLEAR "cls"
 #include <conio.h>
 #include <windows.h>
 #else
-
+#define CLEAR "clear"
 #include <unistd.h>
 #include <termios.h>
 
