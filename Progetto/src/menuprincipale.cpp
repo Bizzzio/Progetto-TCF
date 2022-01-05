@@ -1,5 +1,9 @@
 #include "MenuPrincipale.h"
 
+#ifndef _WIN32
+#define CLEAR "clear"
+#endif
+
 MenuPrincipale::MenuPrincipale() {}
 
 MenuPrincipale::~MenuPrincipale()
@@ -57,7 +61,7 @@ void MenuPrincipale::PrintVoci(int pos) const
 
 void MenuPrincipale::SelectOthers() const
 {
-#ifdef __unix
+#ifndef _WIN32
 #include <iostream>
 #define KEY_UP 65
 #define KEY_LEFT 68
@@ -71,7 +75,7 @@ void MenuPrincipale::SelectOthers() const
   tcsetattr(STDIN_FILENO, TCSANOW, &t);
 
   // Once the buffering is turned off, the rest is simple.
-  cout << "Enter a character: ";
+  /*cout << "Enter a character: ";
   char c, d, e;
   cin >> c;
   cin >> d;
@@ -99,20 +103,20 @@ void MenuPrincipale::SelectOthers() const
     {
       cout << "LEFT";
     }
-  }
+  }*/
 
   int pos = 0;
-  cout << "Selezionare la configurazione usando le frecce" << endl;
+  cout << "Selezionare la configurazione usando le frecce; premere il tasto a per selezionare" << endl;
 
   PrintVoci(0);
   system("clear");
   do
   {
     PrintVoci(pos);
-
+    char c, d, e;
     do
     {
-      //char c, d, e;
+
       cin >> c;
       if (c != 'a')
       {
@@ -150,9 +154,12 @@ void MenuPrincipale::SelectOthers() const
     cout << k << " I want to be nice today!" << endl;
   }
   SetConsoleTextAttribute(h, 15);*/
-
+    system(CLEAR);
     if (pos != Menus.size() - 1)
+    {
       Menus[pos]->Draw();
+      system(CLEAR);
+    }
 
     /* switch (pos)
     {
