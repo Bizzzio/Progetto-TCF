@@ -2,7 +2,7 @@
 #define MENU_H
 
 #ifdef _WIN32
-#DEFINE CLEAR "cls"
+#define CLEAR "cls"
 #include <conio.h>
 #include <windows.h>
 #else
