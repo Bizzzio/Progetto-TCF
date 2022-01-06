@@ -101,7 +101,7 @@ bool Griglia::CheckCell(bool t, int x, int y, int length) const {
       	if (grid[x+i][y])
 			return false;
     	}
-  	if((x+length-size) <= 0 ) return true;
+  	if((x+length-size) <= 0 ) return true;				//TODO: mettere il controllo fuori dagli if(t) cosi controlla sia orizzontale che verticale
   		else return false;
   }
   
