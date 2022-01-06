@@ -191,12 +191,11 @@ void MenuPrincipale::SelectWindows() const
   int c, ex, pos = 0;
   cout << "Selezionare la configurazione usando le frecce" << endl;
 
-  PrintVoci(0);
-  system("cls");
+  
   do
   {
+    system("cls");
     PrintVoci(pos);
-
     do
     {
 

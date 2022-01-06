@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <conio.h>
 using namespace std;
 #include "Factory.h"
 // abbiamo creato la griglia da 10
@@ -51,13 +52,15 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x, y + i, fleet.back());
       }
-
+      system("cls");
       //fleet.DrawAlly(x,y);
     }
     z++;
   }
   grid.DrawAlly();
-  //cin.ignore();
+  cout << "Premi un tasto per oscurare" << endl;
+  getch();
+  system("cls");
   //system("cls");
 }
 
