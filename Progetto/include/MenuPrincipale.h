@@ -4,8 +4,6 @@
 #include "menu.h"
 #include "MenuPlay.h"
 #include "MenuOption.h"
-#include "MenuInstructions.h"
-#include "MenuCredits.h"
 #include "MenuBack.h"
 #include "MenuText.h"
 
@@ -14,6 +12,7 @@ class MenuPrincipale : public Menu
 public:
 	MenuPrincipale();
 	~MenuPrincipale();
+	// void Arrows(unsigned int &) const;
 	virtual void Draw() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
