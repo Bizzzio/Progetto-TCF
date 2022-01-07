@@ -74,7 +74,7 @@ void MenuPrincipale::SelectWindows() const
   
   do
   {
-    // system("cls");
+    system("cls");
     PrintVoci(pos);
     do
     {
@@ -98,7 +98,7 @@ void MenuPrincipale::SelectWindows() const
         default:
           break;
         }
-        // system("cls");
+        system("cls");
         if (c != 13)
           PrintVoci(pos);
       }

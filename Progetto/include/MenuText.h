@@ -19,7 +19,7 @@ public:
 	void DrawVoci() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
-	string GetFileName(string) const;
+	string GetFileName(string&) const;
 
 private:
 	vector<string> Voci;
