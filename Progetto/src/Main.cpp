@@ -3,6 +3,8 @@
 #include "Factory.h"
 #include "Play.h"
 #include "MenuPrincipale.h"
+#include "MenuText.h"
+#include <string>
 
 using std::cin;
 using std::cout;
@@ -11,6 +13,12 @@ using std::vector;
 
 int main()
 {
+
+	/*cout << "Ciao" << endl;
+
+	MenuText menutext("NomeFileMenuText");
+	cout << menutext.GetFileName("NomeFileMenuText") << endl;*/
+
 	MenuPrincipale test;
 	test.Draw();
 #ifdef __unix__

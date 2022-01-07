@@ -7,6 +7,7 @@
 #include "MenuInstructions.h"
 #include "MenuCredits.h"
 #include "MenuBack.h"
+#include "MenuText.h"
 
 class MenuPrincipale : public Menu
 {
@@ -19,8 +20,8 @@ public:
 	void PrintVoci(unsigned int) const;
 
 private:
-	// const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"};
-	const vector<Menu *> Menus{new MenuPlay, new MenuInstructions, new MenuOption, new MenuCredits, new MenuBack};
+	// const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"}; new MenuInstructions("Credits")
+	const vector<Menu *> Menus {{new MenuPlay, new MenuOption, new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack}};
 };
 
 #endif

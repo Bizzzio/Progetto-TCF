@@ -1,16 +1,22 @@
 #ifndef MENUINSTRUCTIONS_H
 #define MENUINSTRUCTIONS_H
-#include "Play.h"
-#include "Menu.h"
+#include "menu.h"
+#include <fstream>
+using std::cout;
+using std::endl;
+using std::vector;
 
 class MenuInstructions : public Menu
 {
 public:
-	virtual void DrawVoci() const;
+	MenuInstructions(string);
 	virtual void Draw() const;
-
+	void PrintVoci(unsigned int) const;
+	void DrawVoci() const;
+	
 private:
-	const vector<string> Voci{"Istruzioni"};
+	vector<string> Voci;
+	vector<string> Description{"Instructions"};
 };
 
 #endif

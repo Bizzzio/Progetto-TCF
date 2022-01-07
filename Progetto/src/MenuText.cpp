@@ -1,66 +1,161 @@
-#include "MenuOption.h"
-void MenuOption::DrawVoci() const
+#include "MenuText.h"
+using std::string;
+
+void MenuText::DrawVoci() const
 {
     vector<string>::const_iterator i;
     for (i = Voci.begin(); i != Voci.end(); i++)
         cout << (*i);
 }
 
-MenuOption::MenuOption()
+MenuText::MenuText(string x)
 {
+    string name; // sizeof(x)
+    for (int z = 0; z < x.size(); z++) {
+        name.push_back(x[z]);
+    }
+
+    Voci.push_back(name);
+
+    // string valore;
+    // GetFileName(x).c_str()
+
+    // string Filename = "src/Instructions.txt";
+    // ifstream file(Filename.c_str());
+
+    cout << "Stampo file Ins" << endl;
+
+    ifstream fin("src/Ins.txt");
+    if (!fin)
+    cout << "Errore nell’apertura del file" << endl;
+    else {
+        string str1, str2;
+        fin >> str1;
+        fin >> str2;
+    }
+    fin.close(); 
+
+    cout << "File aperto" << endl;
 
     string valore;
-    string Filename = "src/Setup.txt";
+    string Filename = "src/Ins.txt";
     ifstream file(Filename.c_str());
     if (file.is_open())
     {
         while (getline(file, valore)){
-        cout << "Copio file opzioni1" << endl;
-            Config.push_back(valore);
+        cout << "Copio file Ins1 su istruzioni" << endl;
+            Description.push_back(valore);
         }
 
         file.close();
     }
     else
     {
-        string Filename1 = "Setup.txt";
+        string Filename1 = "Ins.txt";
         file.open(Filename1.c_str());
         if (file.is_open())
         {
-            cout << "Copio file opzioni2" << endl;
+            cout << "Copio file Ins2 su istruzioni" << endl;
             while (getline(file, valore))
-                Config.push_back(valore);
+                Description.push_back(valore);
 
             file.close();
         }
         else
-            cout << "Unable to open file opzioni1";
+            cout << "Unable to open file Ins" << endl;
     }
-    cout << "Fine costruttore MenuOption" << endl;
+
+    // Prova 1
+    /*
+    ifstream file("src/Instructions.txt");
+    string line;
+    while (getline(file, line))
+    {
+        cout << "Caricamento1" << endl;
+        Description.push_back(line);
+    }
+    ifstream file1("Instructions.txt");
+    string line1;
+    while (getline(file1, line1))
+    {
+        cout << "Caricamento2" << endl;
+        Description.push_back(line1);
+    }*/
+
+    // Prova 2
+    /*if (file.is_open())
+    {
+        while (getline(file, valore)){
+        cout << "Copio file istruzioni1" << endl;
+            Description.push_back(valore);
+        }
+
+        file.close();
+    }
+    else
+    {
+        // string Filename1 = "Instructions.txt";
+        // file.open(Filename1.c_str());
+        file.open("Instructions.txt");
+        if (file.is_open())
+        {
+            cout << "Copio file istruzioni2" << endl;
+            while (getline(file, valore))
+                Description.push_back(valore);
+
+            file.close();
+        }
+        else
+            cout << "Unable to open file istruzioni1" << endl;
+    }*/
+    cout << "Fine costruttore MenuText" << endl;
 }
 
-void MenuOption::Draw() const
+string MenuText::GetFileName(string x) const{
+
+    string filename;
+    string location = "src/";
+    string extension = ".txt";
+
+    for (int z = 0; z < location.length(); z++) {
+        filename.push_back(location.at(z));
+    }
+
+    for (int i = 0; i < x.size(); i++) {
+        filename.push_back(x[i]);
+    }
+
+    for (int j = 0; j < extension.length(); j++) {
+        filename.push_back(extension.at(j));
+    }
+
+    // char pippo[filename.size() + 1]; 
+ 
+    // strcpy(pippo, filename.c_str()); 
+
+    // const char * Filename[filename.size()+1] = filename.c_str();
+
+    // const char Filename = "nomedelfile";
+
+    // cout << "Name of file: " << *Filename << endl;
+
+    return filename;
+
+}
+
+void MenuText::Draw() const
 {
+    cout << "Ciao1" << endl;
     SelectWindows();
 }
 
-void MenuOption::PrintVoci(unsigned int pos) const
+void MenuText::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (unsigned int d = 0; d < Config.size(); d++)
-    {
-        if (d == pos)
-        {
-            SetConsoleTextAttribute(h, 10);
-            cout << "--> " << Config[d];
-
-            SetConsoleTextAttribute(h, 15);
-            cout << endl;
-        }
-        else
-            cout << Config[d];
+    cout << Description[0] << endl;
+    for (unsigned int d = 1; d < Description.size(); d++){
+        cout << Description[d];
         cout << endl;
     }
 #else
@@ -81,7 +176,7 @@ void MenuOption::PrintVoci(unsigned int pos) const
 #endif
 }
 
-void MenuOption::SelectWindows() const
+void MenuText::SelectWindows() const
 {
 #ifdef _WIN32
 #define KEY_UP 72
@@ -93,7 +188,7 @@ void MenuOption::SelectWindows() const
     unsigned int pos=0;
 
     PrintVoci(0);
-    // system("cls");
+    system("cls");
     do
     {
         PrintVoci(pos);
@@ -113,7 +208,7 @@ void MenuOption::SelectWindows() const
                     break;
                 case KEY_DOWN /* K */:
                     //cout << endl << "Down" << endl;   // key down
-                    if (pos < Config.size() - 1)
+                    if (pos < Description.size() - 1)
                         pos++;
                     break;
 
@@ -138,7 +233,7 @@ void MenuOption::SelectWindows() const
         if (pos)
             for (int i = 0; i < 5; i++)
             {
-                Menu::Add(Config[pos][2 * i] - '0');
+                Menu::Add(Description[pos][2 * i] - '0');
             }
     } while (pos);
 
@@ -237,6 +332,6 @@ void MenuOption::SelectWindows() const
 #endif
 }
 
-void MenuOption::SelectOthers() const
+void MenuText::SelectOthers() const
 {
 }

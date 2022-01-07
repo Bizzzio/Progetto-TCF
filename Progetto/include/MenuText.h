@@ -1,5 +1,6 @@
-#ifndef MENUOPTION_H
-#define MENUOPTION_H
+#ifndef MENUTEXT_H
+#define MENUTEXT_H
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -9,19 +10,20 @@ using std::vector;
 #include "Play.h"
 #include "Menu.h"
 
-class MenuOption : public Menu
+class MenuText : public Menu
 {
 public:
-	MenuOption();
+	MenuText(string);
 	virtual void Draw() const;
 	void PrintVoci(unsigned int) const;
 	void DrawVoci() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
+	string GetFileName(string) const;
 
 private:
-	vector<string> Voci{"Options"};
-	vector<string> Config{"Torna al menu"};
+	vector<string> Voci;
+	vector<string> Description{"Instructions"};
 };
 
 #endif
