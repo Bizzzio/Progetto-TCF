@@ -37,12 +37,12 @@ void MenuOption::Draw() const
 {
     SelectWindows();
 }
-void MenuOption::PrintVoci(int pos) const
+void MenuOption::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (int d = 0; d < Config.size(); d++)
+    for (unsigned int d = 0; d < Config.size(); d++)
     {
         if (d == pos)
         {
@@ -58,7 +58,7 @@ void MenuOption::PrintVoci(int pos) const
     }
 #else
     cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (int d = 0; d < Config.size(); d++)
+    for (unsigned int d = 0; d < Config.size(); d++)
     {
         if (d == pos)
         {
@@ -82,7 +82,8 @@ void MenuOption::SelectWindows() const
 #define KEY_RIGHT 77
 #define KEY_DOWN 80
 
-    int c, ex, pos = 0;
+    int c, ex;
+    unsigned int pos=0;
 
     PrintVoci(0);
     system("cls");
@@ -207,7 +208,7 @@ void MenuOption::SelectWindows() const
 
       menuoption.Draw();
       break;
-      /*case 0:
+      case 0:
                     cout << endl << "Up" << endl;//key up
                 		if(pos!=0)
                       	pos--;

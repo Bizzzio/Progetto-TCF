@@ -22,12 +22,12 @@ void MenuPrincipale::Draw() const
 #endif
 }
 
-void MenuPrincipale::PrintVoci(int pos) const
+void MenuPrincipale::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
   HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
   cout << "Selezionare la configurazione usando le frecce" << endl;
-  for (int d = 0; d < Menus.size(); d++)
+  for (unsigned int d = 0; d < Menus.size(); d++)
   {
     if (d == pos)
     {
@@ -43,7 +43,7 @@ void MenuPrincipale::PrintVoci(int pos) const
   }
 #else
   cout << "Selezionare la configurazione usando le frecce" << endl;
-  for (int d = 0; d < Menus.size(); d++)
+  for (unsigned int d = 0; d < Menus.size(); d++)
   {
     if (d == pos)
     {
@@ -105,7 +105,7 @@ void MenuPrincipale::SelectOthers() const
     }
   }*/
 
-  int pos = 0;
+  unsigned int pos = 0;
   cout << "Selezionare la configurazione usando le frecce; premere il tasto a per selezionare" << endl;
 
   PrintVoci(0);
@@ -170,7 +170,7 @@ void MenuPrincipale::SelectOthers() const
 
       menuoption.Draw();
       break;
-      /*case 0:
+      case 0:
                     cout << endl << "Up" << endl;//key up
                 		if(pos!=0)
                       	pos--;
@@ -195,7 +195,8 @@ void MenuPrincipale::SelectWindows() const
 #define KEY_RIGHT 77
 #define KEY_DOWN 80
 
-  int c, ex, pos = 0;
+  int c, ex;
+  unsigned int pos=0;
   cout << "Selezionare la configurazione usando le frecce" << endl;
 
   
@@ -251,7 +252,7 @@ void MenuPrincipale::SelectWindows() const
 
       menuoption.Draw();
       break;
-      /*case 0:
+      case 0:
                     cout << endl << "Up" << endl;//key up
                 		if(pos!=0)
                       	pos--;

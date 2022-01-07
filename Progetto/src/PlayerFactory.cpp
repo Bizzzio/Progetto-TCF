@@ -84,7 +84,7 @@ PlayerFactory::~PlayerFactory()
 bool PlayerFactory::EndGame() const
 {
 
-  int count = 0;
+  unsigned int count = 0;
   vector<Navi *>::const_iterator i;
   for (i = fleet.begin(); i != fleet.end(); i++)
   {

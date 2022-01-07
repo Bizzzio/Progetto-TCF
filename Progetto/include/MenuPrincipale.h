@@ -16,7 +16,7 @@ public:
 	virtual void Draw() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
-	void PrintVoci(int) const;
+	void PrintVoci(unsigned int) const;
 
 private:
 	// const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"};

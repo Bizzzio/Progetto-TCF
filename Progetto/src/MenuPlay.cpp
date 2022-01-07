@@ -5,12 +5,12 @@ void MenuPlay::DrawVoci() const
 	cout << "Play";
 }
 
-void MenuPlay::PrintVoci(int pos) const
+void MenuPlay::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	cout << "Selezionare la configurazione usando le frecce" << endl;
-	for (int d = 0; d < voci.size(); d++)
+	for (unsigned int d = 0; d < voci.size(); d++)
 	{
 		if (d == pos)
 		{
@@ -25,7 +25,7 @@ void MenuPlay::PrintVoci(int pos) const
 	}
 #else
 	cout << "Selezionare la configurazione usando le frecce" << endl;
-	for (int d = 0; d < voci.size(); d++)
+	for (unsigned int d = 0; d < voci.size(); d++)
 	{
 		if (d == pos)
 		{
@@ -44,7 +44,7 @@ void MenuPlay::Draw() const
 {
 	vector<string>::iterator i;
 
-	for (int c = 0; c < voci.size(); c++)
+	for (unsigned int c = 0; c < voci.size(); c++)
 		cout << voci[c] << endl;
 
 #ifdef _WIN32
@@ -58,7 +58,8 @@ void MenuPlay::Draw() const
 		cout<<ch;
 		getch();
 		//system("cls");*/
-	int c, ex, pos = 0;
+	int c, ex;
+	unsigned int pos = 0;
 	cout << "Selezionare la configurazione usando le frecce" << endl;
 
 	PrintVoci(0);
