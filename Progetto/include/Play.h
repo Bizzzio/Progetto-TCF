@@ -4,6 +4,7 @@
 using namespace std;
 #include <vector>
 #include "Factory.h"
+#include "PlayerFactory.h"
 #ifdef _WIN32
 #include <conio.h>
 #define CLEAR "cls"

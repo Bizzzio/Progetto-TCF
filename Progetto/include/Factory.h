@@ -9,17 +9,14 @@ using namespace std;
 class Factory {
 
 	public:
-  Factory(int dim, int n2,int n3, int n4, int n5, int n6);
-  ~Factory();
-  void SetFleet(int n2, int n3, int n4, int n5, int n6);
-  vector<Navi*> GetFleet() const;
-  Griglia GetGrid() const;
-  bool EndGame() const;
-  int GetSize() const;
+        //Factory(int dim, int n2,int n3, int n4, int n5, int n6);
+        //~Factory();
+        virtual void SetFleet(int n2, int n3, int n4, int n5, int n6)=0;
+        virtual vector<Navi*> GetFleet() const =0;
+        virtual Griglia GetGrid() const =0;
+        virtual bool EndGame() const=0;
+        virtual int GetSize() const=0;
 
-  private:
-  vector<Navi*> fleet;
-  Griglia grid;
   
 };
 #endif

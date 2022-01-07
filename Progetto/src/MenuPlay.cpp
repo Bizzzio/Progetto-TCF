@@ -115,8 +115,8 @@ void MenuPlay::Draw() const
 		{
 			system("cls");
 			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new Factory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
-			Factory *p2 = new Factory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
+			Factory *p1 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
+			Factory *p2 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
 			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;
@@ -198,8 +198,8 @@ void MenuPlay::Draw() const
 		case 1:
 		{
 			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new Factory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
-			Factory *p2 = new Factory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
+			Factory *p1 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
+			Factory *p2 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
 			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;

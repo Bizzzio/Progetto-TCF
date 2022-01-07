@@ -34,7 +34,7 @@ void Play::PlayBattleship()
 		} while (!Check(x, y, grid2));
 		grid2.Strike(x, y);
 
-		grid1.DrawAlly();
+		//grid1.DrawAlly();
 		grid2.DrawEnemy();
 		cout << "Premi un tasto per oscurare" << endl;
 		getch();
@@ -51,7 +51,7 @@ void Play::PlayBattleship()
 		} while (!Check(x, y, grid1));
 		grid1.Strike(x, y);
 
-		grid2.DrawAlly();
+		//grid2.DrawAlly();
 		grid1.DrawEnemy();
 		cout << "Premi un tasto per oscurare" << endl;
 		getch();

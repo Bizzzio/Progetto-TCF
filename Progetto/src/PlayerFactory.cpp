@@ -2,22 +2,22 @@
 #include <vector>
 #include <conio.h>
 using namespace std;
-#include "Factory.h"
+#include "PlayerFactory.h"
 // abbiamo creato la griglia da 10
 // le regole sono che si possono usare 1 nave da 4, 1 da 5, 3 da 3, 3 da 2
 
-Factory::Factory(int dim, int n2, int n3, int n4, int n5, int n6) : grid(dim)
-{ //Factory::Factory(int dim, int n2,int n3, int n4, int n5, int n6)
+PlayerFactory::PlayerFactory(int dim, int n2, int n3, int n4, int n5, int n6) : grid(dim)
+{ //PlayerFactory::PlayerFactory(int dim, int n2,int n3, int n4, int n5, int n6)
 
   SetFleet(n2, n3, n4, n5, n6); //SetFleet(n2,n3,n4,n5,n6)
 }
 
-int Factory::GetSize() const
+int PlayerFactory::GetSize() const
 {
   return grid.GetSize();
 }
 
-void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6)
+void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
 {
 
   int numbers[5] = {n2, n3, n4, n5, n6};
@@ -64,24 +64,24 @@ void Factory::SetFleet(int n2, int n3, int n4, int n5, int n6)
   //system("cls");
 }
 
-vector<Navi *> Factory::GetFleet() const
+vector<Navi *> PlayerFactory::GetFleet() const
 {
   return fleet;
 }
 
-Griglia Factory::GetGrid() const
+Griglia PlayerFactory::GetGrid() const
 {
   return grid;
 }
 
-Factory::~Factory()
+PlayerFactory::~PlayerFactory()
 {
   vector<Navi *>::iterator i;
   for (i = fleet.begin(); i != fleet.end(); i++)
     delete *i;
 }
 
-bool Factory::EndGame() const
+bool PlayerFactory::EndGame() const
 {
 
   int count = 0;
