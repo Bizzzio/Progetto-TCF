@@ -10,34 +10,43 @@ void MenuText::DrawVoci() const
 
 MenuText::MenuText(string x)
 {
-    string name; // sizeof(x)
+    /*string name;
     for (int z = 0; z < x.size(); z++) {
         name.push_back(x[z]);
-    }
+    }*/
 
-    Voci.push_back(name);
-
-    // string valore;
-    // GetFileName(x).c_str()
-
-    // string Filename = "src/Instructions.txt";
-    // ifstream file(Filename.c_str());
-
-    cout << "Stampo file Ins" << endl;
-
-    ifstream fin("src/Ins.txt");
-    if (!fin)
-    cout << "Errore nell’apertura del file" << endl;
-    else {
-        string str1, str2;
-        fin >> str1;
-        fin >> str2;
-    }
-    fin.close(); 
-
-    cout << "File aperto" << endl;
+    Voci.push_back(x);
 
     string valore;
+    // string Filename = "src/Ins.txt";
+
+    ifstream file(GetFileName(x).c_str()); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
+    if (file.is_open())
+    {
+        while (getline(file, valore)){
+        cout << "Copio file Ins1 su istruzioni" << endl;
+            Description.push_back(valore);
+        }
+
+        file.close();
+    }
+    else
+    {
+        file.open(x.c_str());
+        if (file.is_open())
+        {
+            cout << "Copio file Ins2 su istruzioni" << endl;
+            while (getline(file, valore))
+                Description.push_back(valore);
+
+            file.close();
+        }
+        else
+            cout << "Unable to open file Ins" << endl;
+    }
+    cout << "Fine costruttore MenuText" << endl;
+
+    /*string valore;
     string Filename = "src/Ins.txt";
     ifstream file(Filename.c_str());
     if (file.is_open())
@@ -64,58 +73,18 @@ MenuText::MenuText(string x)
         else
             cout << "Unable to open file Ins" << endl;
     }
-
-    // Prova 1
-    /*
-    ifstream file("src/Instructions.txt");
-    string line;
-    while (getline(file, line))
-    {
-        cout << "Caricamento1" << endl;
-        Description.push_back(line);
-    }
-    ifstream file1("Instructions.txt");
-    string line1;
-    while (getline(file1, line1))
-    {
-        cout << "Caricamento2" << endl;
-        Description.push_back(line1);
-    }*/
-
-    // Prova 2
-    /*if (file.is_open())
-    {
-        while (getline(file, valore)){
-        cout << "Copio file istruzioni1" << endl;
-            Description.push_back(valore);
-        }
-
-        file.close();
-    }
-    else
-    {
-        // string Filename1 = "Instructions.txt";
-        // file.open(Filename1.c_str());
-        file.open("Instructions.txt");
-        if (file.is_open())
-        {
-            cout << "Copio file istruzioni2" << endl;
-            while (getline(file, valore))
-                Description.push_back(valore);
-
-            file.close();
-        }
-        else
-            cout << "Unable to open file istruzioni1" << endl;
-    }*/
-    cout << "Fine costruttore MenuText" << endl;
+    cout << "Fine costruttore MenuText" << endl;*/
 }
 
-string MenuText::GetFileName(string x) const{
+string MenuText::GetFileName(string &x) const{
 
     string filename;
     string location = "src/";
     string extension = ".txt";
+
+    for (int j = 0; j < extension.length(); j++) {
+        x.push_back(extension.at(j));
+    }
 
     for (int z = 0; z < location.length(); z++) {
         filename.push_back(location.at(z));
@@ -123,10 +92,6 @@ string MenuText::GetFileName(string x) const{
 
     for (int i = 0; i < x.size(); i++) {
         filename.push_back(x[i]);
-    }
-
-    for (int j = 0; j < extension.length(); j++) {
-        filename.push_back(extension.at(j));
     }
 
     // char pippo[filename.size() + 1]; 
@@ -153,7 +118,6 @@ void MenuText::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << Description[0] << endl;
     for (unsigned int d = 1; d < Description.size(); d++){
         cout << Description[d];
         cout << endl;
