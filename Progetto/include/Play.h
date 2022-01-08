@@ -5,6 +5,7 @@ using namespace std;
 #include <vector>
 #include "Factory.h"
 #include "PlayerFactory.h"
+#include "ComputerFactory.h"
 #ifdef _WIN32
 #include <conio.h>
 #define CLEAR "cls"

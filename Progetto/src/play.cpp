@@ -1,6 +1,4 @@
-
 #include <iostream>
-
 using std::cout;
 using std::endl;
 #include <vector>
@@ -49,7 +47,7 @@ void Play::PlayBattleship()
 		{
 			cout << "\nDimmi le coordinate che vuoi colpire " << endl;
 			cin >> x >> y;
-			
+
 		} while (!Check(x, y, grid1));
 		grid1.Strike(x, y);
 
