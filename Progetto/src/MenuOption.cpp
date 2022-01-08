@@ -39,29 +39,72 @@ MenuOption::MenuOption()
     cout << "Fine costruttore MenuOption" << endl;
 }
 
-void MenuOption::Draw() const
+void MenuOption::AddConfig() const {
+    char n2, n3, n4, n5, n6;
+        char newline[10] = {n2, ' ', n3, ' ', n4, ' ', n5, ' ', n6};
+        for (int i = 0; i < 5; i++) {
+            cout << "Inserire il numero di navi da " << i + 2 << endl;
+            cin >> newline[i*2];
+            for (int j = 0; j < i; j++) {
+                cout << newline[j*2] << " ";
+            }
+        }
+
+        ofstream outfile("src/Setup.txt", std::ios_base::app); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
+        if (outfile.is_open())
+        {
+            cout << "Scrivo nel file 1" << endl;
+            outfile << endl;
+            for (int i = 0; i < 10; i++) {
+                outfile << newline[i];
+            }
+
+            outfile.close();
+        }
+        else
+        {
+            cout << "Scrivo nel file 2";
+            outfile.open("Setup.txt");
+            if (outfile.is_open())
+            {
+                for (int i = 0; i < 10; i++) {
+                    outfile << newline[i];
+            }
+
+                outfile.close();
+            }
+            else
+                cout << "Unable to modify file" << endl;
+        }
+    
+    for(int j=0;j<10;j++){
+        Menu::Add(newline[2 * j] - '0');
+    }
+}
+
+void MenuOption::Draw() const 
 {
     SelectWindows();
 }
 
-void MenuOption::PrintVoci(unsigned int pos) const
-{
-#ifdef _WIN32
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (unsigned int d = 0; d < Config.size(); d++)
+    void MenuOption::PrintVoci(unsigned int pos) const
     {
-        if (d == pos)
+    #ifdef _WIN32
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+        cout << "Selezionare la configurazione usando le frecce" << endl;
+        for (unsigned int d = 0; d < Config.size(); d++)
         {
-            SetConsoleTextAttribute(h, 10);
-            cout << "--> " << Config[d];
+            if (d == pos)
+            {
+                SetConsoleTextAttribute(h, 10);
+                cout << "--> " << Config[d];
 
-            SetConsoleTextAttribute(h, 15);
+                SetConsoleTextAttribute(h, 15);
+                cout << endl;
+            }
+            else
+                cout << Config[d];
             cout << endl;
-        }
-        else
-            cout << Config[d];
-        cout << endl;
     }
 #else
     cout << "Selezionare la configurazione usando le frecce" << endl;
@@ -88,13 +131,28 @@ void MenuOption::SelectWindows() const
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_DOWN 80
-
-    unsigned int pos=0;
-
     
-    do
-    {
-        system("cls");
+    unsigned int pos=0;
+    int size;
+    cout << " Inserire la grandezza della griglia: ";
+    cin >> size;
+
+    Menu::Add(size);
+
+    bool a;
+    cout << " Selezionare la composizione della flotta: premere \n";
+    cout << " 0 per accedere alle flotte di default oppure 1 per \n";
+    cout << " sceglierne una personalizzata: ";
+    cin >> a;
+    
+    if(a){
+        AddConfig();
+    }
+    else{
+    do{
+    
+        
+        // system("cls");
         PrintVoci(pos);
 
         pos=Arrows(&pos,Config);
@@ -114,6 +172,7 @@ void MenuOption::SelectWindows() const
                 Menu::Add(Config[pos][2 * i] - '0');
             }
     } while (pos);
+    }
 
 #else
 #include <iostream>

@@ -16,6 +16,7 @@ public:
 	virtual void Draw() const;
 	virtual void PrintVoci(unsigned int) const;
 	void DrawVoci() const;
+	void AddConfig() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
 
