@@ -108,9 +108,12 @@ void MenuPlay::Draw() const
 		switch (pos)
 		{
 		case 0:
-			//Factory* p1=new PlayerFactory;
-			//Factory* p2=new ComputerFactory;
-			//Play* play=new Play (p1,p2);
+			system("cls");
+			vector<int> setup = Menu::GetSetup();
+			Factory* p1=new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]);
+			Factory* p2=new ComputerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]);
+			Play* play=new Play (p1,p2);
+			play->PlayBattleship();
 			break;
 		case 1:
 		{
