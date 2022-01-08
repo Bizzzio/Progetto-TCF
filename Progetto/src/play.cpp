@@ -20,6 +20,7 @@ void Play::PlayBattleship()
 	int x, y;
 	do
 	{
+		cout << typeid(Player1).name() << endl;
 		cout << "Premi un tasto per mostrare la griglia";
 		getch();
 		system(CLEAR);
