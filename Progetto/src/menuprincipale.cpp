@@ -59,7 +59,7 @@ void MenuPrincipale::PrintVoci(unsigned int pos) const
 #endif
 }
 
-void MenuPrincipale::Arrows(unsigned int *posptr) const{
+unsigned int MenuPrincipale::Arrows(unsigned int *posptr, vector<Menu *> Voci) const{
 
   
   #define KEY_UP 72
@@ -83,7 +83,7 @@ void MenuPrincipale::Arrows(unsigned int *posptr) const{
           break;
         case KEY_DOWN /* K */ :
           //cout << endl << "Down" << endl;   // key down
-          if (pos < Menus.size() - 1)
+          if (pos < Voci.size() - 1)
             pos++;
           break;
 
@@ -95,7 +95,7 @@ void MenuPrincipale::Arrows(unsigned int *posptr) const{
           PrintVoci(pos);
       }
     } while (c != 13);
-  
+  return (pos);
 }
 
 void MenuPrincipale::SelectWindows() const
@@ -115,7 +115,7 @@ void MenuPrincipale::SelectWindows() const
   {
     system("cls");
     PrintVoci(pos);
-    Arrows(&pos);
+    pos = Arrows(&pos, Menus);
     /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {
