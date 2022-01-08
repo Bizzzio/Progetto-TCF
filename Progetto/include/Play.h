@@ -6,6 +6,7 @@ using namespace std;
 #include "Factory.h"
 #include "PlayerFactory.h"
 #include "ComputerFactory.h"
+#include <typeinfo> 
 #ifdef _WIN32
 #include <conio.h>
 #define CLEAR "cls"

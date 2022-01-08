@@ -94,10 +94,15 @@ void MenuOption::Draw() const
         cout << "Selezionare la configurazione usando le frecce" << endl;
         for (unsigned int d = 0; d < Config.size(); d++)
         {
+<<<<<<< HEAD
             if (d == pos)
             {
                 SetConsoleTextAttribute(h, 10);
                 cout << "--> " << Config[d];
+=======
+            SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
+            cout << "--> " << Config[d];
+>>>>>>> d5e850c1b37fc28c9a70024078d00d709a467ac4
 
                 SetConsoleTextAttribute(h, 15);
                 cout << endl;

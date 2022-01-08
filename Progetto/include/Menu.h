@@ -51,6 +51,7 @@ public:
 	virtual void DrawVoci() const {};
 	virtual void Draw() const = 0;
 	static void Add(int);
+	static void Set(int,int);
 
 	static vector<int> GetSetup();
 

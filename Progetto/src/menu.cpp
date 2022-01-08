@@ -1,10 +1,19 @@
 #include "Menu.h"
 
+<<<<<<< HEAD
 vector<int> Menu::Setup{};
+=======
+vector<int> Menu::Setup{10,10,1,0,0,0,0};
+>>>>>>> d5e850c1b37fc28c9a70024078d00d709a467ac4
 
 void Menu::Add(int x)
 {
     Setup.push_back(x);
+}
+
+void Menu::Set(int x, int y)
+{
+  Setup[x]=y;
 }
 
 vector<int> Menu::GetSetup()
