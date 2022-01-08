@@ -12,7 +12,7 @@ class MenuPrincipale : public Menu
 public:
 	MenuPrincipale();
 	~MenuPrincipale();
-	// void Arrows(unsigned int &) const;
+	void Arrows(unsigned int *pos) const;
 	virtual void Draw() const;
 	void SelectWindows() const;
 	void SelectOthers() const;

@@ -59,61 +59,16 @@ void MenuPrincipale::PrintVoci(unsigned int pos) const
 #endif
 }
 
-/*void MenuPrincipale::Arrows(unsigned int &pos) const{
+void MenuPrincipale::Arrows(unsigned int *posptr) const{
 
-  /*#ifdef _WIN32
+  
   #define KEY_UP 72
   #define KEY_LEFT 75
   #define KEY_RIGHT 77
   #define KEY_DOWN 80
-
   int c, ex;
-
-  c = getch();
-      if (c == 0 || c == 224)
-      {
-        switch (ex = getch())
-        {
-        case KEY_UP /* H */ /*:
-          //cout << endl << "Up" << endl;//key up
-          if (pos != 0)
-            pos--;
-          break;
-        case KEY_DOWN /* K */ /*:
-          //cout << endl << "Down" << endl;   // key down
-          if (pos < Menus.size() - 1)
-            pos++;
-          break;
-
-        default:
-          break;
-        }
-        system("cls");
-        if (c != 13)
-          PrintVoci(pos);
-      }
-  #endif
-  
-}*/
-
-void MenuPrincipale::SelectWindows() const
-{
-#ifdef _WIN32
-#define KEY_UP 72
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-#define KEY_DOWN 80
-
-  int c, ex;
-  unsigned int pos=0;
-  cout << "Selezionare la configurazione usando le frecce" << endl;
-
-  
+  unsigned int pos=(*posptr);
   do
-  {
-    system("cls");
-    PrintVoci(pos);
-    do
     {
 
       c = getch();
@@ -140,6 +95,27 @@ void MenuPrincipale::SelectWindows() const
           PrintVoci(pos);
       }
     } while (c != 13);
+  
+}
+
+void MenuPrincipale::SelectWindows() const
+{
+#ifdef _WIN32
+#define KEY_UP 72
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_DOWN 80
+
+  
+  unsigned int pos=0;
+  cout << "Selezionare la configurazione usando le frecce" << endl;
+
+  
+  do
+  {
+    system("cls");
+    PrintVoci(pos);
+    Arrows(&pos);
     /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)
   {
