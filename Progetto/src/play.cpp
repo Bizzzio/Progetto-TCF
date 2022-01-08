@@ -31,6 +31,7 @@ void Play::PlayBattleship()
 		{
 			cout << "\nDimmi le coordinate che vuoi colpire " << endl;
 			cin >> x >> y;
+
 		} while (!Check(x, y, grid2));
 		grid2.Strike(x, y);
 
@@ -48,6 +49,7 @@ void Play::PlayBattleship()
 		{
 			cout << "\nDimmi le coordinate che vuoi colpire " << endl;
 			cin >> x >> y;
+			
 		} while (!Check(x, y, grid1));
 		grid1.Strike(x, y);
 
