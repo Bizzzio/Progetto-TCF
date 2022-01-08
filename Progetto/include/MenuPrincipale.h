@@ -12,11 +12,10 @@ class MenuPrincipale : public Menu
 public:
 	MenuPrincipale();
 	~MenuPrincipale();
-	unsigned int Arrows(unsigned int *pos, vector<Menu *>) const;
 	virtual void Draw() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
-	void PrintVoci(unsigned int) const;
+	virtual void PrintVoci(unsigned int) const;
 
 private:
 	// const vector<string> voci{"Play", "Instructions", "Options", "Credits", "Quit"}; new MenuInstructions("Credits")
