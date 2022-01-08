@@ -94,7 +94,8 @@ void MenuOption::PrintVoci(unsigned int pos) const
         cout << "Selezionare la configurazione usando le frecce" << endl;
         for (unsigned int d = 0; d < Config.size(); d++)
         {
-            SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
+            if(d==pos){
+                SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
             cout << "--> " << Config[d];
 
                 SetConsoleTextAttribute(h, 15);
@@ -103,6 +104,7 @@ void MenuOption::PrintVoci(unsigned int pos) const
             else
                 cout << Config[d];
             cout << endl;
+        }
 
 #else
     cout << "Selezionare la configurazione usando le frecce" << endl;

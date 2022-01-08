@@ -119,14 +119,8 @@ void MenuPlay::Draw() const
 		{
 			system("cls");
 			vector<int> setup = Menu::GetSetup();
-<<<<<<< HEAD
-			cout << "Controllo vettore setup:" << setup[0] << setup[1] << setup[2] << setup[3] << setup[4] << setup[5];
-			Factory *p1 = new PlayerFactory(setup[0], setup[1], setup[2], setup[3], setup[4], setup[5]); //dovrà essere new PlayerFactory
-			Factory *p2 = new PlayerFactory(setup[0], setup[1], setup[2], setup[3], setup[4], setup[5]); //dovrà essere new PlayerFactory
-=======
 			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
 			Factory *p2 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
->>>>>>> d5e850c1b37fc28c9a70024078d00d709a467ac4
 			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;
