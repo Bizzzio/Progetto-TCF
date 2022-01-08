@@ -87,22 +87,15 @@ void MenuOption::Draw() const
     SelectWindows();
 }
 
-    void MenuOption::PrintVoci(unsigned int pos) const
+void MenuOption::PrintVoci(unsigned int pos) const
     {
     #ifdef _WIN32
         HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "Selezionare la configurazione usando le frecce" << endl;
         for (unsigned int d = 0; d < Config.size(); d++)
         {
-<<<<<<< HEAD
-            if (d == pos)
-            {
-                SetConsoleTextAttribute(h, 10);
-                cout << "--> " << Config[d];
-=======
             SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
             cout << "--> " << Config[d];
->>>>>>> d5e850c1b37fc28c9a70024078d00d709a467ac4
 
                 SetConsoleTextAttribute(h, 15);
                 cout << endl;
@@ -110,7 +103,7 @@ void MenuOption::Draw() const
             else
                 cout << Config[d];
             cout << endl;
-    }
+
 #else
     cout << "Selezionare la configurazione usando le frecce" << endl;
     for (unsigned int d = 0; d < Config.size(); d++)
@@ -144,11 +137,15 @@ void MenuOption::SelectWindows() const
 
     Menu::Add(size);
 
+    cout << endl;
+
     bool a;
     cout << " Selezionare la composizione della flotta: premere \n";
     cout << " 0 per accedere alle flotte di default oppure 1 per \n";
     cout << " sceglierne una personalizzata: ";
     cin >> a;
+    
+    cout << endl;
     
     if(a){
         AddConfig();
