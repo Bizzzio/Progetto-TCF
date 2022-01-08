@@ -13,7 +13,17 @@ using std::vector;
 
 int main()
 {
+	/*int a;
 
+	HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
+	for(int k = 1; k < 255; k++)
+  {
+    // pick the colorattribute k you want
+    SetConsoleTextAttribute(h, k);
+    cout << k << " I want to be nice today!" << endl;
+  }
+  SetConsoleTextAttribute(h, 15);
+  cin>>a;*/
 	/*cout << "Ciao" << endl;
 
 	MenuText menutext("NomeFileMenuText");

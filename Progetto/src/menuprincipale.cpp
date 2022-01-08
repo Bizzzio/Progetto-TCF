@@ -31,7 +31,7 @@ void MenuPrincipale::PrintVoci(unsigned int pos) const
   {
     if (d == pos)
     {
-      SetConsoleTextAttribute(h, 10);
+      SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
       cout << "--> ";
       Menus[d]->DrawVoci();
       SetConsoleTextAttribute(h, 15);
@@ -62,10 +62,7 @@ void MenuPrincipale::PrintVoci(unsigned int pos) const
 void MenuPrincipale::SelectWindows() const
 {
 #ifdef _WIN32
-#define KEY_UP 72
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-#define KEY_DOWN 80
+
 
   
   unsigned int pos=0;
@@ -91,28 +88,7 @@ void MenuPrincipale::SelectWindows() const
     if (pos != Menus.size() - 1)
       Menus[pos]->Draw();
 
-    /* switch (pos)
-    {
-    case 0:
-      menuplay.Draw();
-      break;
-    case 2:
 
-      menuoption.Draw();
-      break;
-      case 0:
-                    cout << endl << "Up" << endl;//key up
-                		if(pos!=0)
-                      	pos--;
-                    break;
-    case 0:
-                    cout << endl << "Up" << endl;//key up
-                		if(pos!=0)
-                      	pos--;
-                    break;
-
-    default:
-      break;*/
   } while (pos != Menus.size() - 1);
 #endif
 }

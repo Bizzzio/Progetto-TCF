@@ -53,7 +53,7 @@ void MenuOption::PrintVoci(unsigned int pos) const
     {
         if (d == pos)
         {
-            SetConsoleTextAttribute(h, 10);
+            SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
             cout << "--> " << Config[d];
 
             SetConsoleTextAttribute(h, 15);

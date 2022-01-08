@@ -14,7 +14,7 @@ void MenuPlay::PrintVoci(unsigned int pos) const
 	{
 		if (d == pos)
 		{
-			SetConsoleTextAttribute(h, 10);
+			SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
 			cout << "--> " << voci[d];
 			SetConsoleTextAttribute(h, 15);
 			cout << endl;
@@ -116,8 +116,8 @@ void MenuPlay::Draw() const
 		{
 			system("cls");
 			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
-			Factory *p2 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
+			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
+			Factory *p2 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
 			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;
