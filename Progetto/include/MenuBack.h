@@ -16,6 +16,7 @@ public:
 	void SelectWindows() const;
 	//void SelectOthers() const;
 	void DrawVoci() const;
+	virtual void PrintVoci(unsigned int) const {}
 
 private:
 	vector<string> Voci{"Torna al menu"};

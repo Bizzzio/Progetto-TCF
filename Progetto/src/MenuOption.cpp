@@ -89,42 +89,15 @@ void MenuOption::SelectWindows() const
 #define KEY_RIGHT 77
 #define KEY_DOWN 80
 
-    int c, ex;
     unsigned int pos=0;
 
-    PrintVoci(0);
-    // system("cls");
+    
     do
     {
+        system("cls");
         PrintVoci(pos);
 
-        do
-        {
-
-            c = getch();
-            if (c == 0 || c == 224)
-            {
-                switch (ex = getch())
-                {
-                case KEY_UP /* H */:
-                    //cout << endl << "Up" << endl;//key up
-                    if (pos != 0)
-                        pos--;
-                    break;
-                case KEY_DOWN /* K */:
-                    //cout << endl << "Down" << endl;   // key down
-                    if (pos < Config.size() - 1)
-                        pos++;
-                    break;
-
-                default:
-                    break;
-                }
-                system("cls");
-                if (c != 13)
-                    PrintVoci(pos);
-            }
-        } while (c != 13);
+        pos=Arrows(&pos,Config);
         system("cls");
         /*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
 	for(int k = 1; k < 255; k++)

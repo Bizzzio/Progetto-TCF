@@ -44,6 +44,10 @@ class Menu
 {
 
 public:
+	
+	unsigned int Arrows(unsigned int *pos, vector<Menu *>) const;
+	unsigned int Arrows(unsigned int *pos, vector<string>) const;
+	virtual void PrintVoci(unsigned int) const=0;
 	virtual void DrawVoci() const {};
 	virtual void Draw() const = 0;
 	static void Add(int);

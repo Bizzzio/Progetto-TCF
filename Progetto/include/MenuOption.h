@@ -14,7 +14,7 @@ class MenuOption : public Menu
 public:
 	MenuOption();
 	virtual void Draw() const;
-	void PrintVoci(unsigned int) const;
+	virtual void PrintVoci(unsigned int) const;
 	void DrawVoci() const;
 	void SelectWindows() const;
 	void SelectOthers() const;
