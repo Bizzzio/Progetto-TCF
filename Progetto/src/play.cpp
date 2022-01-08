@@ -1,6 +1,4 @@
-
 #include <iostream>
-
 using std::cout;
 using std::endl;
 #include <vector>
@@ -22,6 +20,7 @@ void Play::PlayBattleship()
 	int x, y;
 	do
 	{
+		cout << typeid(Player1).name() << endl;
 		cout << "Premi un tasto per mostrare la griglia";
 		getch();
 		system(CLEAR);
@@ -31,6 +30,7 @@ void Play::PlayBattleship()
 		{
 			cout << "\nDimmi le coordinate che vuoi colpire " << endl;
 			cin >> x >> y;
+
 		} while (!Check(x, y, grid2));
 		grid2.Strike(x, y);
 
@@ -48,6 +48,7 @@ void Play::PlayBattleship()
 		{
 			cout << "\nDimmi le coordinate che vuoi colpire " << endl;
 			cin >> x >> y;
+
 		} while (!Check(x, y, grid1));
 		grid1.Strike(x, y);
 

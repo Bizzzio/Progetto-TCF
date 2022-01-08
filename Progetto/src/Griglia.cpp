@@ -136,3 +136,10 @@ void Griglia::Strike(int x, int y)
 vector<Navi*> Griglia::operator[] (int i) {
 	return this->grid[i];
 }
+
+bool Griglia::IsHit(int x, int y) const {
+
+	if(grid[x][y]) return true;
+	return false;
+	
+}
