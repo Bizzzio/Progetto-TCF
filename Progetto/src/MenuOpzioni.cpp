@@ -89,7 +89,7 @@ void MenuOpzioni::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << "Selezionare la Listaurazione usando le frecce" << endl;
+    cout << "Selezionare la configurazione usando le frecce" << endl;
     for (unsigned int d = 0; d < Lista.size(); d++)
     {
         if (d == pos)
@@ -159,7 +159,7 @@ void MenuOpzioni::AddConfig() const {
                 cout << "Unable to modify file" << endl;
         }
     
-    for(int j=0;j<5;j++){                                       //mettere questo se si vuole aggiungere subito la flotta
+    for(int j=0;j<5;j++){                                       //mettere questo se si vuole impostare subito la flotta
         Menu::Set(j+2,newline[2 * j] - '0');
     }
 }
