@@ -1,5 +1,11 @@
 #include "MenuPlay.h"
 
+MenuPlay::MenuPlay(){
+	voci.push_back("1 giocatore");
+	voci.push_back("2 giocatori");
+	voci.push_back("Back to menu");
+}
+
 void MenuPlay::DrawVoci() const
 {
 	cout << "Play";
