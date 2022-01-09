@@ -101,8 +101,6 @@ bool Griglia::CheckCell(bool t, int x, int y, int length) const {
       	if (grid[x+i][y])
 			return false;
     	}
-  	if((x+length-size) <= 0 ) return true;				//TODO: mettere il controllo fuori dagli if(t) cosi controlla sia orizzontale che verticale
-  		else return false;
   }
   
   else {   
@@ -110,9 +108,9 @@ bool Griglia::CheckCell(bool t, int x, int y, int length) const {
       if (grid[x][y+i])
 	  	return false;
     }
-  	if((y+length-size) <= 0 ) return true;
-  	else return false;
   }
+  if((x+length-size) <= 0 && (y+length-size) <= 0 ) return true;
+  		else return false;
 }
 
 void Griglia::SetGriglia(int i, int j, Navi* nave)
