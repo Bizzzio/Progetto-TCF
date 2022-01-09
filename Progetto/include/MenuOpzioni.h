@@ -17,12 +17,13 @@ public:
 	virtual void PrintVoci(unsigned int) const;
 	void DrawVoci() const;
     void SetOption(int, unsigned int) const;
+    void AddConfig() const;
 
 private:
     
     int NumeroOpzione;
 	string Nome,Filename;
-	vector<string> Lista{"Torna al menu"};
+	mutable vector<string> Lista{"Torna al menu"};
 };
 
 #endif

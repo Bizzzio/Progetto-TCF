@@ -6,6 +6,7 @@
 using std::cout;
 using std::endl;
 using std::vector;
+using std::string;
 #include "Play.h"
 #include "Menu.h"
 
@@ -22,7 +23,7 @@ public:
 
 private:
 	vector<string> Voci{"Options"};
-	vector<string> Config{"Torna al menu"};
+	mutable vector<string> Config{"Torna al menu"};
 };
 
 #endif
