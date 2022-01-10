@@ -95,7 +95,7 @@ bool ComputerFactory::EndGame() const
     return false;
 }
 
-void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore)
+void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {
 
   int x, y;

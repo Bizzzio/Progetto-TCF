@@ -104,7 +104,7 @@ bool PlayerFactory::EndGame() const
     return false;
 }
 
-void PlayerFactory::Turn(Griglia EnemyGrid, int NumGiocatore)
+void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {
 
   int x, y;
