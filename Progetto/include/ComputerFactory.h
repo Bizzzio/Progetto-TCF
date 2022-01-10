@@ -19,7 +19,7 @@ class ComputerFactory : public Factory {
   	virtual bool EndGame() const;
   	virtual int GetSize() const;
     void Turn(Griglia EnemyGrid, int NumGiocatore);
-    void CheckSurroundings(Griglia EnemyGrid, int i,int j);
+    bool CheckSurroundings(Griglia EnemyGrid, int i,int j);
 
   	private:
   	vector<Navi*> fleet;
