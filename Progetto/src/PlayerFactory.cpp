@@ -103,3 +103,27 @@ bool PlayerFactory::EndGame() const
   else
     return false;
 }
+
+void PlayerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
+  		  
+        int x,y;
+          cout << "Premi un tasto per mostrare la griglia";
+          getch();
+          system(CLEAR);
+          cout << "Turno giocatore" << NumGiocatore <<  endl;
+          EnemyGrid.DrawEnemy();
+          do
+          {
+              cout << "\nDimmi le coordinate che vuoi colpire " << endl;
+              cin >> x >> y;
+
+          } while (!Check(x, y, EnemyGrid));
+          EnemyGrid.Strike(x, y);
+
+          //grid1.DrawAlly();
+          EnemyGrid.DrawEnemy();
+          cout << "Premi un tasto per oscurare" << endl;
+          getch();
+          system(CLEAR);
+  
+}

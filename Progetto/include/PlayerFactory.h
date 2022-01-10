@@ -17,6 +17,7 @@ class PlayerFactory : public Factory {
   virtual Griglia GetGrid() const;
   virtual bool EndGame() const;
   virtual int GetSize() const;
+  virtual void Turn(Griglia, int);
 
   private:
   vector<Navi*> fleet;

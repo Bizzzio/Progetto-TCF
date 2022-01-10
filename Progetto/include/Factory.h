@@ -16,7 +16,7 @@ class Factory {
         virtual Griglia GetGrid() const =0;
         virtual bool EndGame() const=0;
         virtual int GetSize() const=0;
-        virtual void Turn() =0;
+        virtual void Turn(Griglia, int) =0;
         bool Check(int, int, Griglia);
 
   
