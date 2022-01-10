@@ -104,26 +104,26 @@ bool PlayerFactory::EndGame() const
     return false;
 }
 
-void PlayerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
-  		  
-        int x,y;
-          cout << "Premi un tasto per mostrare la griglia";
-          getch();
-          system(CLEAR);
-          cout << "Turno giocatore" << NumGiocatore <<  endl;
-          EnemyGrid.DrawEnemy();
-          do
-          {
-              cout << "\nDimmi le coordinate che vuoi colpire " << endl;
-              cin >> x >> y;
+void PlayerFactory::Turn(Griglia EnemyGrid, int NumGiocatore)
+{
 
-          } while (!Check(x, y, EnemyGrid));
-          EnemyGrid.Strike(x, y);
+  int x, y;
+  cout << "Premi un tasto per mostrare la griglia";
+  getch();
+  system(CLEAR);
+  cout << "Turno giocatore" << NumGiocatore << endl;
+  EnemyGrid.DrawEnemy();
+  do
+  {
+    cout << "\nDimmi le coordinate che vuoi colpire " << endl;
+    cin >> x >> y;
 
-          //grid1.DrawAlly();
-          EnemyGrid.DrawEnemy();
-          cout << "Premi un tasto per oscurare" << endl;
-          getch();
-          system(CLEAR);
-  
+  } while (!Check(x, y, EnemyGrid));
+  EnemyGrid.Strike(x, y);
+
+  //grid1.DrawAlly();
+  EnemyGrid.DrawEnemy();
+  cout << "Premi un tasto per oscurare" << endl;
+  getch();
+  system(CLEAR);
 }
