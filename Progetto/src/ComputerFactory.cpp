@@ -105,7 +105,7 @@ void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
       for(unsigned int j=0;j<EnemyGrid.GetSize();j++){
         if(EnemyGrid.IsHit(i,j))
         {
-          if(!CheckSurroundings(Enemygrid,i,j))
+          if(!CheckSurroundings(EnemyGrid,i,j))
           {
           	sparato=true;
           	break;
