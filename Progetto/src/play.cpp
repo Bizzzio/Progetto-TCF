@@ -16,7 +16,7 @@ Play::Play(Factory *player1, Factory *player2) : grid1(player1->GetSize()), grid
 }
 
 void Play::PlayBattleship()
-{ // serve fuzione per cancellare gli output
+{	// serve fuzione per cancellare gli output
 	/*int x, y;
 	do
 	{
@@ -70,11 +70,12 @@ void Play::PlayBattleship()
 		cout << "GIOCATORE 1 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 	}
 	getch();*/
-do{
-    	Player1->Turn();
-      	Player2->Turn();
-      
-    } while (!Player1->EndGame() && !Player2->EndGame());
+	do
+	{
+		Player1->Turn(grid2, 1);
+		Player2->Turn(grid1, 2);
+
+	} while (!Player1->EndGame() && !Player2->EndGame());
 	if (Player1->EndGame())
 	{
 		cout << "GIOCATORE 2 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
@@ -84,7 +85,6 @@ do{
 		cout << "GIOCATORE 1 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 	}
 	getch();
-
 }
 
 bool Play::Check(int x, int y, Griglia grid)

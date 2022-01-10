@@ -110,7 +110,7 @@ void PlayerFactory::Turn(Griglia EnemyGrid, int NumGiocatore)
   int x, y;
   cout << "Premi un tasto per mostrare la griglia";
   getch();
-  system(CLEAR);
+  system("cls");
   cout << "Turno giocatore" << NumGiocatore << endl;
   EnemyGrid.DrawEnemy();
   do
@@ -125,5 +125,5 @@ void PlayerFactory::Turn(Griglia EnemyGrid, int NumGiocatore)
   EnemyGrid.DrawEnemy();
   cout << "Premi un tasto per oscurare" << endl;
   getch();
-  system(CLEAR);
+  system("cls");
 }
