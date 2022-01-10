@@ -33,7 +33,13 @@ int main()
 
 	// MenuPrincipale test;
 	// test.Draw();
-	vector<Menu *> Menus {{new MenuPlay,new MenuDiramazione(string("Options"), vector<Menu* > {new MenuOpzioni(1,string("Seleziona dimensioni griglia"),string("Dimensioni.txt")), new MenuOpzioni(0,string("Seleziona colore del menu"),string("Colori.txt")),new MenuOpzioni(2,string("Seleziona flotta"),string("Setup.txt")), new MenuBack}), new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack}};
+	/*vector<Menu *> Menus {{new MenuPlay,new MenuDiramazione(string("Options"), 
+	vector<Menu* > {new MenuOpzioni(1,string("Seleziona dimensioni griglia"),string("Dimensioni.txt")), 
+	new MenuOpzioni(0,string("Seleziona colore del menu"),string("Colori.txt")),
+	new MenuOpzioni(2,string("Seleziona flotta"),string("Setup.txt")), 
+	new MenuBack}), 
+	new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack}};*/
+	vector<Menu *> Menus {{new MenuPlay, new MenuDiramazione,new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack("Quit")}};
 	MenuDiramazione MenuPrincipale(string("MenuPrincipale"),Menus);
 	MenuPrincipale.Draw();
 #ifdef __unix__

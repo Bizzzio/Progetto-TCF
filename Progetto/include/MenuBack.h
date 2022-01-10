@@ -11,7 +11,8 @@ using std::vector;
 class MenuBack : public Menu
 {
 public:
-	MenuBack() {}
+	MenuBack();
+	MenuBack(string);
 	virtual void Draw() const;
 	void SelectWindows() const;
 	//void SelectOthers() const;
@@ -19,7 +20,7 @@ public:
 	virtual void PrintVoci(unsigned int) const {}
 
 private:
-	vector<string> Voci{"Torna al menu"};
+	vector<string> Voci;
 };
 
 #endif

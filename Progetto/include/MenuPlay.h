@@ -2,16 +2,18 @@
 #define MENUPLAY_H
 #include "Play.h"
 #include "Menu.h"
+#include "MenuBack.h"
 
 class MenuPlay : public Menu
 {
 public:
+	MenuPlay();
 	virtual void DrawVoci() const;
 	virtual void Draw() const;
 	void PrintVoci(unsigned int) const;
 
 private:
-	const vector<string> voci{"1 giocatore", "2 giocatori", "Torna al menu"};
+	vector<string> voci;
 };
 
 #endif
