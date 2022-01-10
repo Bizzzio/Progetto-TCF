@@ -33,11 +33,11 @@ void ComputerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
       {
         do
         {
-			n = rand()%2;
+          n = rand() % 2;
         } while (n != 1 && n != 0);
         h = n;
-        x = rand()%10;
-        y = rand()%10;
+        x = rand() % 10;
+        y = rand() % 10;
       } while (!grid.CheckCell(h, x, y, z));
       fleet.push_back(new Navi(h, x, y, z));
       if (h)
@@ -54,7 +54,6 @@ void ComputerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
     z++;
   }
 }
-
 
 vector<Navi *> ComputerFactory::GetFleet() const
 {
@@ -96,92 +95,95 @@ bool ComputerFactory::EndGame() const
     return false;
 }
 
-void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
-  	
-  	int x,y;
-    bool sparato=false;
-  	cout << "Turno giocatore" << NumGiocatore <<  endl;
-  	for(unsigned int i=0;i<EnemyGrid.GetSize();i++ ){
-      for(unsigned int j=0;j<EnemyGrid.GetSize();j++){
-        if(EnemyGrid.IsHit(i,j))
-        {
-          if(!CheckSurroundings(Enemygrid,i,j))
-          {
-          	sparato=true;
-          	break;
-          }
-        }
-      }
-    }
-    if(!sparato)
-    {
-      for(unsigned int i=0;i<EnemyGrid.GetSize();i++ )
-      {
-        for(unsigned int j=0;j<EnemyGrid.GetSize();j++)
-        {
-          if(EnemyGrid.IsHit(i,j))
-          {
-              if(Check(i+1,j,EnemyGrid))
-              { 
-                  EnemyGrid.Strike(i+1,j);
-                  sparato=true;
-                  break;
-              }
-            else if(Check(i-1,j,EnemyGrid))
-            {
-              EnemyGrid.Strike(i-1,j);
-              sparato=true;
-              break;
-            }
-            else if(Check(i,j+1,EnemyGrid))
-            {
-              EnemyGrid.Strike(i,j+1);
-              sparato=true;
-              break;
-            }
-            else if(Check(i,j-1,EnemyGrid))
-            {
-              EnemyGrid.Strike(i,j-1);
-              sparato=true;
-              break;
-          	}
-          }
-        }
-      }
-    }
-        
-          
-          if(!sparato){
-          do{
-            x = rand()%10;
-            y = rand()%10;
-            }while(!Check(x,y,EnemyGrid));
-            EnemyGrid.Strike(x,y);
-        
-          }
-	
-  
-}
-
-
-  
-bool ComputerFactory::CheckSurroundings(Griglia EnemyGrid, int i,int j)
+void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore)
 {
-				if(EnemyGrid.IsHit(i+1,j) && Check(i-1,j,EnemyGrid) && !EnemyGrid[i+1][j]->Sunk()){ 
-            EnemyGrid.Strike(i-1,j);
-          	return 0;
+
+  int x, y;
+  bool sparato = false;
+  cout << "Turno giocatore" << NumGiocatore << endl;
+  for (unsigned int i = 0; i < EnemyGrid.GetSize(); i++)
+  {
+    for (unsigned int j = 0; j < EnemyGrid.GetSize(); j++)
+    {
+      if (EnemyGrid.IsHit(i, j))
+      {
+        if (!CheckSurroundings(EnemyGrid, i, j))
+        {
+          sparato = true;
+          break;
+        }
+      }
+    }
+  }
+  if (!sparato)
+  {
+    for (unsigned int i = 0; i < EnemyGrid.GetSize(); i++)
+    {
+      for (unsigned int j = 0; j < EnemyGrid.GetSize(); j++)
+      {
+        if (EnemyGrid.IsHit(i, j))
+        {
+          if (Check(i + 1, j, EnemyGrid))
+          {
+            EnemyGrid.Strike(i + 1, j);
+            sparato = true;
+            break;
           }
-          else if(EnemyGrid.IsHit(i-1,j) && Check(i+1,j,EnemyGrid) && !EnemyGrid[i-1][j]->Sunk()){ 
-            EnemyGrid.Strike(i+1,j);
-          	return 0;
+          else if (Check(i - 1, j, EnemyGrid))
+          {
+            EnemyGrid.Strike(i - 1, j);
+            sparato = true;
+            break;
           }
-          else if(EnemyGrid.IsHit(i,j+1) && Check(i,j-1,EnemyGrid) && !EnemyGrid[i][j+1]->Sunk()){ 
-            EnemyGrid.Strike(i,j-1);
-          	return 0;
+          else if (Check(i, j + 1, EnemyGrid))
+          {
+            EnemyGrid.Strike(i, j + 1);
+            sparato = true;
+            break;
           }
-          else if(EnemyGrid.IsHit(i,j-1) && Check(i,j+1,EnemyGrid) && !EnemyGrid[i][j-1]->Sunk()){ 
-            EnemyGrid.Strike(i,j+1);
-          	return 0;
-          return 1;
+          else if (Check(i, j - 1, EnemyGrid))
+          {
+            EnemyGrid.Strike(i, j - 1);
+            sparato = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  if (!sparato)
+  {
+    do
+    {
+      x = rand() % 10;
+      y = rand() % 10;
+    } while (!Check(x, y, EnemyGrid));
+    EnemyGrid.Strike(x, y);
+  }
 }
- 
+
+bool ComputerFactory::CheckSurroundings(Griglia EnemyGrid, int i, int j)
+{
+  if (EnemyGrid.IsHit(i + 1, j) && Check(i - 1, j, EnemyGrid) && !EnemyGrid[i + 1][j]->Sunk())
+  {
+    EnemyGrid.Strike(i - 1, j);
+    return 0;
+  }
+  else if (EnemyGrid.IsHit(i - 1, j) && Check(i + 1, j, EnemyGrid) && !EnemyGrid[i - 1][j]->Sunk())
+  {
+    EnemyGrid.Strike(i + 1, j);
+    return 0;
+  }
+  else if (EnemyGrid.IsHit(i, j + 1) && Check(i, j - 1, EnemyGrid) && !EnemyGrid[i][j + 1]->Sunk())
+  {
+    EnemyGrid.Strike(i, j - 1);
+    return 0;
+  }
+  else if (EnemyGrid.IsHit(i, j - 1) && Check(i, j + 1, EnemyGrid) && !EnemyGrid[i][j - 1]->Sunk())
+  {
+    EnemyGrid.Strike(i, j + 1);
+    return 0;
+  }
+  return 1;
+}
