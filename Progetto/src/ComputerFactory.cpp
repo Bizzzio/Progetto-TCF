@@ -95,3 +95,93 @@ bool ComputerFactory::EndGame() const
   else
     return false;
 }
+
+void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
+  	
+  	int x,y;
+    bool sparato=false;
+  	cout << "Turno giocatore" << NumGiocatore <<  endl;
+  	for(unsigned int i=0;i<EnemyGrid.GetSize();i++ ){
+      for(unsigned int j=0;j<EnemyGrid.GetSize();j++){
+        if(EnemyGrid.IsHit(i,j))
+        {
+          if(!CheckSurroundings(Enemygrid,i,j))
+          {
+          	sparato=true;
+          	break;
+          }
+        }
+      }
+    }
+    if(!sparato)
+    {
+      for(unsigned int i=0;i<EnemyGrid.GetSize();i++ )
+      {
+        for(unsigned int j=0;j<EnemyGrid.GetSize();j++)
+        {
+          if(EnemyGrid.IsHit(i,j))
+          {
+              if(Check[i+1][j])
+              { 
+                  EnemyGrid.Strike(i+1,j);
+                  sparato=true;
+                  break;
+              }
+            else if(Check[i-1][j])
+            {
+              EnemyGrid.Strike(i-1,j);
+              sparato=true;
+              break;
+            }
+            else if(Check[i][j+1])
+            {
+              EnemyGrid.Strike(i,j+1);
+              sparato=true;
+              break;
+            }
+            else if(Check[i][j-1])
+            {
+              EnemyGrid.Strike(i,j-1);
+              sparato=true;
+              break;
+          	}
+          }
+        }
+      }
+    }
+        
+          
+          if(!sparato){
+          do{
+            x = rand()%10;
+            y = rand()%10;
+            }while(!Check[x][y]);
+            EnemyGrid.Strike(x,y);
+            break;
+          }
+	
+  
+}
+
+
+  
+void ComputerFactory::CheckSurroundings(Griglia EnemyGrid, int i,intj)
+{
+				if(EnemyGrid.IsHit(i+1,j) && Check[i-1][j] && !EnemyGrid[i+1][j]->Sunk()){ 
+            EnemyGrid.Strike(i-1,j);
+          	return 0;
+          }
+          else if(EnemyGrid.IsHit(i-1,j) && Check[i+1][j] && !EnemyGrid[i-1][j]->Sunk()){ 
+            EnemyGrid.Strike(i+1,j);
+          	return 0;
+          }
+          else if(EnemyGrid.IsHit(i,j+1) && Check[i][j-1] && !EnemyGrid[i][j+1]->Sunk()){ 
+            EnemyGrid.Strike(i,j-1);
+          	return 0;
+          }
+          else if(EnemyGrid.IsHit(i,j-1) && Check[i][j+1] && !EnemyGrid[i][j-1]->Sunk()){ 
+            EnemyGrid.Strike(i,j+1);
+          	return 0;
+          return 1;
+}
+ 
