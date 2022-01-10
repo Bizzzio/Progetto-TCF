@@ -1,5 +1,11 @@
 #include "MenuPlay.h"
 
+MenuPlay::MenuPlay(){
+	voci.push_back("1 giocatore");
+	voci.push_back("2 giocatori");
+	voci.push_back("Back to menu");
+}
+
 void MenuPlay::DrawVoci() const
 {
 	cout << "Play";
@@ -107,7 +113,8 @@ void MenuPlay::Draw() const
 
 		switch (pos)
 		{
-		case 0:{
+		case 0:
+		{
 			system("cls");
 			vector<int> setup = Menu::GetSetup();
 			Factory* p1=new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);

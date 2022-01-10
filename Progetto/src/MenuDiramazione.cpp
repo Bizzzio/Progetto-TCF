@@ -4,6 +4,14 @@
 #define CLEAR "clear"
 #endif
 
+MenuDiramazione::MenuDiramazione(){
+  VoceSopra = "Options";
+  Menus.push_back(new MenuOpzioni(1,string("Seleziona dimensioni griglia"),string("Dimensioni.txt")));
+  Menus.push_back(new MenuOpzioni(0,string("Seleziona colore del menu"),string("Colori.txt")));
+  Menus.push_back(new MenuOpzioni(2,string("Seleziona flotta"),string("Setup.txt")));
+  Menus.push_back(new MenuBack);
+}
+
 MenuDiramazione::MenuDiramazione(string vocesopra, vector<Menu *> menu) 
 {
     VoceSopra=vocesopra;
