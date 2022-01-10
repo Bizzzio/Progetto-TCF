@@ -167,19 +167,19 @@ void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
   
 bool ComputerFactory::CheckSurroundings(Griglia EnemyGrid, int i,int j)
 {
-				if(EnemyGrid.IsHit(i+1,j) && Check(i-1)(j) && !EnemyGrid[i+1][j]->Sunk()){ 
+				if(EnemyGrid.IsHit(i+1,j) && Check(i-1,j,EnemyGrid) && !EnemyGrid[i+1][j]->Sunk()){ 
             EnemyGrid.Strike(i-1,j);
           	return 0;
           }
-          else if(EnemyGrid.IsHit(i-1,j) && Check(i+1)(j) && !EnemyGrid[i-1][j]->Sunk()){ 
+          else if(EnemyGrid.IsHit(i-1,j) && Check(i+1,j,EnemyGrid) && !EnemyGrid[i-1][j]->Sunk()){ 
             EnemyGrid.Strike(i+1,j);
           	return 0;
           }
-          else if(EnemyGrid.IsHit(i,j+1) && Check(i)(j-1) && !EnemyGrid[i][j+1]->Sunk()){ 
+          else if(EnemyGrid.IsHit(i,j+1) && Check(i,j-1,EnemyGrid) && !EnemyGrid[i][j+1]->Sunk()){ 
             EnemyGrid.Strike(i,j-1);
           	return 0;
           }
-          else if(EnemyGrid.IsHit(i,j-1) && Check(i)(j+1) && !EnemyGrid[i][j-1]->Sunk()){ 
+          else if(EnemyGrid.IsHit(i,j-1) && Check(i,j+1,EnemyGrid) && !EnemyGrid[i][j-1]->Sunk()){ 
             EnemyGrid.Strike(i,j+1);
           	return 0;
           return 1;
