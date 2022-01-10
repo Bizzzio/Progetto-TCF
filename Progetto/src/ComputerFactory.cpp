@@ -157,7 +157,7 @@ void ComputerFactory::Turn(Griglia EnemyGrid, int NumGiocatore){
             y = rand()%10;
             }while(!Check(x,y,EnemyGrid));
             EnemyGrid.Strike(x,y);
-            break;
+        
           }
 	
   
