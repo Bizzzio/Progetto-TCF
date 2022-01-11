@@ -101,15 +101,16 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   int x, y;
   bool sparato = false;
   cout << "Turno giocatore" << NumGiocatore << endl;
-  EnemyGrid.DrawAlly();
   for (unsigned int i = 0; i < EnemyGrid.GetSize(); i++)
   {
     for (unsigned int j = 0; j < EnemyGrid.GetSize(); j++)
     {
+      //cout << "ciaone";
       if (EnemyGrid.IsHit(i, j))
       {
         if (!CheckSurroundings(EnemyGrid, i, j))
         {
+          cout << "ho sparato in" << i << j;
           sparato = true;
           break;
         }
@@ -118,6 +119,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   }
   if (!sparato)
   {
+    cout << "ciaone2";
     for (unsigned int i = 0; i < EnemyGrid.GetSize(); i++)
     {
       for (unsigned int j = 0; j < EnemyGrid.GetSize(); j++)
@@ -152,37 +154,44 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
       }
     }
   }
-
   if (!sparato)
   {
+
     do
     {
       x = rand() % 10;
       y = rand() % 10;
+      cout << "ho sparato in" << x << y;
     } while (!Check(x, y, EnemyGrid));
     EnemyGrid.Strike(x, y);
   }
+  EnemyGrid.DrawAlly();
 }
 
 bool ComputerFactory::CheckSurroundings(Griglia EnemyGrid, int i, int j)
 {
+  cout << "CheckSurroundings";
   if (EnemyGrid.IsHit(i + 1, j) && Check(i - 1, j, EnemyGrid) && !EnemyGrid[i + 1][j]->Sunk())
   {
+    cout << "ho sparato in" << i - 1 << j;
     EnemyGrid.Strike(i - 1, j);
     return 0;
   }
   else if (EnemyGrid.IsHit(i - 1, j) && Check(i + 1, j, EnemyGrid) && !EnemyGrid[i - 1][j]->Sunk())
   {
+    cout << "ho sparato in" << i + 1 << j;
     EnemyGrid.Strike(i + 1, j);
     return 0;
   }
   else if (EnemyGrid.IsHit(i, j + 1) && Check(i, j - 1, EnemyGrid) && !EnemyGrid[i][j + 1]->Sunk())
   {
+    cout << "ho sparato in" << i << j - 1;
     EnemyGrid.Strike(i, j - 1);
     return 0;
   }
   else if (EnemyGrid.IsHit(i, j - 1) && Check(i, j + 1, EnemyGrid) && !EnemyGrid[i][j - 1]->Sunk())
   {
+    cout << "ho sparato in" << i << j + 1;
     EnemyGrid.Strike(i, j + 1);
     return 0;
   }
