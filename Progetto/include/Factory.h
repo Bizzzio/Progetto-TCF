@@ -18,6 +18,6 @@ public:
         virtual bool EndGame() const = 0;
         virtual int GetSize() const = 0;
         virtual void Turn(Griglia &, int) = 0;
-        bool Check(int, int, Griglia);
+        bool Check(int, int, Griglia &);
 };
 #endif

@@ -101,6 +101,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   int x, y;
   bool sparato = false;
   cout << "Turno giocatore" << NumGiocatore << endl;
+  EnemyGrid.DrawAlly();
   for (unsigned int i = 0; i < EnemyGrid.GetSize(); i++)
   {
     for (unsigned int j = 0; j < EnemyGrid.GetSize(); j++)

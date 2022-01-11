@@ -137,6 +137,8 @@ void Navi::Strike(int x, int y) //questa funzione si occupa di cambiare la casel
 
 bool Navi::IsHit(int x, int y) const
 {
+    if (GetX() == -1)
+        return true;
     if (IsHorizontal())
         return Hit[x - GetX()];
 
