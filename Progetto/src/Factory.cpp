@@ -2,13 +2,12 @@
 
 bool Factory::Check(int x, int y, Griglia &grid)
 {
-	cout << "sono quaa";
+	cout << "check di" << x << " " << y;
 	int s = grid.GetSize();
-	cout << endl
-		 << x << " " << y;
+	cout << endl;
 	if ((x >= s || x < 0) || (y >= s || y < 0))
 	{
-		cout << "output";
+
 		cout << "Coordinate fuori target. Riprovare." << endl;
 		return false;
 	}
@@ -17,7 +16,7 @@ bool Factory::Check(int x, int y, Griglia &grid)
 	{
 		if (!grid[x][y])
 		{
-			cout << "output";
+
 			return true;
 		}
 		else
@@ -25,15 +24,33 @@ bool Factory::Check(int x, int y, Griglia &grid)
 
 			if (!(grid[x][y]->IsHit(x, y)))
 			{
-				cout << "output";
+
 				return true;
 			}
 			else
 			{
-				cout << "output";
+
 				cout << "Coordinate già colpite. Riprovare." << endl;
 				return false;
 			}
 		}
+	}
+}
+
+bool Factory::IsNave(int x, int y, Griglia &grid)
+{
+	cout << "check di" << x << " " << y;
+	int s = grid.GetSize();
+	cout << endl;
+	if ((x >= s || x < 0) || (y >= s || y < 0))
+	{
+
+		cout << "Coordinate fuori target. Riprovare." << endl;
+		return false;
+	}
+
+	else
+	{
+		return true;
 	}
 }

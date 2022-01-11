@@ -1,6 +1,7 @@
 #include "MenuPlay.h"
 
-MenuPlay::MenuPlay(){
+MenuPlay::MenuPlay()
+{
 	voci.push_back("1 giocatore");
 	voci.push_back("2 giocatori");
 	voci.push_back("Back to menu");
@@ -117,9 +118,9 @@ void MenuPlay::Draw() const
 		{
 			system("cls");
 			vector<int> setup = Menu::GetSetup();
-			Factory* p1=new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
-			Factory* p2=new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
-			Play* play=new Play (p1,p2);
+			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
+			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
+			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;
 		}
@@ -127,8 +128,8 @@ void MenuPlay::Draw() const
 		{
 			system("cls");
 			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
-			Factory *p2 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
+			Factory *p1 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
+			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
 			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;

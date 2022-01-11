@@ -52,7 +52,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x, y + i, fleet.back());
       }
-      system("cls");
+      //system("cls");
       //fleet.DrawAlly(x,y);
     }
     z++;
@@ -60,7 +60,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
   grid.DrawAlly();
   cout << "Premi un tasto per oscurare" << endl;
   getch();
-  system("cls");
+  //system("cls");
   //system("cls");
 }
 
@@ -110,7 +110,7 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   int x, y;
   cout << "Premi un tasto per mostrare la griglia";
   getch();
-  system("cls");
+  //system("cls");
   cout << "Turno giocatore" << NumGiocatore << endl;
   EnemyGrid.DrawEnemy();
   do
@@ -125,5 +125,5 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   EnemyGrid.DrawEnemy();
   cout << "Premi un tasto per oscurare" << endl;
   getch();
-  system("cls");
+  //system("cls");
 }

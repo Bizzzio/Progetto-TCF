@@ -19,5 +19,6 @@ public:
         virtual int GetSize() const = 0;
         virtual void Turn(Griglia &, int) = 0;
         bool Check(int, int, Griglia &);
+        bool IsNave(int, int, Griglia &);
 };
 #endif

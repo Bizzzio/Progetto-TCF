@@ -16,7 +16,7 @@ Play::Play(Factory *player1, Factory *player2) : grid1(player1->GetSize()), grid
 }
 
 void Play::PlayBattleship()
-{	// serve fuzione per cancellare gli output
+{ // serve fuzione per cancellare gli output
 	/*int x, y;
 	do
 	{
