@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-vector<int> Menu::Setup{10, 10, 0, 0, 1, 0, 0};
+vector<int> Menu::Setup{10, 10, 2, 2, 1, 1, 0};
 
 void Menu::Add(int x)
 {
