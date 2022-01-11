@@ -121,32 +121,37 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   if (!sparato)
   {
     cout << "ciaone2";
-    for (unsigned int i = 0; i < EnemyGrid.GetSize(); i++)
+    for (unsigned int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
     {
-      for (unsigned int j = 0; j < EnemyGrid.GetSize(); j++)
+      for (unsigned int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
       {
         if (EnemyGrid.IsHit(i, j))
         {
+          cout << "ishit va bene";
           if (Check(i + 1, j, EnemyGrid))
           {
+            cout << "ho sparato in" << i + 1 << j;
             EnemyGrid.Strike(i + 1, j);
             sparato = true;
             break;
           }
           else if (Check(i - 1, j, EnemyGrid))
           {
+            cout << "ho sparato in" << i - 1 << j;
             EnemyGrid.Strike(i - 1, j);
             sparato = true;
             break;
           }
           else if (Check(i, j + 1, EnemyGrid))
           {
+            cout << "ho sparato in" << i << j + 1;
             EnemyGrid.Strike(i, j + 1);
             sparato = true;
             break;
           }
           else if (Check(i, j - 1, EnemyGrid))
           {
+            cout << "ho sparato in" << i << j - 1;
             EnemyGrid.Strike(i, j - 1);
             sparato = true;
             break;

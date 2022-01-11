@@ -148,7 +148,7 @@ vector<Navi *> Griglia::operator[](int i)
 
 bool Griglia::IsHit(int x, int y) const
 {
-	if (grid[x][y])
+	if (grid[x][y] && (grid[x][y]->GetX()) != -1)
 	{
 		if (grid[x][y]->IsHit(x, y))
 			return true;
