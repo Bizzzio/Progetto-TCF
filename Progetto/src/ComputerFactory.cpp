@@ -108,6 +108,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
       //cout << "ciaone";
       if (EnemyGrid.IsHit(i, j))
       {
+        cout << "sono in" << i << j;
         if (!CheckSurroundings(EnemyGrid, i, j))
         {
           cout << "ho sparato in" << i << j;
@@ -171,29 +172,46 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 bool ComputerFactory::CheckSurroundings(Griglia EnemyGrid, int i, int j)
 {
   cout << "CheckSurroundings";
-  if (EnemyGrid.IsHit(i + 1, j) && Check(i - 1, j, EnemyGrid) && !EnemyGrid[i + 1][j]->Sunk())
+  if (Check(i - 1, j, EnemyGrid) && Check(i + 1, j, EnemyGrid))
   {
-    cout << "ho sparato in" << i - 1 << j;
-    EnemyGrid.Strike(i - 1, j);
-    return 0;
+    cout << "ho sparato in" << i - 1 << j << "1";
+    if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
+    {
+      cout << "ho sparato in" << i - 1 << j << "1";
+      EnemyGrid.Strike(i - 1, j);
+      return 0;
+    }
   }
-  else if (EnemyGrid.IsHit(i - 1, j) && Check(i + 1, j, EnemyGrid) && !EnemyGrid[i - 1][j]->Sunk())
+  if (Check(i - 1, j, EnemyGrid) && Check(i + 1, j, EnemyGrid))
   {
-    cout << "ho sparato in" << i + 1 << j;
-    EnemyGrid.Strike(i + 1, j);
-    return 0;
+    cout << "ho sparato in" << i + 1 << j << "2";
+    if (EnemyGrid.IsHit(i - 1, j) && !EnemyGrid[i - 1][j]->Sunk())
+    {
+      cout << "ho sparato in" << i + 1 << j << "2";
+      EnemyGrid.Strike(i + 1, j);
+      return 0;
+    }
   }
-  else if (EnemyGrid.IsHit(i, j + 1) && Check(i, j - 1, EnemyGrid) && !EnemyGrid[i][j + 1]->Sunk())
+  if (Check(i, j + 1, EnemyGrid) && Check(i, j - 1, EnemyGrid))
   {
-    cout << "ho sparato in" << i << j - 1;
-    EnemyGrid.Strike(i, j - 1);
-    return 0;
+    cout << "ho sparato in" << i << j - 1 << "3";
+    if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
+    {
+      cout << "ho sparato in" << i << j - 1 << "3";
+      EnemyGrid.Strike(i, j - 1);
+      return 0;
+    }
   }
-  else if (EnemyGrid.IsHit(i, j - 1) && Check(i, j + 1, EnemyGrid) && !EnemyGrid[i][j - 1]->Sunk())
+  if (Check(i, j + 1, EnemyGrid) && Check(i, j - 1, EnemyGrid))
   {
-    cout << "ho sparato in" << i << j + 1;
-    EnemyGrid.Strike(i, j + 1);
-    return 0;
+    cout << "ho sparato in" << i << j + 1 << "4";
+    if (EnemyGrid.IsHit(i, j - 1) && !EnemyGrid[i][j - 1]->Sunk())
+    {
+      cout << "ho sparato in" << i << j + 1 << "4";
+      EnemyGrid.Strike(i, j + 1);
+      return 0;
+    }
   }
+  cout << "im here";
   return 1;
 }
