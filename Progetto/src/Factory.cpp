@@ -2,7 +2,7 @@
 
 bool Factory::Check(int x, int y, Griglia &grid)
 {
-	cout << "check di" << x << " " << y;
+	//cout << "check di" << x << " " << y;
 	int s = grid.GetSize();
 	cout << endl;
 	if ((x >= s || x < 0) || (y >= s || y < 0))
@@ -39,7 +39,6 @@ bool Factory::Check(int x, int y, Griglia &grid)
 
 bool Factory::IsNave(int x, int y, Griglia &grid)
 {
-	cout << "check di" << x << " " << y;
 	int s = grid.GetSize();
 	cout << endl;
 	if ((x >= s || x < 0) || (y >= s || y < 0))
