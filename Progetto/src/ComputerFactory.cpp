@@ -101,9 +101,9 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   int x, y;
   bool sparato = false;
   //cout << "Turno giocatore" << NumGiocatore << endl;
-  for (int i = 0; i < EnemyGrid.GetSize(); i++)
+  for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
   {
-    for (int j = 0; j < EnemyGrid.GetSize(); j++)
+    for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
     {
       //cout << "ciaone";
       if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())
@@ -177,7 +177,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
 {
   //cout << "CheckSurroundings";
-  if (IsNave(i - 1, j, EnemyGrid) && Check(i + 1, j, EnemyGrid))
+  if (IsNave(i + 1, j, EnemyGrid) && Check(i - 1, j, EnemyGrid))
   {
     //cout << "ho sparato in" << i - 1 << j << "1";
     if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
@@ -187,7 +187,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
       return 0;
     }
   }
-  if (Check(i - 1, j, EnemyGrid) && IsNave(i + 1, j, EnemyGrid))
+  if (Check(i + 1, j, EnemyGrid) && IsNave(i - 1, j, EnemyGrid))
   {
     //cout << "ho sparato in" << i + 1 << j << "2";
     if (EnemyGrid.IsHit(i - 1, j) && !EnemyGrid[i - 1][j]->Sunk())
