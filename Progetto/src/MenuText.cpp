@@ -124,17 +124,17 @@ void MenuText::PrintVoci(unsigned int pos) const
     }
 #else
     cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (unsigned int d = 0; d < Config.size(); d++)
+    for (unsigned int d = 0; d < Description.size(); d++)
     {
         if (d == pos)
         {
-            cout << "\033[32m"
-                 << "--> " << Config[d];
+            cout << Menu::GetColor()
+                 << "--> " << Description[d];
 
             cout << "\033[0m" << endl;
         }
         else
-            cout << Config[d];
+            cout << Description[d];
         cout << endl;
     }
 #endif
@@ -242,7 +242,7 @@ void MenuText::SelectWindows() const
                         break;
                     case KEY_DOWN /* K */:
                         //cout << endl << "Down" << endl;   // key down
-                        if (pos < Config.size() - 1)
+                        if (pos < Description.size() - 1)
                             pos++;
                         break;
 
@@ -290,7 +290,7 @@ void MenuText::SelectWindows() const
         if (pos)
             for (int i = 0; i < 5; i++)
             {
-                Menu::Add(Config[pos][2 * i] - '0');
+                Menu::Add(Description[pos][2 * i] - '0');
             }
     } while (pos);
 #endif

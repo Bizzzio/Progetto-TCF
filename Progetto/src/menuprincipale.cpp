@@ -47,7 +47,7 @@ void MenuPrincipale::PrintVoci(unsigned int pos) const
   {
     if (d == pos)
     {
-      cout << Color
+      cout << Menu::GetColor()
            << "--> ";
       Menus[d]->DrawVoci();
       cout << "\033[0m" << endl;

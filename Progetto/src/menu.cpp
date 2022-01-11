@@ -191,31 +191,34 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
 }
 
 #ifndef _WIN32
-static void SetColor(int color)
+
+string Menu::GetColor() const
 {
-  switch (color)
+  string Color;
+  switch (GetSetup()[0])
   {
   case 9:
-    Color = "\033[34m";
+    Color = string("\033[34m");
     break;
   case 10:
-    Color = "\033[32m";
+    Color = string("\033[32m");
     break;
   case 11:
-    Color = "\033[96m";
+    Color = string("\033[96m");
     break;
   case 12:
-    Color = "\033[31m";
+    Color = string("\033[31m");
     break;
   case 13:
-    Color = "\033[35m";
+    Color = string("\033[35m");
     break;
   case 14:
-    Color = "\033[93m";
+    Color = string("\033[93m");
     break;
 
   default:
     break;
   }
+  return Color;
 }
 #endif

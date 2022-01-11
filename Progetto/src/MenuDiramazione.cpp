@@ -73,7 +73,7 @@ void MenuDiramazione::PrintVoci(unsigned int pos) const
   {
     if (d == pos)
     {
-      cout << Color
+      cout << GetColor()
            << "--> ";
       Menus[d]->DrawVoci();
       cout << "\033[0m" << endl;

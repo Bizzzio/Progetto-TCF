@@ -55,14 +55,12 @@ public:
 	static vector<int> GetSetup();
 
 #ifndef _WIN32
-	static void SetColor(int);
+	string GetColor() const;
 #endif
 
 private:
 	static vector<int> Setup;
-#ifndef _WIN32
-	static string Color = SetColor(Setup[0]);
-#endif
+
 };
 
 #endif
