@@ -4,18 +4,19 @@
 #define CLEAR "clear"
 #endif
 
-MenuDiramazione::MenuDiramazione(){
+MenuDiramazione::MenuDiramazione()
+{
   VoceSopra = "Options";
-  Menus.push_back(new MenuOpzioni(1,string("Seleziona dimensioni griglia"),string("Dimensioni.txt")));
-  Menus.push_back(new MenuOpzioni(0,string("Seleziona colore del menu"),string("Colori.txt")));
-  Menus.push_back(new MenuOpzioni(2,string("Seleziona flotta"),string("Setup.txt")));
+  Menus.push_back(new MenuOpzioni(1, string("Seleziona dimensioni griglia"), string("Dimensioni.txt")));
+  Menus.push_back(new MenuOpzioni(0, string("Seleziona colore del menu"), string("Colori.txt")));
+  Menus.push_back(new MenuOpzioni(2, string("Seleziona flotta"), string("Setup.txt")));
   Menus.push_back(new MenuBack);
 }
 
-MenuDiramazione::MenuDiramazione(string vocesopra, vector<Menu *> menu) 
+MenuDiramazione::MenuDiramazione(string vocesopra, vector<Menu *> menu)
 {
-    VoceSopra=vocesopra;
-    Menus=menu;
+  VoceSopra = vocesopra;
+  Menus = menu;
 }
 
 MenuDiramazione::~MenuDiramazione()
@@ -27,26 +28,22 @@ MenuDiramazione::~MenuDiramazione()
 
 void MenuDiramazione::DrawVoci() const
 {
-    cout<<VoceSopra;
+  cout << VoceSopra;
 }
-
 
 void MenuDiramazione::Draw() const
 {
-  unsigned int pos=0;
+  unsigned int pos = 0;
   cout << "Selezionare la configurazione usando le frecce" << endl;
 
-  
   do
   {
     system("cls");
     PrintVoci(pos);
     pos = Arrows(&pos, Menus);
 
-
     if (pos != Menus.size() - 1)
       Menus[pos]->Draw();
-
 
   } while (pos != Menus.size() - 1);
 }
@@ -76,7 +73,7 @@ void MenuDiramazione::PrintVoci(unsigned int pos) const
   {
     if (d == pos)
     {
-      cout << "\033[32m"
+      cout << Color
            << "--> ";
       Menus[d]->DrawVoci();
       cout << "\033[0m" << endl;
@@ -87,5 +84,3 @@ void MenuDiramazione::PrintVoci(unsigned int pos) const
   }
 #endif
 }
-
-

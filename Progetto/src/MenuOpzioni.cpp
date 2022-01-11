@@ -1,20 +1,21 @@
 #include "MenuOpzioni.h"
 void MenuOpzioni::DrawVoci() const
 {
-    cout<<Nome;
+    cout << Nome;
 }
 
-MenuOpzioni::MenuOpzioni(int numero,string nome, string filename)
+MenuOpzioni::MenuOpzioni(int numero, string nome, string filename)
 {
-    NumeroOpzione=numero;
-    Nome=nome;
-    Filename=filename;
+    NumeroOpzione = numero;
+    Nome = nome;
+    Filename = filename;
     string valore;
-    ifstream file(string("../src/")+Filename.c_str());
-    cout<<string("../src/")+Filename.c_str();
+    ifstream file(string("../src/") + Filename.c_str());
+    cout << string("../src/") + Filename.c_str();
     if (file.is_open())
     {
-        while (getline(file, valore)){
+        while (getline(file, valore))
+        {
             Lista.push_back(valore);
         }
 
@@ -22,7 +23,7 @@ MenuOpzioni::MenuOpzioni(int numero,string nome, string filename)
     }
     else
     {
-        file.open(string("src/")+Filename.c_str());
+        file.open(string("src/") + Filename.c_str());
         if (file.is_open())
         {
             cout << "Copio file opzioni2" << endl;
@@ -34,50 +35,48 @@ MenuOpzioni::MenuOpzioni(int numero,string nome, string filename)
         else
             cout << "Unable to open file opzioni1";
     }
-    if(numero==2)
+    if (numero == 2)
         Lista.push_back("Aggiungi configurazione");
     cout << "Fine costruttore MenuOpzioni" << endl;
 }
 
 void MenuOpzioni::Draw() const
 {
-  unsigned int pos=0;
-  cout << "Selezionare la configurazione usando le frecce" << endl;
+    unsigned int pos = 0;
+    cout << "Selezionare la configurazione usando le frecce" << endl;
 
-  
-  do
-  {
-    system("cls");
-    PrintVoci(pos);
-    pos = Arrows(&pos, Lista);
+    do
+    {
+        system("cls");
+        PrintVoci(pos);
+        pos = Arrows(&pos, Lista);
 
-    if (pos)
-        SetOption(NumeroOpzione,pos);
+        if (pos)
+            SetOption(NumeroOpzione, pos);
     } while (pos);
 }
 
-void MenuOpzioni::SetOption(int numero,unsigned int scelta) const
+void MenuOpzioni::SetOption(int numero, unsigned int scelta) const
 {
     switch (numero)
     {
     case (0):
-        {
-            Menu::Set(numero,scelta+8);
-        }
-        break;
-
+    {
+        Menu::Set(numero, scelta + 8);
+    }
+    break;
 
     case (1):
-        Menu::Set(numero,stoi(Lista[scelta]));
+        Menu::Set(numero, stoi(Lista[scelta]));
         break;
 
     case (2):
-        if (scelta==Lista.size()-1)
+        if (scelta == Lista.size() - 1)
             AddConfig();
         for (int i = 0; i < 5; i++)
-            {
-                Menu::Set(i+2,Lista[scelta][2 * i] - '0');
-            }
+        {
+            Menu::Set(i + 2, Lista[scelta][2 * i] - '0');
+        }
         break;
 
     default:
@@ -110,7 +109,7 @@ void MenuOpzioni::PrintVoci(unsigned int pos) const
     {
         if (d == pos)
         {
-            cout << "\033[32m"
+            cout << Color
                  << "--> " << Lista[d];
 
             cout << "\033[0m" << endl;
@@ -122,45 +121,50 @@ void MenuOpzioni::PrintVoci(unsigned int pos) const
 #endif
 }
 
-void MenuOpzioni::AddConfig() const {
+void MenuOpzioni::AddConfig() const
+{
     char n2, n3, n4, n5, n6;
-        char newline [10] = {n2, ' ', n3, ' ', n4, ' ', n5, ' ', n6};
-        for (int i = 0; i < 5; i++) {
-            cout << "Inserire il numero di navi da " << i + 2 << endl;
-            cin >> newline[i*2];
-            for (int j = 0; j < i+1; j++) {
-                cout << newline[j*2] << " ";
-            }
+    char newline[10] = {n2, ' ', n3, ' ', n4, ' ', n5, ' ', n6};
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "Inserire il numero di navi da " << i + 2 << endl;
+        cin >> newline[i * 2];
+        for (int j = 0; j < i + 1; j++)
+        {
+            cout << newline[j * 2] << " ";
         }
-        Lista.insert(Lista.end()-1,newline);
+    }
+    Lista.insert(Lista.end() - 1, newline);
 
-        ofstream outfile("src/Setup.txt", std::ios_base::app); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
+    ofstream outfile("src/Setup.txt", std::ios_base::app); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
+    if (outfile.is_open())
+    {
+        outfile << '\n';
+        for (int i = 0; i < 9; i++)
+        {
+            outfile << newline[i];
+        }
+        outfile.close();
+    }
+    else
+    {
+        cout << "Scrivo nel file 2";
+        outfile.open("../src/Setup.txt", std::ios_base::app);
         if (outfile.is_open())
         {
-            outfile<<'\n';
-            for (int i = 0; i < 9; i++) {
+            outfile << '\n';
+            for (int i = 0; i < 9; i++)
+            {
                 outfile << newline[i];
-        }
+            }
             outfile.close();
         }
         else
-        {
-            cout << "Scrivo nel file 2";
-            outfile.open("../src/Setup.txt", std::ios_base::app);
-            if (outfile.is_open())
-            {
-                outfile<<'\n';
-                for (int i = 0; i < 9; i++) {
-                    outfile << newline[i];
-            }
-                outfile.close();
-            }
-            else
-                cout << "Unable to modify file" << endl;
-        }
-    
-    for(int j=0;j<5;j++){                                       //mettere questo se si vuole impostare subito la flotta
-        Menu::Set(j+2,newline[2 * j] - '0');
+            cout << "Unable to modify file" << endl;
+    }
+
+    for (int j = 0; j < 5; j++)
+    { //mettere questo se si vuole impostare subito la flotta
+        Menu::Set(j + 2, newline[2 * j] - '0');
     }
 }
-

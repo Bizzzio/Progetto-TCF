@@ -47,7 +47,7 @@ void MenuPrincipale::PrintVoci(unsigned int pos) const
   {
     if (d == pos)
     {
-      cout << "\033[32m"
+      cout << Color
            << "--> ";
       Menus[d]->DrawVoci();
       cout << "\033[0m" << endl;
@@ -63,12 +63,9 @@ void MenuPrincipale::SelectWindows() const
 {
 #ifdef _WIN32
 
-
-  
-  unsigned int pos=0;
+  unsigned int pos = 0;
   cout << "Selezionare la configurazione usando le frecce" << endl;
 
-  
   do
   {
     system("cls");
@@ -83,11 +80,10 @@ void MenuPrincipale::SelectWindows() const
   }
   SetConsoleTextAttribute(h, 15);*/
 
-  cout << "See you soon!" << endl;
+    cout << "See you soon!" << endl;
 
     if (pos != Menus.size() - 1)
       Menus[pos]->Draw();
-
 
   } while (pos != Menus.size() - 1);
 #endif
@@ -220,4 +216,3 @@ void MenuPrincipale::SelectOthers() const
   } while (pos != Menus.size() - 1);
 #endif
 }
-

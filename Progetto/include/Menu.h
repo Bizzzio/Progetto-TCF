@@ -44,19 +44,25 @@ class Menu
 {
 
 public:
-	
 	unsigned int Arrows(unsigned int *pos, vector<Menu *>) const;
 	unsigned int Arrows(unsigned int *pos, vector<string>) const;
-	virtual void PrintVoci(unsigned int) const=0;
+	virtual void PrintVoci(unsigned int) const = 0;
 	virtual void DrawVoci() const {};
 	virtual void Draw() const = 0;
 	static void Add(int);
-	static void Set(int,int);
+	static void Set(int, int);
 
 	static vector<int> GetSetup();
 
+#ifndef _WIN32
+	static void SetColor(int);
+#endif
+
 private:
 	static vector<int> Setup;
+#ifndef _WIN32
+	static string Color = SetColor(Setup[0]);
+#endif
 };
 
 #endif
