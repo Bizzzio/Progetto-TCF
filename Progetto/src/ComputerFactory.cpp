@@ -52,16 +52,18 @@ void ComputerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
       do
       {
         do
-        {
-          n = rand() % 2;
-        } while (n != 1 && n != 0);
+        {                        
+          n = rand() % 2;      // Il % ci dà il resto di una divisione
+        } while (n != 1 && n != 0);     // Esco solo se n=0 o n=1 e n determinerà l'orientazione della nave
         h = n;
-        x = rand() % 10;
-        y = rand() % 10;
-      } while (!grid.CheckCell(h, x, y, z));
+        x = rand() % 10;  // con %10 mi restringo ai numeri tra 0 e 9, che poi vengono controllati
+        y = rand() % 10;  // da CheckCell
+      } while (!grid.CheckCell(h, x, y, z));  // CheckCell può andare nella Factory?
       fleet.push_back(new Navi(h, x, y, z));
       if (h)
       {
+        // più carino se mettiamo questo for direttamente in Griglia dandogli anche come
+        // argomento un bool e la lunghezza
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x + i, y, fleet.back());
       }
