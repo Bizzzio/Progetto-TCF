@@ -1,6 +1,26 @@
 #include <iostream>
 #include <vector>
+#ifdef _WIN32
 #include <conio.h>
+#else
+#include <termios.h>
+#include <unistd.h>
+#include <stdio.h>
+
+/* reads from keypress, doesn't echo */
+int getchp(void)
+{
+    struct termios oldattr, newattr;
+    int ch;
+    tcgetattr( STDIN_FILENO, &oldattr );
+    newattr = oldattr;
+    newattr.c_lflag &= ~( ICANON | ECHO );
+    tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
+    ch = getchar();
+    tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
+    return ch;
+}
+#endif
 using namespace std;
 #include "PlayerFactory.h"
 // abbiamo creato la griglia da 10
@@ -59,7 +79,11 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
   }
   grid.DrawAlly();
   cout << "Premi un tasto per oscurare" << endl;
+  #ifdef _WIN32
   getch();
+  #else
+  getchp();
+  #endif
   //system("cls");
   //system("cls");
 }
@@ -115,8 +139,11 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 
   int x, y;
   cout << "Premi un tasto per mostrare la griglia";
+#ifdef _WIN32
   getch();
-  //system("cls");
+  #else
+  getchp();
+  #endif  //system("cls");
   cout << "Turno giocatore" << NumGiocatore << endl;
   EnemyGrid.DrawEnemy();
   do
@@ -130,6 +157,10 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   //grid1.DrawAlly();
   EnemyGrid.DrawEnemy();
   cout << "Premi un tasto per oscurare" << endl;
+#ifdef _WIN32
   getch();
+  #else
+  getchp();
+  #endif
   //system("cls");
 }

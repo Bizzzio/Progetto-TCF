@@ -36,7 +36,7 @@ void MenuPlay::PrintVoci(unsigned int pos) const
 	{
 		if (d == pos)
 		{
-			cout << "\033[32m"
+			cout << Menu::GetColor()
 				 << "--> " << voci[d];
 			cout << "\033[0m" << endl;
 		}
@@ -204,15 +204,21 @@ void MenuPlay::Draw() const
 		switch (pos)
 		{
 		case 0:
-			//Factory* p1=new PlayerFactory;
-			//Factory* p2=new ComputerFactory;
-			//Play* play=new Play (p1,p2);
+		{
+			system("cls");
+			vector<int> setup = Menu::GetSetup();
+			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
+			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
+			Play *play = new Play(p1, p2);
+			play->PlayBattleship();
 			break;
+		}
 		case 1:
 		{
+			system("cls");
 			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
-			Factory *p2 = new PlayerFactory(10, setup[0], setup[1], setup[2], setup[3], setup[4]); //dovrà essere new PlayerFactory
+			Factory *p1 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
+			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
 			Play *play = new Play(p1, p2);
 			play->PlayBattleship();
 			break;

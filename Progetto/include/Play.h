@@ -7,24 +7,7 @@ using namespace std;
 #include "PlayerFactory.h"
 #include "ComputerFactory.h"
 #include <typeinfo> 
-#ifdef _WIN32
-#include <conio.h>
-#define CLEAR "cls"
-#else
-#define CLEAR "clear"
-#include <unistd.h>
-#include <termios.h>
-void getch()
-{
-	char a;
-	struct termios t;
-	tcgetattr(STDIN_FILENO, &t);
-	t.c_lflag &= ~ICANON;
-	tcsetattr(STDIN_FILENO, TCSANOW, &t);
 
-	cin >> a;
-}
-#endif
 
 class Play
 {
