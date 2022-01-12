@@ -20,11 +20,12 @@ MenuText::MenuText(string x)
     string valore;
     // string Filename = "src/Ins.txt";
 
-    ifstream file(GetFileName(x).c_str()); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
+    ifstream file(string("src/") + x + string(".txt")); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
     if (file.is_open())
     {
-        while (getline(file, valore)){
-        cout << "Copio file Ins1 su istruzioni" << endl;
+        while (getline(file, valore))
+        {
+            cout << "Copio file Ins1 su istruzioni" << endl;
             Description.push_back(valore);
         }
 
@@ -32,7 +33,7 @@ MenuText::MenuText(string x)
     }
     else
     {
-        file.open(x.c_str());
+        file.open(GetFileName(x).c_str());
         if (file.is_open())
         {
             cout << "Copio file Ins2 su istruzioni" << endl;
@@ -76,36 +77,38 @@ MenuText::MenuText(string x)
     cout << "Fine costruttore MenuText" << endl;*/
 }
 
-string MenuText::GetFileName(string &x) const{
+string MenuText::GetFileName(string &x) const
+{
 
     string filename;
-    string location = "src/";
+    string location = "../src/";
     string extension = ".txt";
 
-    for (int j = 0; j < extension.length(); j++) {
+    for (int j = 0; j < extension.length(); j++)
+    {
         x.push_back(extension.at(j));
     }
 
-    for (int z = 0; z < location.length(); z++) {
+    for (int z = 0; z < location.length(); z++)
+    {
         filename.push_back(location.at(z));
     }
 
-    for (int i = 0; i < x.size(); i++) {
+    for (int i = 0; i < x.size(); i++)
+    {
         filename.push_back(x[i]);
     }
 
-    // char pippo[filename.size() + 1]; 
- 
-    // strcpy(pippo, filename.c_str()); 
+    // char pippo[filename.size() + 1];
+
+    // strcpy(pippo, filename.c_str());
 
     // const char * Filename[filename.size()+1] = filename.c_str();
 
     // const char Filename = "nomedelfile";
 
     // cout << "Name of file: " << *Filename << endl;
-
     return filename;
-
 }
 
 void MenuText::Draw() const
@@ -118,7 +121,8 @@ void MenuText::PrintVoci(unsigned int pos) const
 {
 #ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    for (unsigned int d = 1; d < Description.size(); d++){
+    for (unsigned int d = 1; d < Description.size(); d++)
+    {
         cout << Description[d];
         cout << endl;
     }
@@ -149,7 +153,7 @@ void MenuText::SelectWindows() const
 #define KEY_DOWN 80
 
     int c, ex;
-    unsigned int pos=0;
+    unsigned int pos = 0;
 
     PrintVoci(0);
     system("cls");
