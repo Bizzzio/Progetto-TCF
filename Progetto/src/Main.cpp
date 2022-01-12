@@ -39,8 +39,9 @@ int main()
 	new MenuOpzioni(2,string("Seleziona flotta"),string("Setup.txt")), 
 	new MenuBack}), 
 	new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack}};*/
-	vector<Menu *> Menus {{new MenuPlay, new MenuDiramazione,new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack("Quit")}};
-	MenuDiramazione MenuPrincipale(string("MenuPrincipale"),Menus);
+	//vector<Menu *> Menus {{new MenuPlay, new MenuDiramazione,new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack("Quit")}};
+	//MenuDiramazione MenuPrincipale(string("MenuPrincipale"),Menus);
+	MenuDiramazione MenuPrincipale;
 	MenuPrincipale.Draw();
 #ifdef __unix__
 /*
