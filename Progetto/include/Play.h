@@ -15,8 +15,10 @@ class Play
 public:
 	Play(Factory *, Factory *);
 	~Play(){};
+	Factory * GetFactory(int) const;
 	bool Check(int, int, Griglia);
 	void PlayBattleship();
+	bool EndGame(int);
 
 private:
 	Griglia grid1;
