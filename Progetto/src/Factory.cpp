@@ -54,18 +54,6 @@ bool Factory::IsNave(int x, int y, Griglia &grid)
 	}
 }
 
-bool Factory::Checkfleet() const{
-
-	vector<Navi *>::const_iterator i;
-	for (i = GetFleet().begin(); i != GetFleet().end(); i++)
-  	{
-    if (!(*i)->Sunk())
-      return false;
-  	}
-
-  	return true;
-}
-
 bool Factory::CheckCell(bool t, int x, int y, int length) const
 {
     if (t)

@@ -94,7 +94,7 @@ ComputerFactory::~ComputerFactory()
     delete *i;
 }
 
-/*bool ComputerFactory::EndGame() const
+bool ComputerFactory::EndGame() const
 {
 
   unsigned int count = 0;
@@ -115,7 +115,7 @@ ComputerFactory::~ComputerFactory()
   }
   else
     return false;
-}*/
+}
 
 void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {

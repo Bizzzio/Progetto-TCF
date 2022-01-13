@@ -15,11 +15,10 @@ public:
         virtual void SetFleet(int n2, int n3, int n4, int n5, int n6) = 0;
         virtual vector<Navi *> GetFleet() const = 0;
         virtual Griglia GetGrid() const = 0;
+        virtual bool EndGame() const = 0;
         virtual int GetSize() const = 0;
         virtual void Turn(Griglia &, int) = 0;
         virtual bool CheckCell(bool, int, int, int) const;
-        // bool EndGame() const;
-        bool Checkfleet() const;
         bool Check(int, int, Griglia &);
         bool IsNave(int, int, Griglia &);
         

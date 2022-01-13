@@ -39,17 +39,6 @@ Play::Play(Factory *player1, Factory *player2) : grid1(player1->GetSize()), grid
 	Player2 = player2;
 }
 
-Factory * Play::GetFactory(int d) const{
-	if(d=1)
-		return Player1;
-	if(d=2)
-		return Player2;
-}
-
-bool Play::EndGame(int c){
-	return GetFactory(c)->Checkfleet();
-}
-
 void Play::PlayBattleship()
 { // serve fuzione per cancellare gli output
 	/*int x, y;
@@ -110,16 +99,15 @@ void Play::PlayBattleship()
 		Player1->Turn(grid2, 1);
 		Player2->Turn(grid1, 2);
 
-	} while (!EndGame(1) && !EndGame(2));
-	/*if (EndGame(1))
+	} while (!Player1->EndGame() && !Player2->EndGame());
+	if (Player1->EndGame())
 	{
 		cout << "GIOCATORE 2 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 	}
-	cout << "Ciao" << endl;
-	if (EndGame(2))
+	if (Player2->EndGame())
 	{
 		cout << "GIOCATORE 1 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-	}*/
+	}
 	#ifdef _WIN32
   getch();
   #else
