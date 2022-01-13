@@ -117,6 +117,14 @@ void MenuPlay::Draw() const
 		case 0:
 		{
 			system("cls");
+			/* 
+			int a;
+			cout << "Selezionare la difficoltà: 0 per facile, 1 per difficile: "
+			do{
+				cin >> a;
+			}while(a!=0 && a!=1)
+			Menu::Add(a);
+			*/
 			vector<int> setup = Menu::GetSetup();
 			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
 			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
