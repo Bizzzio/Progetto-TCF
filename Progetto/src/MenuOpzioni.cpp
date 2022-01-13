@@ -1,17 +1,16 @@
 #include "MenuOpzioni.h"
-void MenuOpzioni::DrawVoci() const
+void MenuOpzioni::DrawVoci() const                              //Stampa il nome dell'opzione quando richiesto dai menù sopra
 {
     cout << Nome;
 }
 
-MenuOpzioni::MenuOpzioni(int numero, string nome, string filename)
+MenuOpzioni::MenuOpzioni(int numero, string nome, string filename)                  //copio opzioni dal file di testo
 {
     NumeroOpzione = numero;
     Nome = nome;
     Filename = filename;
     string valore;
-    ifstream file(string("../src/") + Filename.c_str());
-    cout << string("../src/") + Filename.c_str();
+    ifstream file(string("../src/") + Filename.c_str());                            //quando esegue main.exe devo tornare indietro di una cartella e aprire poi src
     if (file.is_open())
     {
         while (getline(file, valore))
@@ -26,21 +25,20 @@ MenuOpzioni::MenuOpzioni(int numero, string nome, string filename)
         file.open(string("src/") + Filename.c_str());
         if (file.is_open())
         {
-            cout << "Copio file opzioni2" << endl;
+
             while (getline(file, valore))
                 Lista.push_back(valore);
 
             file.close();
         }
         else
-            cout << "Unable to open file opzioni1";
+        cout<<"Unable to open "<<Filename;
     }
     if (numero == 2)
         Lista.push_back("Aggiungi configurazione");
-    cout << "Fine costruttore MenuOpzioni" << endl;
 }
 
-void MenuOpzioni::Draw() const
+void MenuOpzioni::Draw() const                  //Gestisce tutto il menu: stampa, muoversi lungo le opzioni e gestire le scelte dell'utente
 {
     unsigned int pos = 0;
     cout << "Selezionare la configurazione usando le frecce" << endl;
@@ -56,21 +54,21 @@ void MenuOpzioni::Draw() const
     } while (pos);
 }
 
-void MenuOpzioni::SetOption(int numero, unsigned int scelta) const
+void MenuOpzioni::SetOption(int numero, unsigned int scelta) const          //SetOption modifica Setup(statico)
 {
-    switch (numero)
+    switch (numero)                                                         //A seconda di quale sia in numero fornito come parametro, si comporta in modo diverso
     {
-    case (0):
+    case (0):                                                               //cambia il colore
     {
         Menu::Set(numero, scelta + 8);
     }
     break;
 
-    case (1):
+    case (1):                                                               //cambia dimensione della griglia
         Menu::Set(numero, stoi(Lista[scelta]));
         break;
 
-    case (2):
+    case (2):                                                               //cambia il numero di navi   
         if (scelta == Lista.size() - 1)
             AddConfig();
         for (int i = 0; i < 5; i++)
@@ -84,7 +82,7 @@ void MenuOpzioni::SetOption(int numero, unsigned int scelta) const
     }
 }
 
-void MenuOpzioni::PrintVoci(unsigned int pos) const
+void MenuOpzioni::PrintVoci(unsigned int pos) const                         //stampa le varie opzioni
 {
 #ifdef _WIN32
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -121,7 +119,7 @@ void MenuOpzioni::PrintVoci(unsigned int pos) const
 #endif
 }
 
-void MenuOpzioni::AddConfig() const
+void MenuOpzioni::AddConfig() const                                     //aggiunge un'opzione (ad esempio una certa flotta)
 {
     char n2, n3, n4, n5, n6;
     char newline[10] = {n2, ' ', n3, ' ', n4, ' ', n5, ' ', n6};
