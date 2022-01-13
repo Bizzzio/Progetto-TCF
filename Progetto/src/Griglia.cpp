@@ -96,7 +96,7 @@ void Griglia::DrawAlly() const
 		 << endl;
 }
 //TODO: aggiungere messaggi di errore
-bool Griglia::CheckCell(bool t, int x, int y, int length) const
+/*bool Griglia::CheckCell(bool t, int x, int y, int length) const
 {
 	if (t)
 	{
@@ -129,7 +129,7 @@ bool Griglia::CheckCell(bool t, int x, int y, int length) const
 		return false;
 	}
 	return false;
-}
+}*/
 
 void Griglia::SetGriglia(int i, int j, Navi *nave)
 {

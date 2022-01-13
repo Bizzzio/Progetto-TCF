@@ -18,7 +18,9 @@ public:
         virtual bool EndGame() const = 0;
         virtual int GetSize() const = 0;
         virtual void Turn(Griglia &, int) = 0;
+        virtual bool CheckCell(bool, int, int, int) const;
         bool Check(int, int, Griglia &);
         bool IsNave(int, int, Griglia &);
+        
 };
 #endif

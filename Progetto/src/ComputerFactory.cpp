@@ -58,7 +58,7 @@ void ComputerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         h = n;
         x = rand() % 10;  // con %10 mi restringo ai numeri tra 0 e 9, che poi vengono controllati
         y = rand() % 10;  // da CheckCell
-      } while (!grid.CheckCell(h, x, y, z));  // CheckCell può andare nella Factory?
+      } while (!CheckCell(h, x, y, z));  // CheckCell può andare nella Factory?
       fleet.push_back(new Navi(h, x, y, z));
       if (h)
       {
@@ -242,3 +242,4 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   //cout << "im here";
   return 1;
 }
+

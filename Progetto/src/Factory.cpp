@@ -53,3 +53,38 @@ bool Factory::IsNave(int x, int y, Griglia &grid)
 		return true;
 	}
 }
+
+bool Factory::CheckCell(bool t, int x, int y, int length) const
+{
+    if (t)
+    {
+        if (x + length - GetSize() <= 0)
+        {
+
+            for (int i = 0; i < length; i++)
+            {
+                if (GetGrid()[x + i][y])
+                    return false;
+            }
+            if (y < GetSize())
+                return true;
+        }
+        return false;
+    }
+
+    else
+    {
+        if (y + length - GetSize() <= 0)
+        {
+            for (int i = 0; i < length; i++)
+            {
+                if (GetGrid()[x][y + i])
+                    return false;
+            }
+            if (x < GetSize())
+                return true;
+        }
+        return false;
+    }
+    return false;
+}

@@ -60,7 +60,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         h = n;
         cout << "\nDammi una x e una y per posizionare la nave sulla griglia" << endl;
         cin >> x >> y;
-      } while (!grid.CheckCell(h, x, y, z));
+      } while (!CheckCell(h, x, y, z)); // Spostando CheckCell dalla griglia alla factory sostituito !grid.CheckCell(h, x, y, z) con !CheckCell(h, x, y, z)
       fleet.push_back(new Navi(h, x, y, z));
       if (h)
       {

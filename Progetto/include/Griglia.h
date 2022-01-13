@@ -20,7 +20,7 @@ public:
     void SetGriglia(int, int, Navi*);           //fa puntare la casella in input ad una nave in input
     int GetSize() const;
     void Strike(int, int);   
-    bool CheckCell(bool, int, int, int) const;
+    // bool CheckCell(bool, int, int, int) const;
     bool IsHit(int x, int y) const;
 
     //gestisce il colpire una certa casella, richiamando la funzione Strike delle navi.
