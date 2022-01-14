@@ -49,74 +49,20 @@ void MenuPlay::PrintVoci(unsigned int pos) const
 
 void MenuPlay::Draw() const
 {
-	vector<string>::iterator i;
-
-	for (unsigned int c = 0; c < voci.size(); c++)
-		cout << voci[c] << endl;
-
-#ifdef _WIN32
-#define KEY_UP 72
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-#define KEY_DOWN 80
-	/*cout<<"ciao";
-		int ch;
-		ch=getch();
-		cout<<ch;
-		getch();
-		//system("cls");*/
-	int c, ex;
 	unsigned int pos = 0;
 	cout << "Selezionare la configurazione usando le frecce" << endl;
 
-	PrintVoci(0);
-	system("cls");
 	do
 	{
-		PrintVoci(pos);
-
-		do
-		{
-
-			c = getch();
-			if (c == 0 || c == 224)
-			{
-				switch (ex = getch())
-				{
-				case KEY_UP /* H */:
-					//cout << endl << "Up" << endl;//key up
-					if (pos != 0)
-						pos--;
-					break;
-				case KEY_DOWN /* K */:
-					//cout << endl << "Down" << endl;   // key down
-					if (pos < voci.size() - 1)
-						pos++;
-					break;
-
-				default:
-					break;
-				}
-				system("cls");
-				if (c != 13)
-					PrintVoci(pos);
-			}
-		} while (c != 13);
-
-		/*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
-	for(int k = 1; k < 255; k++)
-  {
-    // pick the colorattribute k you want
-    SetConsoleTextAttribute(h, k);
-    cout << k << " I want to be nice today!" << endl;
-  }
-  SetConsoleTextAttribute(h, 15);*/
+		system(CLEAR);
+    	PrintVoci(pos);
+    	pos = Arrows(&pos, voci);          //arrows permette di muoversi dentro il menu
 
 		switch (pos)
 		{
 		case 0:
 		{
-			system("cls");
+			system(CLEAR);
 			/* 
 			int a;
 			cout << "Selezionare la difficoltà: 0 per facile, 1 per difficile: "
@@ -134,7 +80,7 @@ void MenuPlay::Draw() const
 		}
 		case 1:
 		{
-			system("cls");
+			system(CLEAR);
 			vector<int> setup = Menu::GetSetup();
 			Factory *p1 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
 			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
@@ -148,94 +94,4 @@ void MenuPlay::Draw() const
 		}
 	} while (pos != voci.size() - 1);
 
-#else
-#define KEY_UP 65
-#define KEY_LEFT 68
-#define KEY_RIGHT 67
-#define KEY_DOWN 66
-
-	// Black magic to prevent Linux from buffering keystrokes.
-	struct termios t;
-	tcgetattr(STDIN_FILENO, &t);
-	t.c_lflag &= ~ICANON;
-	tcsetattr(STDIN_FILENO, TCSANOW, &t);
-	int pos = 0;
-	cout << "Selezionare la configurazione usando le frecce; premere il tasto a per selezionare" << endl;
-
-	PrintVoci(0);
-	system(CLEAR);
-	do
-	{
-		PrintVoci(pos);
-		char c, d, e;
-		do
-		{
-
-			cin >> c;
-			if (c != 'a')
-			{
-				cin >> d;
-				cin >> e;
-				if ((c == 27) && (d = 91))
-				{
-					switch (e)
-					{
-					case KEY_UP /* H */:
-						//cout << endl << "Up" << endl;//key up
-						if (pos != 0)
-							pos--;
-						break;
-					case KEY_DOWN /* K */:
-						//cout << endl << "Down" << endl;   // key down
-						if (pos < voci.size() - 1)
-							pos++;
-						break;
-
-					default:
-						break;
-					}
-				}
-				system(CLEAR);
-				if (c != 'a')
-					PrintVoci(pos);
-			}
-		} while (c != 'a');
-		system(CLEAR);
-		/*HANDLE h = GetStdHandle ( STD_OUTPUT_HANDLE );
-	for(int k = 1; k < 255; k++)
-  {
-    // pick the colorattribute k you want
-    SetConsoleTextAttribute(h, k);
-    cout << k << " I want to be nice today!" << endl;
-  }
-  SetConsoleTextAttribute(h, 15);*/
-		switch (pos)
-		{
-		case 0:
-		{
-			system("cls");
-			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new PlayerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
-			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]);
-			Play *play = new Play(p1, p2);
-			play->PlayBattleship();
-			break;
-		}
-		case 1:
-		{
-			system("cls");
-			vector<int> setup = Menu::GetSetup();
-			Factory *p1 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
-			Factory *p2 = new ComputerFactory(setup[1], setup[2], setup[3], setup[4], setup[5], setup[6]); //dovrà essere new PlayerFactory
-			Play *play = new Play(p1, p2);
-			play->PlayBattleship();
-			break;
-		}
-
-		default:
-			break;
-		}
-	} while (pos != voci.size() - 1);
-
-#endif
 }
