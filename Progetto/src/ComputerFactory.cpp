@@ -243,3 +243,58 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   return 1;
 }
 
+/*bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
+{
+  vector<int> Choices;
+  //cout << "CheckSurroundings";
+  if (IsNave(i + 1, j, EnemyGrid) && Check(i - 1, j, EnemyGrid))
+  {
+    //cout << "ho sparato in" << i - 1 << j << "1";
+    if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
+    {
+      cout << "Carico " << i - 1 << j << "1";
+      Choices.push_back(i-1);
+      Choices.push_back(j);
+    }
+  }
+  if (Check(i + 1, j, EnemyGrid) && IsNave(i - 1, j, EnemyGrid))
+  {
+    // cout << "ho sparato in" << i + 1 << j << "2";
+    if (EnemyGrid.IsHit(i - 1, j) && !EnemyGrid[i - 1][j]->Sunk())
+    {
+      cout << "Carico " << i + 1 << j << "2";
+      Choices.push_back(i+1);
+      Choices.push_back(j);
+    }
+  }
+  if (Check(i, j - 1, EnemyGrid) && IsNave(i, j + 1, EnemyGrid))
+  {
+    //cout << "ho sparato in" << i << j - 1 << "3";
+    if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
+    {
+      cout << "Carico " << i << j - 1 << "3";
+      Choices.push_back(i);
+      Choices.push_back(j-1);
+    }
+  }
+  if (IsNave(i, j - 1, EnemyGrid) && Check(i, j + 1, EnemyGrid))
+  {
+    cout << "Carico " << i << j + 1 << "4";
+    if (EnemyGrid.IsHit(i, j - 1) && !EnemyGrid[i][j - 1]->Sunk())
+    {
+      //cout << "ho sparato in" << i << j + 1 << "4";
+      Choices.push_back(i);
+      Choices.push_back(j+1);
+    }
+  }
+
+  int d;
+  do{
+    d = rand() % 10;
+  }while(d%2 != 0 && d>Choices.size());
+
+  EnemyGrid.Strike(Choices[d-1],Choices[d]);
+
+  cout << "im here";
+  return 1;
+}*/
