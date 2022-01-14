@@ -23,7 +23,6 @@ class MenuDiramazione : public Menu
 
 	virtual void Draw() const;						//la funzione draw si occupa di gestire la stampa dei menu e la selezione dei menù tramite le frecce
     void DrawVoci() const;							//la funzione draw voci stampa vocesopra
-	virtual void PrintVoci(unsigned int) const;		//la funzione PrintVoci stampa i menù contenuti nel menu diramazione
 
 private:
     string VoceSopra;								//la stringa che viene stampata dal menù che sta più in altro per identificare lo specifico menudiramazione

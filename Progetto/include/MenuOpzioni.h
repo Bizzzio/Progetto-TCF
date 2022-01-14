@@ -18,7 +18,6 @@ public:
 	//e una seconda stringa, che contiene il nome del file di testo in cui sono contenute le varie opzioni
 	MenuOpzioni(int, string, string);
 	virtual void Draw() const;
-	virtual void PrintVoci(unsigned int) const;
 	void DrawVoci() const;
 	void SetOption(int, unsigned int) const; 					//Setoption si occupa di cambiare il valore di Setup (statico) a seconda della scelta dell'utente
 	void AddConfig() const;										//Addconfig aggiunge un'opzione al file di testo (ad esempio aggiungere una configurazione di una flotta)

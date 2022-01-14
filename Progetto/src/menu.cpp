@@ -49,7 +49,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<Menu *> Voci) const
       }
       system("cls");
       if (c != 13)
-        PrintVoci(pos);
+        PrintVoci(pos,Voci);
     }
   } while (c != 13);
 #else
@@ -135,7 +135,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
       }
       system("cls");
       if (c != 13)
-        PrintVoci(pos);
+        PrintVoci(pos, Voci);
     }
   } while (c != 13);
 #else
@@ -222,3 +222,77 @@ string Menu::GetColor() const
   return Color;
 }
 #endif
+
+
+void Menu::PrintVoci(unsigned int pos, vector<Menu *> Menus) const
+{
+#ifdef _WIN32
+  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+  cout << "Selezionare la configurazione usando le frecce" << endl;
+  for (unsigned int d = 0; d < Menus.size(); d++)
+  {
+    if (d == pos)
+    {
+      SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
+      cout << "--> ";
+      Menus[d]->DrawVoci();
+      SetConsoleTextAttribute(h, 15);
+      cout << endl;
+    }
+    else
+      Menus[d]->DrawVoci();
+    cout << endl;
+  }
+#else
+  cout << "Selezionare la configurazione usando le frecce, per selezionare una voce premere 'a'" << endl;
+  for (unsigned int d = 0; d < Menus.size(); d++)
+  {
+    if (d == pos)
+    {
+      cout << GetColor()              //prende il colore impostato dall'utente
+           << "--> ";
+      Menus[d]->DrawVoci();
+      cout << "\033[0m" << endl;      //fa tornare l'output normale
+    }
+    else
+      Menus[d]->DrawVoci();
+    cout << endl;
+  }
+#endif
+}
+
+
+void Menu::PrintVoci(unsigned int pos, vector<string> voci) const
+{
+#ifdef _WIN32
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	cout << "Selezionare la configurazione usando le frecce" << endl;
+	for (unsigned int d = 0; d < voci.size(); d++)
+	{
+		if (d == pos)
+		{
+			SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
+			cout << "--> " << voci[d];
+			SetConsoleTextAttribute(h, 15);
+			cout << endl;
+		}
+		else
+			cout << voci[d];
+		cout << endl;
+	}
+#else
+	cout << "Selezionare la configurazione usando le frecce" << endl;
+	for (unsigned int d = 0; d < voci.size(); d++)
+	{
+		if (d == pos)
+		{
+			cout << Menu::GetColor()
+				 << "--> " << voci[d];
+			cout << "\033[0m" << endl;
+		}
+		else
+
+			cout << voci[d] << endl;
+	}
+#endif
+}

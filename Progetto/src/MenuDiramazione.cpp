@@ -48,7 +48,7 @@ void MenuDiramazione::Draw() const
   do
   {
     system(CLEAR);
-    PrintVoci(pos);
+    PrintVoci(pos,Menus);
     pos = Arrows(&pos, Menus);          //arrows permette di muoversi dentro il menu
 
     if (pos != Menus.size() - 1)
@@ -57,40 +57,4 @@ void MenuDiramazione::Draw() const
   } while (pos != Menus.size() - 1);
 }
 
-//PrintVoci stampa le voci dei menù sottostanti
-void MenuDiramazione::PrintVoci(unsigned int pos) const
-{
-#ifdef _WIN32
-  HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-  cout << "Selezionare la configurazione usando le frecce" << endl;
-  for (unsigned int d = 0; d < Menus.size(); d++)
-  {
-    if (d == pos)
-    {
-      SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
-      cout << "--> ";
-      Menus[d]->DrawVoci();
-      SetConsoleTextAttribute(h, 15);
-      cout << endl;
-    }
-    else
-      Menus[d]->DrawVoci();
-    cout << endl;
-  }
-#else
-  cout << "Selezionare la configurazione usando le frecce, per selezionare una voce premere 'a'" << endl;
-  for (unsigned int d = 0; d < Menus.size(); d++)
-  {
-    if (d == pos)
-    {
-      cout << GetColor()              //prende il colore impostato dall'utente
-           << "--> ";
-      Menus[d]->DrawVoci();
-      cout << "\033[0m" << endl;      //fa tornare l'output normale
-    }
-    else
-      Menus[d]->DrawVoci();
-    cout << endl;
-  }
-#endif
-}
+

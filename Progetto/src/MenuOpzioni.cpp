@@ -46,7 +46,7 @@ void MenuOpzioni::Draw() const                  //Gestisce tutto il menu: stampa
     do
     {
         system("cls");
-        PrintVoci(pos);
+        PrintVoci(pos,Lista);
         pos = Arrows(&pos, Lista);
 
         if (pos)
@@ -82,42 +82,7 @@ void MenuOpzioni::SetOption(int numero, unsigned int scelta) const          //Se
     }
 }
 
-void MenuOpzioni::PrintVoci(unsigned int pos) const                         //stampa le varie opzioni
-{
-#ifdef _WIN32
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    cout << "Selezionare la configurazione usando le frecce" << endl;
-    for (unsigned int d = 0; d < Lista.size(); d++)
-    {
-        if (d == pos)
-        {
-            SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
-            cout << "--> " << Lista[d];
 
-            SetConsoleTextAttribute(h, 15);
-            cout << endl;
-        }
-        else
-            cout << Lista[d];
-        cout << endl;
-    }
-#else
-    cout << "Selezionare la Listaurazione usando le frecce" << endl;
-    for (unsigned int d = 0; d < Lista.size(); d++)
-    {
-        if (d == pos)
-        {
-            cout << Menu::GetColor()
-                 << "--> " << Lista[d];
-
-            cout << "\033[0m" << endl;
-        }
-        else
-            cout << Lista[d];
-        cout << endl;
-    }
-#endif
-}
 
 void MenuOpzioni::AddConfig() const                                     //aggiunge un'opzione (ad esempio una certa flotta)
 {

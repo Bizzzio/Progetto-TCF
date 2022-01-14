@@ -27,7 +27,8 @@ class Menu
 public:
 	unsigned int Arrows(unsigned int *pos, vector<Menu *>) const; //permette di muoversi nel menu con le frecce
 	unsigned int Arrows(unsigned int *pos, vector<string>) const; //fa la stessa cosa di quello sopra ma stampa vettori di stringhe anzichè le voci dei menu
-	virtual void PrintVoci(unsigned int) const = 0;				  //stampa le voci dei menu sottostanti
+	void PrintVoci(unsigned int, vector<Menu *>) const;	  		  //stampa le voci dei menu sottostanti
+	void PrintVoci(unsigned int, vector<string>) const;
 	virtual void DrawVoci() const {};							  //stampa il nome del menu in cui ci troviamo (viene chiamata dal menu sopra)
 	virtual void Draw() const = 0;								  //Gestisce il menu (scelta dell'utente, muoversi con le frecce e stampa dei menu)
 	static void Add(int);										  //fa il pushback di un valore a setup

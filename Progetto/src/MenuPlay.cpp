@@ -12,40 +12,6 @@ void MenuPlay::DrawVoci() const
 	cout << "Play";
 }
 
-void MenuPlay::PrintVoci(unsigned int pos) const
-{
-#ifdef _WIN32
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	cout << "Selezionare la configurazione usando le frecce" << endl;
-	for (unsigned int d = 0; d < voci.size(); d++)
-	{
-		if (d == pos)
-		{
-			SetConsoleTextAttribute(h, Menu::GetSetup()[0]);
-			cout << "--> " << voci[d];
-			SetConsoleTextAttribute(h, 15);
-			cout << endl;
-		}
-		else
-			cout << voci[d];
-		cout << endl;
-	}
-#else
-	cout << "Selezionare la configurazione usando le frecce" << endl;
-	for (unsigned int d = 0; d < voci.size(); d++)
-	{
-		if (d == pos)
-		{
-			cout << Menu::GetColor()
-				 << "--> " << voci[d];
-			cout << "\033[0m" << endl;
-		}
-		else
-
-			cout << voci[d] << endl;
-	}
-#endif
-}
 
 void MenuPlay::Draw() const
 {
@@ -55,7 +21,7 @@ void MenuPlay::Draw() const
 	do
 	{
 		system(CLEAR);
-    	PrintVoci(pos);
+    	PrintVoci(pos,voci);
     	pos = Arrows(&pos, voci);          //arrows permette di muoversi dentro il menu
 
 		switch (pos)
