@@ -45,7 +45,7 @@ void MenuOpzioni::Draw() const                  //Gestisce tutto il menu: stampa
 
     do
     {
-        system("cls");
+        system(CLEAR);
         PrintVoci(pos,Lista);
         pos = Arrows(&pos, Lista);
 

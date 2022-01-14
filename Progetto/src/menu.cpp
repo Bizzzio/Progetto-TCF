@@ -47,7 +47,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<Menu *> Voci) const
       default:
         break;
       }
-      system("cls");
+      system(CLEAR);
       if (c != 13)
         PrintVoci(pos,Voci);
     }
@@ -133,7 +133,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
       default:
         break;
       }
-      system("cls");
+      system(CLEAR);
       if (c != 13)
         PrintVoci(pos, Voci);
     }
@@ -281,7 +281,7 @@ void Menu::PrintVoci(unsigned int pos, vector<string> voci) const
 		cout << endl;
 	}
 #else
-	cout << "Selezionare la configurazione usando le frecce" << endl;
+	cout << "Selezionare la configurazione usando le frecce e premendo il tasto 'a'" << endl;
 	for (unsigned int d = 0; d < voci.size(); d++)
 	{
 		if (d == pos)

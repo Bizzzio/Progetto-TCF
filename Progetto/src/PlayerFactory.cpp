@@ -72,7 +72,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x, y + i, fleet.back());
       }
-      //system("cls");
+      //system(CLEAR);
       //fleet.DrawAlly(x,y);
     }
     z++;
@@ -84,8 +84,8 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
   #else
   getchp();
   #endif
-  //system("cls");
-  //system("cls");
+  //system(CLEAR);
+  //system(CLEAR);
 }
 
 vector<Navi *> PlayerFactory::GetFleet() const
@@ -152,7 +152,7 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   getch();
   #else
   getchp();
-  #endif  //system("cls");
+  #endif  //system(CLEAR);
   cout << "Turno giocatore" << NumGiocatore << endl;
   EnemyGrid.DrawEnemy();
   do
@@ -171,5 +171,5 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   #else
   getchp();
   #endif
-  //system("cls");
+  //system(CLEAR);
 }
