@@ -1,53 +1,43 @@
 #include "MenuText.h"
 using std::string;
 
-void MenuText::DrawVoci() const
+void MenuText::DrawVoci() const                     //stampa il nome dei menu ai menù sopra
 {
         cout << Voci;
 }
 
 MenuText::MenuText(string x)
 {
-    /*string name;
-    for (int z = 0; z < x.size(); z++) {
-        name.push_back(x[z]);
-    }*/
 
-    Voci=x;
-    Description.push_back(x);
-
+    Voci=x;                                                 //inizializza Voci all'input ricevuto in input
+    Description.push_back(x);                               //la prima riga da mostrare è il nome del menu
     string valore;
-    // string Filename = "src/Ins.txt";
 
-    ifstream file(string("src/") + x + string(".txt")); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
-    if (file.is_open())
+    ifstream file(string("src/") + x + string(".txt"));     //apre il file
+    if (file.is_open())                                     
     {
         while (getline(file, valore))
-        {
-            cout << "Copio file Ins1 su istruzioni" << endl;
-            Description.push_back(valore);
-        }
+            Description.push_back(valore);                  //copia le righe del file su description
 
         file.close();
     }
     else
     {
-        file.open(GetFileName(x).c_str());
+        file.open(GetFileName(x).c_str());                  //se il file non si era aperto, significa che lo abbiamo aperto dal main.exe in output, dobbiamo quindi cambiare cartella
         if (file.is_open())
         {
-            cout << "Copio file Ins2 su istruzioni" << endl;
             while (getline(file, valore))
                 Description.push_back(valore);
 
             file.close();
         }
         else
-            cout << "Unable to open file Ins" << endl;
+            cout << "Unable to open file " <<Voci<< endl;
     }
-    cout << "Fine costruttore MenuText" << endl;
 
 }
 
+//Vedere se è da mettere
 string MenuText::GetFileName(string &x) const
 {
 
@@ -72,14 +62,14 @@ string MenuText::GetFileName(string &x) const
     return filename;
 }
 
-void MenuText::Draw() const
+void MenuText::Draw() const                                                     //Stampa il menu
 {
     unsigned int pos = 0;
     char c;
     cout << "Selezionare la configurazione usando le frecce" << endl;
-    do
+    do                                                                          //Non è possibile usare Arrows perchè non ci si deve spostare tra le righe, si può solo premere invio
     {
-        system(CLEAR);
+        system(CLEAR);                                                          
         PrintVoci(Description.size()-1,Description);
         #ifdef _WIN32
             c = getch();

@@ -99,7 +99,7 @@ void MenuOpzioni::AddConfig() const                                     //aggiun
     }
     Lista.insert(Lista.end() - 1, newline);
 
-    ofstream outfile("src/Setup.txt", std::ios_base::app); // Dalla stringa restituita da GetFileName otteniamo il vettore di const char relativo
+    ofstream outfile("src/Setup.txt", std::ios_base::app);
     if (outfile.is_open())
     {
         outfile << '\n';

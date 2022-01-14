@@ -33,12 +33,12 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<Menu *> Voci) const
     {
       switch (ex = getch())
       {
-      case KEY_UP /* H */:
+      case KEY_UP :
         //cout << endl << "Up" << endl;//key up
         if (pos != 0)
           pos--;
         break;
-      case KEY_DOWN /* K */:
+      case KEY_DOWN :
         //cout << endl << "Down" << endl;   // key down
         if (pos < Voci.size() - 1)
           pos++;
@@ -79,12 +79,12 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<Menu *> Voci) const
       {
         switch (e)
         {
-        case KEY_UP /* H */:
+        case KEY_UP :
           //cout << endl << "Up" << endl;//key up
           if (pos != 0)
             pos--;
           break;
-        case KEY_DOWN /* K */:
+        case KEY_DOWN :
           //cout << endl << "Down" << endl;   // key down
           if (pos < Voci.size() - 1)
             pos++;
@@ -103,7 +103,8 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<Menu *> Voci) const
   return (pos);
 }
 
-unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
+/*template <class T>
+unsigned int Menu::Arrows(unsigned int *posptr, T Voci) const
 {
 #ifdef _WIN32
 #define KEY_UP 72
@@ -119,12 +120,12 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
     {
       switch (ex = getch())
       {
-      case KEY_UP /* H */:
+      case KEY_UP:
         //cout << endl << "Up" << endl;//key up
         if (pos != 0)
           pos--;
         break;
-      case KEY_DOWN /* K */:
+      case KEY_DOWN :
         //cout << endl << "Down" << endl;   // key down
         if (pos < Voci.size() - 1)
           pos++;
@@ -165,12 +166,100 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
       {
         switch (e)
         {
-        case KEY_UP /* H */:
+        case KEY_UP :
           //cout << endl << "Up" << endl;//key up
           if (pos != 0)
             pos--;
           break;
-        case KEY_DOWN /* K */:
+        case KEY_DOWN :
+          //cout << endl << "Down" << endl;   // key down
+          if (pos < T.size() - 1)
+            pos++;
+          break;
+
+        default:
+          break;
+        }
+      }
+      system("clear");
+      if (c != 'a')
+        PrintVoci(pos, Voci);
+    }
+  } while (c != 'a');
+#endif
+
+  return (pos);
+}*/
+
+
+unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
+{
+#ifdef _WIN32
+#define KEY_UP 72
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_DOWN 80
+  int c, ex;
+  unsigned int pos = (*posptr);
+  do
+  {
+    c = getch();
+    if (c == 0 || c == 224)
+    {
+      switch (ex = getch())
+      {
+      case KEY_UP :
+        //cout << endl << "Up" << endl;//key up
+        if (pos != 0)
+          pos--;
+        break;
+      case KEY_DOWN :
+        //cout << endl << "Down" << endl;   // key down
+        if (pos < Voci.size() - 1)
+          pos++;
+        break;
+
+      default:
+        break;
+      }
+      system(CLEAR);
+      if (c != 13)
+        PrintVoci(pos, Voci);
+    }
+  } while (c != 13);
+#else
+#include <iostream>
+#define KEY_UP 65
+#define KEY_LEFT 68
+#define KEY_RIGHT 67
+#define KEY_DOWN 66
+
+  // Black magic to prevent Linux from buffering keystrokes.
+  struct termios t;
+  tcgetattr(STDIN_FILENO, &t);
+  t.c_lflag &= ~ICANON;
+  tcsetattr(STDIN_FILENO, TCSANOW, &t);
+
+  char c, d, e;
+  unsigned int pos = (*posptr);
+  do
+  {
+
+    cin >> c;
+    if (c != 'a')
+    {
+      cin >> d;
+      cin >> e;
+      if ((c == 27) && (d = 91))
+      {
+        switch (e)
+        {
+        case KEY_UP:
+          //cout << endl << "Up" << endl;//key up
+          if (pos != 0)
+            pos--;
+          break;
+        case KEY_DOWN :
           //cout << endl << "Down" << endl;   // key down
           if (pos < Voci.size() - 1)
             pos++;
@@ -189,6 +278,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
 
   return (pos);
 }
+
 
 #ifndef _WIN32
 
