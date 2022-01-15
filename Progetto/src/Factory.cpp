@@ -3,6 +3,10 @@
 bool Factory::Check(int x, int y, Griglia &grid)
 {
 	//cout << "check di" << x << " " << y;
+	
+	// controllo coordinate: per prima cosa verifico che stiano dentro la griglia,
+	// poi che non siano già state colpite
+	
 	int s = grid.GetSize();
 	cout << endl;
 	if ((x >= s || x < 0) || (y >= s || y < 0))
@@ -14,6 +18,8 @@ bool Factory::Check(int x, int y, Griglia &grid)
 
 	else
 	{
+		// Se il puntatore grid[x][y] è nullo vuol dire che punta ad acqua non 
+		// colpita e quindi va bene 
 		if (!grid[x][y])
 		{
 
@@ -21,7 +27,7 @@ bool Factory::Check(int x, int y, Griglia &grid)
 		}
 		else
 		{
-
+			// IsHit ritorna vero se la casella è stata colpita
 			if (!(grid[x][y]->IsHit(x, y)))
 			{
 
@@ -39,6 +45,8 @@ bool Factory::Check(int x, int y, Griglia &grid)
 
 bool Factory::IsNave(int x, int y, Griglia &grid)
 {
+	// Guardo se x,y stanno dentro la griglia oppure no
+	// (forse ridondante con una parte di Check)
 	int s = grid.GetSize();
 	cout << endl;
 	if ((x >= s || x < 0) || (y >= s || y < 0))
@@ -56,6 +64,8 @@ bool Factory::IsNave(int x, int y, Griglia &grid)
 
 bool Factory::CheckCell(bool t, int x, int y, int length) const
 {
+	// Controllo se tutte le celle che una nave andrà ad occupare sono
+	// libere avendo nota la sua lunghezza e orientazione con t e length
     if (t)
     {
         if (x + length - GetSize() <= 0)
