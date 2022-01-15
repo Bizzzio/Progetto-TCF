@@ -18,12 +18,13 @@ public:
 	virtual vector<Navi *> GetFleet() const;
 	virtual Griglia GetGrid() const;
 	virtual bool EndGame() const;
-	virtual int GetSize() const;
-	void Turn(Griglia &EnemyGrid, int NumGiocatore);
-	bool CheckSurroundings(Griglia &EnemyGrid, int i, int j);
+	virtual int GetSize() const; // ritorna dimensione griglia
+	void Turn(Griglia &EnemyGrid, int NumGiocatore);  // turno di gioco computer
+	bool CheckSurroundings(Griglia &EnemyGrid, int i, int j); // Intelligenza artificiale per scelta intelligente
+															  // delle caselle	
 
 private:
-	vector<Navi *> fleet;
-	Griglia grid;
+	vector<Navi *> fleet;  // vector di puntatori alle navi che costituiscono la flotta
+	Griglia grid;		   // griglia dove salveremo la disposizione delle navi
 };
 #endif
