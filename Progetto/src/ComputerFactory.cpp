@@ -127,7 +127,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   {
     for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
     {
-      //cout << "ciaone";
       if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())  // Controllo se c'è una casella colpita
       {                                                       // di una nave non affondata
         // cout << "sono in" << i << j;
@@ -143,7 +142,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   // Se non ho sparato in CheckSurroundings
   if (!sparato)
   {
-    //cout << "ciaone2";
     for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
     {
       for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)

@@ -2,7 +2,9 @@
 #include <vector>
 #ifdef _WIN32
 #include <conio.h>
+#define CLEAR "cls"
 #else
+#define CLEAR "clear"
 #include <termios.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -21,7 +23,10 @@ int getchp(void)
     return ch;
 }
 #endif
-using namespace std;
+using std::vector;
+using std::cin;
+using std::cout;
+using std::endl;
 #include "PlayerFactory.h"
 // abbiamo creato la griglia da 10
 // le regole sono che si possono usare 1 nave da 4, 1 da 5, 3 da 3, 3 da 2
@@ -49,15 +54,16 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
     {
       int x, y, n;
       bool h;
+      string input;
       grid.DrawAlly();
       do
       {
-        do
-        {
-          cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
-          cin >> n;
-        } while (n != 1 && n != 0);
-        h = n;
+          do{
+            cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
+            cin>>input;
+          }while(input.length()!=1 || (input[0]!=48 &&input[0]!=49));
+
+        h = input[0]-'0';
         cout << "\nDammi una x e una y per posizionare la nave sulla griglia" << endl;
         cin >> x >> y;
       } while (!CheckCell(h, x, y, z)); 
@@ -72,7 +78,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x, y + i, fleet.back());
       }
-      //system(CLEAR);
+      system(CLEAR);
       //fleet.DrawAlly(x,y);
     }
     z++;
@@ -84,7 +90,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
   #else
   getchp();
   #endif
-  //system(CLEAR);
+  system(CLEAR);
   //system(CLEAR);
 }
 
@@ -152,7 +158,8 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   getch();
   #else
   getchp();
-  #endif  //system(CLEAR);
+  #endif  
+  system(CLEAR);
   cout << "Turno giocatore" << NumGiocatore << endl;
   EnemyGrid.DrawEnemy();
   do
@@ -162,7 +169,7 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 
   } while (!Check(x, y, EnemyGrid));  // controllo coordinate appartenenti alla griglia
   EnemyGrid.Strike(x, y);             // e non ancora colpite, in tal caso chiamo Strike
-
+  system(CLEAR);
   //grid1.DrawAlly();
   EnemyGrid.DrawEnemy();
   cout << "Premi un tasto per oscurare" << endl;
@@ -171,5 +178,5 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   #else
   getchp();
   #endif
-  //system(CLEAR);
+  system(CLEAR);
 }
