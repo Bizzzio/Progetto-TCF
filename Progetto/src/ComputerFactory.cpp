@@ -230,6 +230,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   if (Check(i, j - 1, EnemyGrid) && IsNave(i, j + 1, EnemyGrid))
   {
     //cout << "ho sparato in" << i << j - 1 << "3";
+    
     if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
     {
       // cout << "ho sparato in" << i << j - 1 << "3";
