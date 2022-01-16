@@ -2,7 +2,7 @@
 #define COMPUTERFACTORY_H
 #include <iostream>
 #include <cstdlib>
-using namespace std;
+using std::vector;
 #include <vector>
 #include "Navi.h"
 #include "Griglia.h"

@@ -1,4 +1,7 @@
 #include "Factory.h"
+using std::endl;
+using std::cout;
+using std::vector;
 
 bool Factory::Check(int x, int y, Griglia &grid)
 {
