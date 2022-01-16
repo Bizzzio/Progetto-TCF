@@ -51,15 +51,16 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
     {
       int x, y, n;
       bool h;
+      string input;
       grid.DrawAlly();
       do
       {
-        do
-        {
-          cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
-          cin >> n;
-        } while (n != 1 && n != 0);
-        h = n;
+          do{
+            cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
+            cin>>input;
+          }while(input.length()!=1 || (input[0]!=48 &&input[0]!=49));
+
+        h = input[0]-'0';
         cout << "\nDammi una x e una y per posizionare la nave sulla griglia" << endl;
         cin >> x >> y;
       } while (!CheckCell(h, x, y, z)); 
