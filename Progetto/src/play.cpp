@@ -33,8 +33,9 @@ int getche(void)
 Play::Play(Factory *player1, Factory *player2) : grid1(player1->GetSize()), grid2(player2->GetSize())
 {
 
-	grid1 = player1->GetGrid();
-	grid2 = player2->GetGrid();
+	grid1 = player1->GetGrid();		// Copiamo in due DM tipo Griglia le griglie costruite nelle 
+	grid2 = player2->GetGrid();		// factories sennò non rimarrebbe traccia delle modifiche 
+									// durante il gioco
 	Player1 = player1;
 	Player2 = player2;
 }
@@ -96,7 +97,7 @@ void Play::PlayBattleship()
 	getch();*/
 	do
 	{
-		Player1->Turn(grid2, 1);
+		Player1->Turn(grid2, 1);	// Polimorfismo su Turn
 		Player2->Turn(grid1, 2);
 
 	} while (!Player1->EndGame() && !Player2->EndGame());
@@ -118,6 +119,9 @@ void Play::PlayBattleship()
 bool Play::Check(int x, int y, Griglia grid)
 {
 
+	// controllo coordinate: per prima cosa verifico che stiano dentro la griglia,
+	// poi che non siano già state colpite
+
 	int s = grid.GetSize();
 	if (x >= s || y >= s)
 	{
@@ -127,12 +131,15 @@ bool Play::Check(int x, int y, Griglia grid)
 
 	else
 	{
+		// Se il puntatore grid[x][y] è nullo vuol dire che punta ad acqua non 
+		// colpita e quindi va bene 
 		if (!grid[x][y])
 		{
 			return true;
 		}
 		else
 		{
+			// IsHit ritorna vero se la casella è stata colpita
 			if (!(grid[x][y]->IsHit(x, y)))
 				return true;
 			else

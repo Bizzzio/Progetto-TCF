@@ -41,7 +41,7 @@ int PlayerFactory::GetSize() const
 
 void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
 {
-
+  // dò in input il numero di navi da 2,3,4,5,6
   int numbers[5] = {n2, n3, n4, n5, n6};
 
   for (int i = 0, z = 2; i < 5; i++)
@@ -62,7 +62,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         h = n;
         cout << "\nDammi una x e una y per posizionare la nave sulla griglia" << endl;
         cin >> x >> y;
-      } while (!CheckCell(h, x, y, z)); // Spostando CheckCell dalla griglia alla factory sostituito !grid.CheckCell(h, x, y, z) con !CheckCell(h, x, y, z)
+      } while (!CheckCell(h, x, y, z)); 
       fleet.push_back(new Navi(h, x, y, z));
       if (h)
       {
@@ -163,8 +163,8 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
     cout << "\nDimmi le coordinate che vuoi colpire " << endl;
     cin >> x >> y;
 
-  } while (!Check(x, y, EnemyGrid));
-  EnemyGrid.Strike(x, y);
+  } while (!Check(x, y, EnemyGrid));  // controllo coordinate appartenenti alla griglia
+  EnemyGrid.Strike(x, y);             // e non ancora colpite, in tal caso chiamo Strike
   system(CLEAR);
   //grid1.DrawAlly();
   EnemyGrid.DrawEnemy();
