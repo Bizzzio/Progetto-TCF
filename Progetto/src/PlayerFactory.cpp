@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #ifdef _WIN32
 #include <conio.h>
 #define CLEAR "cls"
@@ -27,6 +28,7 @@ using std::vector;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::string;
 #include "PlayerFactory.h"
 // abbiamo creato la griglia da 10
 // le regole sono che si possono usare 1 nave da 4, 1 da 5, 3 da 3, 3 da 2
