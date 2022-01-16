@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #ifdef _WIN32
 #include <conio.h>
 #define CLEAR "cls"
@@ -27,6 +28,7 @@ using std::vector;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::string;
 #include "PlayerFactory.h"
 // abbiamo creato la griglia da 10
 // le regole sono che si possono usare 1 nave da 4, 1 da 5, 3 da 3, 3 da 2
@@ -54,15 +56,16 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
     {
       int x, y, n;
       bool h;
+      string input;
       grid.DrawAlly();
       do
       {
-        do
-        {
-          cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
-          cin >> n;
-        } while (n != 1 && n != 0);
-        h = n;
+          do{
+            cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
+            cin>>input;
+          }while(input.length()!=1 || (input[0]!=48 &&input[0]!=49));
+
+        h = input[0]-'0';
         cout << "\nDammi una x e una y per posizionare la nave sulla griglia" << endl;
         cin >> x >> y;
       } while (!CheckCell(h, x, y, z)); 
@@ -110,7 +113,7 @@ PlayerFactory::~PlayerFactory()
     delete *i;
 }
 
-bool PlayerFactory::EndGame() const
+/*bool PlayerFactory::EndGame() const
 {
 
   unsigned int count = 0;
@@ -123,7 +126,7 @@ bool PlayerFactory::EndGame() const
     if (!(*i)->Sunk())
       return false;
   }
-  return true;*/
+  return true;
 
   // L'abbiamo scritta uguale nelle due Factories, a sto punto potremmo metterla nell'abstract
   // magari chiamandola checkfleet perchè una funzione endgame nell'abstract factory pare 
@@ -146,7 +149,7 @@ bool PlayerFactory::EndGame() const
   }
   else
     return false;
-}
+}*/
 
 void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {

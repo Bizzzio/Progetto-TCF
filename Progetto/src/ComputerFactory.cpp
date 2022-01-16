@@ -94,7 +94,7 @@ ComputerFactory::~ComputerFactory()
     delete *i;
 }
 
-bool ComputerFactory::EndGame() const
+/*bool ComputerFactory::EndGame() const
 {
   // Restituisce true se tutte le navi sono state affondate
   unsigned int count = 0;
@@ -115,7 +115,7 @@ bool ComputerFactory::EndGame() const
   }
   else
     return false;
-}
+}*/
 
 void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {
@@ -127,7 +127,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   {
     for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
     {
-      //cout << "ciaone";
       if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())  // Controllo se c'è una casella colpita
       {                                                       // di una nave non affondata
         // cout << "sono in" << i << j;
@@ -143,7 +142,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   // Se non ho sparato in CheckSurroundings
   if (!sparato)
   {
-    //cout << "ciaone2";
     for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
     {
       for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
@@ -232,6 +230,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   if (Check(i, j - 1, EnemyGrid) && IsNave(i, j + 1, EnemyGrid))
   {
     //cout << "ho sparato in" << i << j - 1 << "3";
+    
     if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
     {
       // cout << "ho sparato in" << i << j - 1 << "3";

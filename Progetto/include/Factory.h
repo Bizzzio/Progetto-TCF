@@ -15,7 +15,7 @@ public:
         virtual void SetFleet(int n2, int n3, int n4, int n5, int n6) = 0;  // funzione per costruzione flotta
         virtual vector<Navi *> GetFleet() const = 0;
         virtual Griglia GetGrid() const = 0;
-        virtual bool EndGame() const = 0;  // funzione che verifica se le navi della flotta sono tutte affondate, 
+        virtual bool EndGame() const;  // funzione che verifica se le navi della flotta sono tutte affondate, 
                                            // serve per terminare il gioco
         virtual int GetSize() const = 0;
         virtual void Turn(Griglia &, int) = 0;  // funzione che implementa il turno di gioco
