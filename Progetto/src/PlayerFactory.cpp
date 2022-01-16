@@ -2,7 +2,9 @@
 #include <vector>
 #ifdef _WIN32
 #include <conio.h>
+#define CLEAR "cls"
 #else
+#define CLEAR "clear"
 #include <termios.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -72,7 +74,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x, y + i, fleet.back());
       }
-      //system(CLEAR);
+      system(CLEAR);
       //fleet.DrawAlly(x,y);
     }
     z++;
@@ -84,7 +86,7 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
   #else
   getchp();
   #endif
-  //system(CLEAR);
+  system(CLEAR);
   //system(CLEAR);
 }
 
@@ -152,7 +154,8 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   getch();
   #else
   getchp();
-  #endif  //system(CLEAR);
+  #endif  
+  system(CLEAR);
   cout << "Turno giocatore" << NumGiocatore << endl;
   EnemyGrid.DrawEnemy();
   do
@@ -162,7 +165,7 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 
   } while (!Check(x, y, EnemyGrid));
   EnemyGrid.Strike(x, y);
-
+  system(CLEAR);
   //grid1.DrawAlly();
   EnemyGrid.DrawEnemy();
   cout << "Premi un tasto per oscurare" << endl;
@@ -171,5 +174,5 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   #else
   getchp();
   #endif
-  //system(CLEAR);
+  system(CLEAR);
 }
