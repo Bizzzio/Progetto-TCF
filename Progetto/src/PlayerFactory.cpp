@@ -105,7 +105,7 @@ PlayerFactory::~PlayerFactory()
     delete *i;
 }
 
-bool PlayerFactory::EndGame() const
+/*bool PlayerFactory::EndGame() const
 {
 
   unsigned int count = 0;
@@ -118,7 +118,7 @@ bool PlayerFactory::EndGame() const
     if (!(*i)->Sunk())
       return false;
   }
-  return true;*/
+  return true;
 
   // L'abbiamo scritta uguale nelle due Factories, a sto punto potremmo metterla nell'abstract
   // magari chiamandola checkfleet perchè una funzione endgame nell'abstract factory pare 
@@ -141,7 +141,7 @@ bool PlayerFactory::EndGame() const
   }
   else
     return false;
-}
+}*/
 
 void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {

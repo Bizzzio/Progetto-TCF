@@ -98,3 +98,14 @@ bool Factory::CheckCell(bool t, int x, int y, int length) const
     }
     return false;
 }
+
+bool Factory::EndGame() const{
+
+	vector<Navi *>::const_iterator i;
+  for (i = GetFleet().begin(); i != GetFleet().end(); i++)
+  {
+    if (!(*i)->Sunk())
+      return false;
+  }
+  return true;
+}
