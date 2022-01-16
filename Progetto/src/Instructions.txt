@@ -1,0 +1,6 @@
+ 
+    Regole gioco Battaglia navale:
+    La vittoria va al giocatore che affonda per 
+    primo tutte le navi dell'avversario.
+
+  Premi invio per ritornare al menu principale.
