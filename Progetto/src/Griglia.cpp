@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Griglia.h"
-using namespace std;
+using std::vector;
+using std::cout;
+using std::endl;
 
 Griglia::Griglia(int d) : Water(false, -1, -1, -1)
 {

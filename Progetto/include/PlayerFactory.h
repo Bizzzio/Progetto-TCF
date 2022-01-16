@@ -1,7 +1,7 @@
 #ifndef PLAYERFACTORY_H
 #define PLAYERFACTORY_H
 #include <iostream>
-using namespace std;
+using std::vector;
 #include <vector>
 #include "Navi.h"
 #include "Griglia.h"

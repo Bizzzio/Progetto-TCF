@@ -1,7 +1,6 @@
 #ifndef PLAY_H
 #define PLAY_H
 #include <iostream>
-using namespace std;
 #include <vector>
 #include "Factory.h"
 #include "PlayerFactory.h"

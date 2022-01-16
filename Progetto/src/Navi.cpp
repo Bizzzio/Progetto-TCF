@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Navi.h"
-using namespace std;
+using std::cout;
+using std::vector;
 
 Navi::Navi(bool horizontal, int x, int y, int l)
 {

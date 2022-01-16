@@ -1,7 +1,7 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 #include <iostream>
-using namespace std;
+using std::vector;
 #include <vector>
 #include "Navi.h"
 #include "Griglia.h"
