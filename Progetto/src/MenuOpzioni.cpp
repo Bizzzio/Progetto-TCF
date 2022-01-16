@@ -1,4 +1,6 @@
 #include "MenuOpzioni.h"
+using std::ifstream;
+using std::ofstream;
 void MenuOpzioni::DrawVoci() const                              //Stampa il nome dell'opzione quando richiesto dai menù sopra
 {
     cout << Nome;

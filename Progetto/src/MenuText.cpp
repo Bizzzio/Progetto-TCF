@@ -1,5 +1,7 @@
 #include "MenuText.h"
 using std::string;
+using std::ifstream;
+using std::ofstream;
 
 void MenuText::DrawVoci() const                     //stampa il nome dei menu ai menù sopra
 {

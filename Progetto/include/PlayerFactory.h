@@ -1,8 +1,8 @@
 #ifndef PLAYERFACTORY_H
 #define PLAYERFACTORY_H
 #include <iostream>
-using std::vector;
 #include <vector>
+using std::vector;
 #include "Navi.h"
 #include "Griglia.h"
 #include "Factory.h"
