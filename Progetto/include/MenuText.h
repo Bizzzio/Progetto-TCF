@@ -7,7 +7,6 @@
 using std::cout;
 using std::endl;
 using std::vector;
-#include "Play.h"
 #include "Menu.h"
 
 //Menutext si occupa di stampare certe informazioni contenute nei file di testo, come ad esempio le istruzioni e i credits

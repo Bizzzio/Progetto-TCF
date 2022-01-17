@@ -6,7 +6,6 @@
 using std::cout;
 using std::endl;
 using std::vector;
-#include "Play.h"
 #include "Menu.h"
 
 //la classe menuopzioni si occupa di gestire le opzioni
