@@ -10,15 +10,15 @@
 /* reads from keypress, doesn't echo */
 int getch(void)
 {
-    struct termios oldattr, newattr;
-    int ch;
-    tcgetattr( STDIN_FILENO, &oldattr );
-    newattr = oldattr;
-    newattr.c_lflag &= ~( ICANON | ECHO );
-    tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
-    ch = getchar();
-    tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
-    return ch;
+  struct termios oldattr, newattr;
+  int ch;
+  tcgetattr(STDIN_FILENO, &oldattr);
+  newattr = oldattr;
+  newattr.c_lflag &= ~(ICANON | ECHO);
+  tcsetattr(STDIN_FILENO, TCSANOW, &newattr);
+  ch = getchar();
+  tcsetattr(STDIN_FILENO, TCSANOW, &oldattr);
+  return ch;
 }
 #endif
 using namespace std;
@@ -52,17 +52,17 @@ void ComputerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
       do
       {
         do
-        {                        
-          n = rand() % 2;      // Il % ci dà il resto di una divisione
-        } while (n != 1 && n != 0);     // Esco solo se n=0 o n=1 e n determinerà l'orientazione della nave
+        {
+          n = rand() % 2;           // Il % ci dà il resto di una divisione
+        } while (n != 1 && n != 0); // Esco solo se n=0 o n=1 e n determinerà l'orientazione della nave
         h = n;
-        x = rand() % 10;  // con %10 mi restringo ai numeri tra 0 e 9, che poi vengono controllati
-        y = rand() % 10;  // da CheckCell
-      } while (!CheckCell(h, x, y, z));  
+        x = rand() % 10; // con %10 mi restringo ai numeri tra 0 e 9, che poi vengono controllati
+        y = rand() % 10; // da CheckCell
+      } while (!CheckCell(h, x, y, z));
       fleet.push_back(new Navi(h, x, y, z));
       if (h)
       {
-        // Per questa parte forse è più carino creare una funzione "MettiNave" in Factory 
+        // Per questa parte forse è più carino creare una funzione "MettiNave" in Factory
         // che prende come argomenti questi più un bool e la lunghezza e richiamarla
         for (int i = 0; i < z; i++)
           grid.SetGriglia(x + i, y, fleet.back());
@@ -127,13 +127,13 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   {
     for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
     {
-      if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())  // Controllo se c'è una casella colpita
-      {                                                       // di una nave non affondata
+      if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk()) // Controllo se c'è una casella colpita
+      {                                                      // di una nave non affondata
         // cout << "sono in" << i << j;
-        if (!CheckSurroundings(EnemyGrid, i, j))   // CheckSurroundings ritorna false se spara ad una casella, 
-        {                                          // quindi in tal caso dobbiamo aggiornare sparato       
-          //cout << "ho sparato in" << i << j;     
-          sparato = true;  // Appena sparo esco dai cicli for
+        if (!CheckSurroundings(EnemyGrid, i, j)) // CheckSurroundings ritorna false se spara ad una casella,
+        {                                        // quindi in tal caso dobbiamo aggiornare sparato
+          //cout << "ho sparato in" << i << j;
+          sparato = true; // Appena sparo esco dai cicli for
           break;
         }
       }
@@ -149,12 +149,12 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
         if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())
         {
           //cout << "ishit va bene";
-          if (Check(i + 1, j, EnemyGrid))                   // i,j a questo punto indicano una casella colpita di una nave non
-          {                                                 // ancora affondata, con Check controllo se le ho già colpite, se 
+          if (Check(i + 1, j, EnemyGrid)) // i,j a questo punto indicano una casella colpita di una nave non
+          {                               // ancora affondata, con Check controllo se le ho già colpite, se
             //cout << "ho sparato in" << i + 1 << j;        // mi viene restituito true non le ho ancora colpite e sparo. Con
-            EnemyGrid.Strike(i + 1, j);                     // questa struttura la scelta delle caselle sarà, data [i][j], 
-            sparato = true;                                 // prima sopra, sotto, a destra e a sinistra
-            break; // fuori da tutti i cicli
+            EnemyGrid.Strike(i + 1, j); // questa struttura la scelta delle caselle sarà, data [i][j],
+            sparato = true;             // prima sopra, sotto, a destra e a sinistra
+            break;                      // fuori da tutti i cicli
           }
           else if (Check(i - 1, j, EnemyGrid))
           {
@@ -181,12 +181,12 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
       }
     }
   }
-  // 
-  // a caso 
+  //
+  // a caso
   if (!sparato)
-  {                   // Se a questo punto non ho ancora sparato sparo alla
-                      // cella [x][y] purchè stia nella griglia e non sia già
-    do                // stata colpita  
+  {    // Se a questo punto non ho ancora sparato sparo alla
+       // cella [x][y] purchè stia nella griglia e non sia già
+    do // stata colpita
     {
       x = rand() % 10;
       y = rand() % 10;
@@ -202,13 +202,13 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   //cout << "CheckSurroundings";
 
   // Guardo le caselle sopra, sotto, a destra e a sinistra di [i][j] e sparo se le coordinate
-  // appartengono alla griglia (IsNave) e se le caselle sono occupate da una nave 
+  // appartengono alla griglia (IsNave) e se le caselle sono occupate da una nave
   if (IsNave(i + 1, j, EnemyGrid) && Check(i - 1, j, EnemyGrid))
   {
     //cout << "ho sparato in" << i - 1 << j << "1";
 
     // Data una casella, controllo se quella sopra a questa è stata colpita e se la nave che
-    // lì era presente è affondata oppure no, se non lo è colpisco la casella sotto a quella 
+    // lì era presente è affondata oppure no, se non lo è colpisco la casella sotto a quella
     // di partenza
     if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
     {
@@ -230,7 +230,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   if (Check(i, j - 1, EnemyGrid) && IsNave(i, j + 1, EnemyGrid))
   {
     //cout << "ho sparato in" << i << j - 1 << "3";
-    
+
     if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
     {
       // cout << "ho sparato in" << i << j - 1 << "3";
@@ -307,3 +307,41 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   cout << "im here";
   return 1;
 }*/
+
+bool ComputerFactory::EndGame() const
+{
+
+  unsigned int count = 0;
+  vector<Navi *>::const_iterator i;
+
+  // La funzione si potrebbe scrivere così
+
+  /*for (i = fleet.begin(); i != fleet.end(); i++)
+  {
+    if (!(*i)->Sunk())
+      return false;
+  }
+  return true;
+*/
+  // L'abbiamo scritta uguale nelle due Factories, a sto punto potremmo metterla nell'abstract
+  // magari chiamandola checkfleet perchè una funzione endgame nell'abstract factory pare
+  // brutto mentre le funzioni check ci stanno sempre bene e in play facciamo una funzione
+  // endgame che per una certa factory chiama il suo checkfleet
+
+  for (i = fleet.begin(); i != fleet.end(); i++)
+  {
+    //cout << "count:" << count << " size:" << fleet.size() << " ";
+    if ((*i)->Sunk())
+      count++;
+    else
+      return false;
+  }
+
+  if (count == fleet.size())
+  {
+
+    return true;
+  }
+  else
+    return false;
+}
