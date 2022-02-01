@@ -96,7 +96,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<Menu *> Voci) const
       }
       system("clear");
       if (c != 'a')
-        PrintVoci(pos);
+        PrintVoci(pos, Voci);
     }
   } while (c != 'a');
 #endif
@@ -271,7 +271,7 @@ unsigned int Menu::Arrows(unsigned int *posptr, vector<string> Voci) const
       }
       system("clear");
       if (c != 'a')
-        PrintVoci(pos);
+        PrintVoci(pos, Voci);
     }
   } while (c != 'a');
 #endif
