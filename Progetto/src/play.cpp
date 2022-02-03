@@ -48,6 +48,7 @@ void Play::PlayBattleship()
 		Player2->Turn(grid1, 2);
 
 	} while (!Player1->EndGame() && !Player2->EndGame());
+	system(CLEAR);
 	if (Player1->EndGame() && Player2->EndGame())
 		cout << "E' UN PAREGGIO" << endl;
 	else
@@ -61,6 +62,10 @@ void Play::PlayBattleship()
 			cout << "GIOCATORE 1 HAI VINTOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 		}
 	}
+	cout << "Giocatore 1:" << endl;
+	grid1.DrawAlly();
+	cout << "Giocatore 2:" << endl;
+	grid2.DrawAlly();
 #ifdef _WIN32
 	getch();
 #else

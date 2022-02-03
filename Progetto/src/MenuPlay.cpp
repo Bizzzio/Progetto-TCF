@@ -12,7 +12,6 @@ void MenuPlay::DrawVoci() const
 	cout << "Play";
 }
 
-
 void MenuPlay::Draw() const
 {
 	unsigned int pos = 0;
@@ -21,8 +20,8 @@ void MenuPlay::Draw() const
 	do
 	{
 		system(CLEAR);
-    	PrintVoci(pos,voci);
-    	pos = Arrows(&pos, voci);          //arrows permette di muoversi dentro il menu
+		PrintVoci(pos, voci);
+		pos = Arrows(&pos, voci); //arrows permette di muoversi dentro il menu
 
 		switch (pos)
 		{
@@ -59,5 +58,4 @@ void MenuPlay::Draw() const
 			break;
 		}
 	} while (pos != voci.size() - 1);
-
 }
