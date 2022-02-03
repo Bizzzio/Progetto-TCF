@@ -197,7 +197,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   EnemyGrid.DrawAlly();
 }
 
-bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
+/*bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
 {
   //cout << "CheckSurroundings";
 
@@ -250,9 +250,9 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   }
   //cout << "im here";
   return 1;
-}
+}*/
 
-/*bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
+bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
 {
   vector<int> Choices;
   //cout << "CheckSurroundings";
@@ -262,7 +262,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
     if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
     {
       cout << "Carico " << i - 1 << j << "1";
-      Choices.push_back(i-1);
+      Choices.push_back(i - 1);
       Choices.push_back(j);
     }
   }
@@ -272,7 +272,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
     if (EnemyGrid.IsHit(i - 1, j) && !EnemyGrid[i - 1][j]->Sunk())
     {
       cout << "Carico " << i + 1 << j << "2";
-      Choices.push_back(i+1);
+      Choices.push_back(i + 1);
       Choices.push_back(j);
     }
   }
@@ -283,30 +283,33 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
     {
       cout << "Carico " << i << j - 1 << "3";
       Choices.push_back(i);
-      Choices.push_back(j-1);
+      Choices.push_back(j - 1);
     }
   }
   if (IsNave(i, j - 1, EnemyGrid) && Check(i, j + 1, EnemyGrid))
   {
-    cout << "Carico " << i << j + 1 << "4";
     if (EnemyGrid.IsHit(i, j - 1) && !EnemyGrid[i][j - 1]->Sunk())
     {
+      cout << "Carico " << i << j + 1 << "4";
       //cout << "ho sparato in" << i << j + 1 << "4";
       Choices.push_back(i);
-      Choices.push_back(j+1);
+      Choices.push_back(j + 1);
     }
   }
+  for (auto &i : Choices)
+    cout << i;
 
   int d;
-  do{
-    d = rand() % 10;
-  }while(d%2 != 0 && d>Choices.size());
+  if (Choices.size() > 0)
+  {
+    d = rand() % (Choices.size() / 2);
+    EnemyGrid.Strike(Choices[2 * d], Choices[2 * d + 1]);
 
-  EnemyGrid.Strike(Choices[d-1],Choices[d]);
-
-  cout << "im here";
-  return 1;
-}*/
+    return 0;
+  }
+  else
+    return 1;
+}
 
 bool ComputerFactory::EndGame() const
 {
