@@ -4,7 +4,6 @@
 #define CLEAR "clear"
 #endif
 
-
 //Il Costruttore di menudiramazione senza argomenti costruisce il menu principale
 MenuDiramazione::MenuDiramazione()
 {
@@ -13,11 +12,9 @@ MenuDiramazione::MenuDiramazione()
   Opzioni.push_back(new MenuOpzioni(0, string("Seleziona colore del menu"), string("Colori.txt")));
   Opzioni.push_back(new MenuOpzioni(2, string("Seleziona flotta"), string("Setup.txt")));
   Opzioni.push_back(new MenuBack);
-  vector<Menu *> Menu {{new MenuPlay, new MenuDiramazione(string("Options"),Opzioni),new MenuText(string("Instructions")), new MenuText(string("Credits")), new MenuBack("Quit")}};
-  Menus=Menu;
- 
+  vector<Menu *> Menu{{new MenuPlay, new MenuDiramazione(string("Opzioni"), Opzioni), new MenuText(string("Istruzioni")), new MenuText(string("Crediti")), new MenuBack("Esci")}};
+  Menus = Menu;
 }
-
 
 //Gli argomenti del costruttore sono la stringa vocesopra e il vettore di menu che il menudiramazione deve contenere
 MenuDiramazione::MenuDiramazione(string vocesopra, vector<Menu *> menu)
@@ -48,13 +45,11 @@ void MenuDiramazione::Draw() const
   do
   {
     system(CLEAR);
-    PrintVoci(pos,Menus);
-    pos = Arrows(&pos, Menus);          //arrows permette di muoversi dentro il menu
+    PrintVoci(pos, Menus);
+    pos = Arrows(&pos, Menus); //arrows permette di muoversi dentro il menu
 
     if (pos != Menus.size() - 1)
-      Menus[pos]->Draw();               //chiama il menu selezionato
+      Menus[pos]->Draw(); //chiama il menu selezionato
 
   } while (pos != Menus.size() - 1);
 }
-
-

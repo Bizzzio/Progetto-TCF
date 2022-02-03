@@ -4,12 +4,12 @@ MenuPlay::MenuPlay()
 {
 	voci.push_back("1 giocatore");
 	voci.push_back("2 giocatori");
-	voci.push_back("Back to menu");
+	voci.push_back("Torna indietro");
 }
 
 void MenuPlay::DrawVoci() const
 {
-	cout << "Play";
+	cout << "Gioca";
 }
 
 void MenuPlay::Draw() const
