@@ -91,7 +91,7 @@ bool Play::Check(int x, int y, Griglia grid)
 				return true;
 			else
 			{
-				cout << "Coordinate già colpite. Riprovare." << endl;
+				cout << "Coordinate gia colpite. Riprovare." << endl;
 				return false;
 			}
 		}
