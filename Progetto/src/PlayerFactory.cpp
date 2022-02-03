@@ -168,8 +168,22 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 	EnemyGrid.DrawEnemy();
 	do
 	{
+		string input;
 		cout << "\nDimmi le coordinate che vuoi colpire " << endl;
-		cin >> x >> y;
+		cin >> input;
+		while (input.length() != 1 || (input[0] < 48 || input[0] > 57))
+		{
+			cout << "Inserire un numero valido" << endl;
+			cin >> input;
+		}
+		x = input[0] - '0';
+		cin >> input;
+		while (input.length() != 1 || (input[0] < 48 || input[0] > 57))
+		{
+			cout << "Inserire un numero valido" << endl;
+			cin >> input;
+		}
+		y = input[0] - '0';
 
 	} while (!Check(x, y, EnemyGrid)); // controllo coordinate appartenenti alla griglia
 	EnemyGrid.Strike(x, y);			   // e non ancora colpite, in tal caso chiamo Strike

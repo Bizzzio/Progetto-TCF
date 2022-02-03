@@ -178,19 +178,19 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
             Choices.push_back(j);
             // prima sopra, sotto, a destra e a sinistra                     // fuori da tutti i cicli
           }
-          else if (Check(i - 1, j, EnemyGrid))
+          if (Check(i - 1, j, EnemyGrid))
           {
             //cout << "ho sparato in" << i - 1 << j;
             Choices.push_back(i - 1);
             Choices.push_back(j);
           }
-          else if (Check(i, j + 1, EnemyGrid))
+          if (Check(i, j + 1, EnemyGrid))
           {
             //cout << "ho sparato in" << i << j + 1;
             Choices.push_back(i); // questa struttura la scelta delle caselle sarà, data [i][j],
             Choices.push_back(j + 1);
           }
-          else if (Check(i, j - 1, EnemyGrid))
+          if (Check(i, j - 1, EnemyGrid))
           {
             //cout << "ho sparato in" << i << j - 1;
             Choices.push_back(i);
@@ -207,7 +207,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
     int d = rand() % (Choices.size() / 2);
     EnemyGrid.Strike(Choices[2 * d], Choices[2 * d + 1]);
     sparato = true;
-    EnemyGrid.DrawAlly();
   }
   //
   // a caso
@@ -329,6 +328,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   int d;
   if (Choices.size() > 0)
   {
+    system(CLEAR);
     d = rand() % (Choices.size() / 2);
     EnemyGrid.Strike(Choices[2 * d], Choices[2 * d + 1]);
 
