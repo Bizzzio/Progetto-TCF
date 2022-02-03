@@ -119,47 +119,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
     }
   }
   // Se non ho sparato in CheckSurroundings
-  /* if (!sparato)
-  {
-    for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
-    {
-      for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
-      {
-        if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())
-        {
-          //cout << "ishit va bene";
-          if (Check(i + 1, j, EnemyGrid)) // i,j a questo punto indicano una casella colpita di una nave non
-          {                               // ancora affondata, con Check controllo se le ho già colpite, se
-            //cout << "ho sparato in" << i + 1 << j;        // mi viene restituito true non le ho ancora colpite e sparo. Con
-            EnemyGrid.Strike(i + 1, j); // questa struttura la scelta delle caselle sarà, data [i][j],
-            sparato = true;             // prima sopra, sotto, a destra e a sinistra
-            break;                      // fuori da tutti i cicli
-          }
-          else if (Check(i - 1, j, EnemyGrid))
-          {
-            //cout << "ho sparato in" << i - 1 << j;
-            EnemyGrid.Strike(i - 1, j);
-            sparato = true;
-            break;
-          }
-          else if (Check(i, j + 1, EnemyGrid))
-          {
-            //cout << "ho sparato in" << i << j + 1;
-            EnemyGrid.Strike(i, j + 1);
-            sparato = true;
-            break;
-          }
-          else if (Check(i, j - 1, EnemyGrid))
-          {
-            //cout << "ho sparato in" << i << j - 1;
-            EnemyGrid.Strike(i, j - 1);
-            sparato = true;
-            break;
-          }
-        }
-      }
-    }
-  }*/
+
 
   vector<int> Choices;
   if (!sparato)
@@ -224,61 +184,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   }
   EnemyGrid.DrawAlly();
 }
-
-/*bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
-{
-  //cout << "CheckSurroundings";
-
-  // Guardo le caselle sopra, sotto, a destra e a sinistra di [i][j] e sparo se le coordinate
-  // appartengono alla griglia (IsNave) e se le caselle sono occupate da una nave
-  if (IsNave(i + 1, j, EnemyGrid) && Check(i - 1, j, EnemyGrid))
-  {
-    //cout << "ho sparato in" << i - 1 << j << "1";
-
-    // Data una casella, controllo se quella sopra a questa è stata colpita e se la nave che
-    // lì era presente è affondata oppure no, se non lo è colpisco la casella sotto a quella
-    // di partenza
-    if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
-    {
-      //cout << "ho sparato in" << i - 1 << j << "1";
-      EnemyGrid.Strike(i - 1, j);
-      return 0;
-    }
-  }
-  if (Check(i + 1, j, EnemyGrid) && IsNave(i - 1, j, EnemyGrid))
-  {
-    //cout << "ho sparato in" << i + 1 << j << "2";
-    if (EnemyGrid.IsHit(i - 1, j) && !EnemyGrid[i - 1][j]->Sunk())
-    {
-      //cout << "ho sparato in" << i + 1 << j << "2";
-      EnemyGrid.Strike(i + 1, j);
-      return 0;
-    }
-  }
-  if (Check(i, j - 1, EnemyGrid) && IsNave(i, j + 1, EnemyGrid))
-  {
-    //cout << "ho sparato in" << i << j - 1 << "3";
-
-    if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
-    {
-      // cout << "ho sparato in" << i << j - 1 << "3";
-      EnemyGrid.Strike(i, j - 1);
-      return 0;
-    }
-  }
-  if (IsNave(i, j - 1, EnemyGrid) && Check(i, j + 1, EnemyGrid))
-  {
-    //cout << "ho sparato in" << i << j + 1 << "4";
-    if (EnemyGrid.IsHit(i, j - 1) && !EnemyGrid[i][j - 1]->Sunk())
-    {
-      //cout << "ho sparato in" << i << j + 1 << "4";
-      EnemyGrid.Strike(i, j + 1);
-      return 0;
-    }
-  }
-  //cout << "im here";
-  return 1;
-}*/
 
 bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
 {
