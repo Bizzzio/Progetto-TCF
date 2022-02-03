@@ -115,41 +115,6 @@ void Griglia::DrawAlly() const     // stampa griglia alleata
 	cout << endl
 		 << endl;
 }
-//TODO: aggiungere messaggi di errore
-/*bool Griglia::CheckCell(bool t, int x, int y, int length) const
-{
-	if (t)
-	{
-		if (x + length - size <= 0)
-		{
-
-			for (int i = 0; i < length; i++)
-			{
-				if (grid[x + i][y])
-					return false;
-			}
-			if (y < size)
-				return true;
-		}
-		return false;
-	}
-
-	else
-	{
-		if (y + length - size <= 0)
-		{
-			for (int i = 0; i < length; i++)
-			{
-				if (grid[x][y + i])
-					return false;
-			}
-			if (x < size)
-				return true;
-		}
-		return false;
-	}
-	return false;
-}*/
 
 void Griglia::SetGriglia(int i, int j, Navi *nave)
 {
