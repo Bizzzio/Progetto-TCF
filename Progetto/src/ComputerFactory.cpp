@@ -117,7 +117,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
     }
   }
   // Se non ho sparato in CheckSurroundings
-  if (!sparato)
+  /* if (!sparato)
   {
     for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
     {
@@ -157,6 +157,55 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
         }
       }
     }
+  }*/
+
+  vector<int> Choices;
+  if (!sparato)
+  {
+    for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
+    {
+      for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
+      {
+        if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())
+        {
+          //cout << "ishit va bene";
+          if (Check(i + 1, j, EnemyGrid)) // i,j a questo punto indicano una casella colpita di una nave non
+          {                               // ancora affondata, con Check controllo se le ho già colpite, se
+            //cout << "ho sparato in" << i + 1 << j;        // mi viene restituito true non le ho ancora colpite e sparo. Con
+            Choices.push_back(i + 1); // questa struttura la scelta delle caselle sarà, data [i][j],
+            Choices.push_back(j);
+            // prima sopra, sotto, a destra e a sinistra                     // fuori da tutti i cicli
+          }
+          else if (Check(i - 1, j, EnemyGrid))
+          {
+            //cout << "ho sparato in" << i - 1 << j;
+            Choices.push_back(i - 1);
+            Choices.push_back(j);
+          }
+          else if (Check(i, j + 1, EnemyGrid))
+          {
+            //cout << "ho sparato in" << i << j + 1;
+            Choices.push_back(i); // questa struttura la scelta delle caselle sarà, data [i][j],
+            Choices.push_back(j + 1);
+          }
+          else if (Check(i, j - 1, EnemyGrid))
+          {
+            //cout << "ho sparato in" << i << j - 1;
+            Choices.push_back(i);
+            Choices.push_back(j - 1);
+          }
+        }
+      }
+    }
+  }
+
+  if (Choices.size() > 0)
+  {
+    system(CLEAR);
+    d = rand() % (Choices.size() / 2);
+    EnemyGrid.Strike(Choices[2 * d], Choices[2 * d + 1]);
+    sparato = true;
+    EnemyGrid.DrawAlly();
   }
   //
   // a caso
@@ -169,6 +218,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
       y = rand() % 10;
       //cout << "ho sparato in" << x << y;
     } while (!Check(x, y, EnemyGrid));
+    system(CLEAR);
     EnemyGrid.Strike(x, y);
   }
   EnemyGrid.DrawAlly();
