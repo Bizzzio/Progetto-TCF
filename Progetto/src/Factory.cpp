@@ -39,7 +39,7 @@ bool Factory::Check(int x, int y, Griglia &grid)
 			else
 			{
 
-				cout << "Coordinate già colpite. Riprovare." << endl;
+				cout << "Coordinate gia colpite. Riprovare." << endl;
 				return false;
 			}
 		}
