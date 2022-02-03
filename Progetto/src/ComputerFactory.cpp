@@ -238,7 +238,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
     //cout << "ho sparato in" << i - 1 << j << "1";
     if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
     {
-      cout << "Carico " << i - 1 << j << "1";
+      //cout << "Carico " << i - 1 << j << "1";
       Choices.push_back(i - 1);
       Choices.push_back(j);
     }
@@ -248,7 +248,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
     // cout << "ho sparato in" << i + 1 << j << "2";
     if (EnemyGrid.IsHit(i - 1, j) && !EnemyGrid[i - 1][j]->Sunk())
     {
-      cout << "Carico " << i + 1 << j << "2";
+      //cout << "Carico " << i + 1 << j << "2";
       Choices.push_back(i + 1);
       Choices.push_back(j);
     }
@@ -258,7 +258,7 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
     //cout << "ho sparato in" << i << j - 1 << "3";
     if (EnemyGrid.IsHit(i, j + 1) && !EnemyGrid[i][j + 1]->Sunk())
     {
-      cout << "Carico " << i << j - 1 << "3";
+      //cout << "Carico " << i << j - 1 << "3";
       Choices.push_back(i);
       Choices.push_back(j - 1);
     }
@@ -267,14 +267,12 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
   {
     if (EnemyGrid.IsHit(i, j - 1) && !EnemyGrid[i][j - 1]->Sunk())
     {
-      cout << "Carico " << i << j + 1 << "4";
+      //cout << "Carico " << i << j + 1 << "4";
       //cout << "ho sparato in" << i << j + 1 << "4";
       Choices.push_back(i);
       Choices.push_back(j + 1);
     }
   }
-  for (auto &i : Choices)
-    cout << i;
 
   int d;
   if (Choices.size() > 0)
