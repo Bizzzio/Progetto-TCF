@@ -2,7 +2,9 @@
 #include <vector>
 #ifdef _WIN32
 #include <conio.h>
+#define CLEAR "cls"
 #else
+#define CLEAR "clear"
 #include <termios.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -202,7 +204,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
   if (Choices.size() > 0)
   {
     system(CLEAR);
-    d = rand() % (Choices.size() / 2);
+    int d = rand() % (Choices.size() / 2);
     EnemyGrid.Strike(Choices[2 * d], Choices[2 * d + 1]);
     sparato = true;
     EnemyGrid.DrawAlly();
