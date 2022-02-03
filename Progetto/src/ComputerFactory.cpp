@@ -94,29 +94,6 @@ ComputerFactory::~ComputerFactory()
     delete *i;
 }
 
-/*bool ComputerFactory::EndGame() const
-{
-  // Restituisce true se tutte le navi sono state affondate
-  unsigned int count = 0;
-  vector<Navi *>::const_iterator i;
-  for (i = fleet.begin(); i != fleet.end(); i++)
-  {
-    //cout << "count:" << count << " size:" << fleet.size() << " ";
-    if ((*i)->Sunk())
-      count++;
-    else
-      return false;
-  }
-
-  if (count == fleet.size())
-  {
-
-    return true;
-  }
-  else
-    return false;
-}*/
-
 void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 {
 
@@ -313,20 +290,6 @@ bool ComputerFactory::EndGame() const
 
   unsigned int count = 0;
   vector<Navi *>::const_iterator i;
-
-  // La funzione si potrebbe scrivere così
-
-  /*for (i = fleet.begin(); i != fleet.end(); i++)
-  {
-    if (!(*i)->Sunk())
-      return false;
-  }
-  return true;
-*/
-  // L'abbiamo scritta uguale nelle due Factories, a sto punto potremmo metterla nell'abstract
-  // magari chiamandola checkfleet perchè una funzione endgame nell'abstract factory pare
-  // brutto mentre le funzioni check ci stanno sempre bene e in play facciamo una funzione
-  // endgame che per una certa factory chiama il suo checkfleet
 
   for (i = fleet.begin(); i != fleet.end(); i++)
   {
