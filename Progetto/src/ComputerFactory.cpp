@@ -101,7 +101,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 
   int x, y;
   bool sparato = false;
-  //cout << "Turno giocatore" << NumGiocatore << endl;
   for (int i = 0; i < EnemyGrid.GetSize() && !sparato; i++)
   {
     for (int j = 0; j < EnemyGrid.GetSize() && !sparato; j++)
@@ -119,7 +118,6 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
     }
   }
   // Se non ho sparato in CheckSurroundings
-
 
   vector<int> Choices;
   if (!sparato)
@@ -179,6 +177,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
       //cout << "ho sparato in" << x << y;
     } while (!Check(x, y, EnemyGrid));
     system(CLEAR);
+    cout << "Turno giocatore " << NumGiocatore << endl;
     EnemyGrid.Strike(x, y);
   }
   EnemyGrid.DrawAlly();

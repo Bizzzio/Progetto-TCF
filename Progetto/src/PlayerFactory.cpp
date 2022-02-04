@@ -164,7 +164,7 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 	getchp();
 #endif
 	system(CLEAR);
-	cout << "Turno giocatore" << NumGiocatore << endl;
+	cout << "Turno giocatore " << NumGiocatore << endl;
 	EnemyGrid.DrawEnemy();
 	do
 	{
@@ -186,8 +186,9 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 		y = input[0] - '0';
 
 	} while (!Check(x, y, EnemyGrid)); // controllo coordinate appartenenti alla griglia
-	EnemyGrid.Strike(x, y);			   // e non ancora colpite, in tal caso chiamo Strike
 	system(CLEAR);
+	cout << "Turno giocatore " << NumGiocatore << endl;
+	EnemyGrid.Strike(x, y); // e non ancora colpite, in tal caso chiamo Strike
 	//grid1.DrawAlly();
 	EnemyGrid.DrawEnemy();
 	cout << "Premi un tasto per oscurare" << endl;
