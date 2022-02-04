@@ -131,12 +131,11 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
         if (EnemyGrid.IsHit(i, j) && !EnemyGrid[i][j]->Sunk())
         {
           //cout << "ishit va bene";
-          if (Check(i + 1, j, EnemyGrid)) // i,j a questo punto indicano una casella colpita di una nave non
-          {                               // ancora affondata, con Check controllo se le ho già colpite, se
-            //cout << "ho sparato in" << i + 1 << j;        // mi viene restituito true non le ho ancora colpite e sparo. Con
-            Choices.push_back(i + 1); // questa struttura la scelta delle caselle sarà, data [i][j],
+          if (Check(i + 1, j, EnemyGrid))                   // i,j a questo punto indicano una casella colpita di una nave non
+          {                                                 // ancora affondata, con Check controllo se le ho già colpite, se
+            //cout << "ho sparato in" << i + 1 << j;        // mi viene restituito true non le ho ancora colpite e le inserisco
+            Choices.push_back(i + 1);                       // tra le possibilità in Choices
             Choices.push_back(j);
-            // prima sopra, sotto, a destra e a sinistra                     // fuori da tutti i cicli
           }
           if (Check(i - 1, j, EnemyGrid))
           {
@@ -147,7 +146,7 @@ void ComputerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
           if (Check(i, j + 1, EnemyGrid))
           {
             //cout << "ho sparato in" << i << j + 1;
-            Choices.push_back(i); // questa struttura la scelta delle caselle sarà, data [i][j],
+            Choices.push_back(i); 
             Choices.push_back(j + 1);
           }
           if (Check(i, j - 1, EnemyGrid))
@@ -189,12 +188,12 @@ bool ComputerFactory::CheckSurroundings(Griglia &EnemyGrid, int i, int j)
 {
   vector<int> Choices;
   //cout << "CheckSurroundings";
-  if (IsNave(i + 1, j, EnemyGrid) && Check(i - 1, j, EnemyGrid))
-  {
+  if (IsNave(i + 1, j, EnemyGrid) && Check(i - 1, j, EnemyGrid))   // Se la casella [i+1][j] appartiene alla griglia e [i-1][j] non è
+  {                                                                // ancora stata colpita
     //cout << "ho sparato in" << i - 1 << j << "1";
-    if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk())
-    {
-      //cout << "Carico " << i - 1 << j << "1";
+    if (EnemyGrid.IsHit(i + 1, j) && !EnemyGrid[i + 1][j]->Sunk()) // Se c'è una nave non affondata in [i+1][j], [i][j] (sennò non sa-
+    {                                                              // rei entrato nella funzione) allora carica tra le possibilità 
+      //cout << "Carico " << i - 1 << j << "1";                    // [i-1][j], codice riconosce l'orientazione della nave
       Choices.push_back(i - 1);
       Choices.push_back(j);
     }
