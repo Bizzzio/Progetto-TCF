@@ -49,7 +49,6 @@ bool Factory::Check(int x, int y, Griglia &grid)
 bool Factory::IsNave(int x, int y, Griglia &grid)
 {
 	// Guardo se x,y stanno dentro la griglia oppure no
-	// (forse ridondante con una parte di Check)
 	int s = grid.GetSize();
 	cout << endl;
 	if ((x >= s || x < 0) || (y >= s || y < 0))

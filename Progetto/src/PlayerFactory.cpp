@@ -62,8 +62,8 @@ void PlayerFactory::SetFleet(int n2, int n3, int n4, int n5, int n6)
 			{
 				cout << "\nVuoi la " << j + 1 << "a nave, da " << z << " caselle, orizzontale(=1) o verticale(=0)?" << endl;
 				cin >> input;
-				while (input.length() != 1 || (input[0] != 48 && input[0] != 49))
-				{
+				while (input.length() != 1 || (input[0] != 48 && input[0] != 49))  // ripeto finchè la lunghezza della stringa è diversa
+				{																   // da 1 e finchè carattere diverso da 0 o 1
 					cout << "Inserire 0 o 1" << endl;
 					cin >> input;
 				}
@@ -171,8 +171,8 @@ void PlayerFactory::Turn(Griglia &EnemyGrid, int NumGiocatore)
 		string input;
 		cout << "\nDimmi le coordinate che vuoi colpire " << endl;
 		cin >> input;
-		while (input.length() != 1 || (input[0] < 48 || input[0] > 57))
-		{
+		while (input.length() != 1 || (input[0] < 48 || input[0] > 57))  // la seconda condizione identifica i numeri da tastiera, il
+		{																 // ciclo continua finchè non viene inserito un numero	
 			cout << "Inserire un numero valido" << endl;
 			cin >> input;
 		}
